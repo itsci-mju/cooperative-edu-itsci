@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    font-family: 'Prompt', sans-serif;
+
+}
+.editpro_header1{
+    font-size: 25px;
+    color: #7EBC1B;
+}
+.editpro_header2{
+    font-size: 20px;
+    color: #DD7818;
+    margin-bottom: -100px;
+}
+.evaluate{
+    margin-left: 427px;
+    margin-top: 130px;
+}
+.sub_evaluate{
+    width: 150px;
+    height: 30px;
+    border-radius: 15px;
+    border: 0px;
+    background-color: #28A745;
+    color: white;
+    font-family: 'Prompt';
+    font-weight: 600;
+    box-shadow: 1px 1px 2px 0px #1f1e1ee0;
+    cursor: pointer;
+
+}
+.can_evaluate{
+    margin-left: 10px;
+    width: 150px;
+    height: 30px;
+    border-radius: 15px;
+    border: 0px;
+    background-color: #FFC107;
+    color: #1B1A1A;
+    font-family: 'Prompt';
+    font-weight: 600;
+    box-shadow: 1px 1px 2px 0px #1f1e1ee0;
+    cursor: pointer;
+}
