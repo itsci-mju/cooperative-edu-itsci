@@ -2,6 +2,7 @@ package it_sci.dao;
 
 import it_sci.model.Company;
 import it_sci.model.MentorEvaluate;
+import it_sci.model.Teacher;
 import it_sci.model.TeacherEvaluate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -48,6 +49,14 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
         session.saveOrUpdate(teacherEvaluate);
         return teacherEvaluate;
 
+    }
+
+    @Override
+    public TeacherEvaluate getTeacherEvaluateById(long ass_id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate t WHERE t.assessment_id =: tId", TeacherEvaluate.class);
+        query.setParameter("tId", ass_id);
+        return query.getSingleResult();
     }
 
 }

@@ -71,7 +71,7 @@ public class TeacherController {
 
         Date assessment_enddate = new Date();
 
-        String assessment_status = " ยังไม่ได้ประเมิน";
+        String assessment_status = "ยังไม่ได้ประเมิน";
 
         Date teachersupervisiondate = dateFormat.parse(map.get("teachersupervisiondate"));
 
@@ -104,7 +104,8 @@ public class TeacherController {
     }
 
     @RequestMapping("/{teacher_id}/list_student_by_teacher/{company_id}")
-    public String gotoListStudentPage (@PathVariable("teacher_id") int teacher_id,@PathVariable("company_id") int company_id,Model model) {
+    public String gotoListStudentPage (@PathVariable("teacher_id") int teacher_id,
+                                       @PathVariable("company_id") int company_id,Model model) {
         List<TeacherEvaluate> teacherEvaluate = teacherEvaluateService.getTeacherEvaluateByTeacherId(teacher_id,company_id);
         model.addAttribute("ListStudents", teacherEvaluate);
 //        List<Student> students = mentorService.getMentorDoesNotHaveStudent(21);
@@ -114,61 +115,32 @@ public class TeacherController {
         return "teacher/list_student";
     }
 
-    @GetMapping("/{student_id}/evaluate")
-    public String gotoEvaluatePage (@PathVariable("student_id") String student_id, Model model,  HttpServletRequest request) {
-        request.setAttribute("teacher", teacherService.getTeacherById(2));
+    @GetMapping("/{student_id}/evaluate/{teacher_id}/{ass_id}")
+    public String gotoEvaluatePage (@PathVariable("student_id") String student_id, Model model, HttpServletRequest request,
+                                    @PathVariable int teacher_id, @PathVariable String ass_id) {
+        request.setAttribute("teacher", teacherService.getTeacherById(teacher_id));
         model.addAttribute("student", studentService.getStudentById(student_id));
+        model.addAttribute("ass_id",ass_id);
         model.addAttribute("teacher_evaluate_item", new TeacherEvaluate());
         return "teacher/evaluate";
     }
 
-
-    @Transactional
-    @PostMapping("/submit_evaluate_by_teacher")
-    public String submitEvaluateByTeacher (@RequestParam Map<String, String> map) {
+    @PostMapping("/submit_evaluate_by_teacher/{ass_id}")
+    public String submitEvaluateByTeacher (@RequestParam Map<String, String> map, @PathVariable long ass_id) {
+        TeacherEvaluate teacherEvaluate = teacherEvaluateService.getTeacherEvaluateById(ass_id);
         int sumScore = 0;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i <= 5; i++) {
             int score = Integer.parseInt(map.get("score" + (i + 1)));
             sumScore += score;
         }
-        Teacher teacher = teacherService.getTeacherById(2);
-        String student_id = map.get("studentId");
-        Student student = studentService.getStudentById(student_id);
-//        System.out.println(sumScore);
-
-//        String assessment_id = "TE0000001";
-
         Date assessment_date = new Date();
 
-//        String student_id = map.get("studentId");
-//        Student student = studentService.getStudentById(student_id);
-
-        Date assessment_startdate = student.getEnddate();
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(assessment_startdate);
-        calendar.add(Calendar.DAY_OF_MONTH, 1);
-
-        Date assessment_startdate_fin = calendar.getTime();
-
-        Calendar calendar2 = Calendar.getInstance();
-        calendar2.setTime(assessment_startdate_fin);
-        calendar2.add(Calendar.DAY_OF_MONTH, 7);
-
-        Date assessment_enddate = calendar2.getTime();
-
-        String assessment_status = "ประเมินแล้ว";
+        teacherEvaluate.setScore(sumScore);
+        teacherEvaluate.setAssessment_date(assessment_date);
+        teacherEvaluate.setAssessment_status("ประเมินแล้ว");
+        teacherEvaluateService.updateTeacherEvaluate(teacherEvaluate);
 
 
-        System.out.println("STUDENT ID : " + student.getTeacher().getTeacher_id());
-
-
-        TeacherEvaluate teacherEvaluate = new TeacherEvaluate(sumScore, assessment_date, assessment_startdate_fin, assessment_enddate, assessment_status,student, teacher);
-
-        Session currentSession = sessionFactory.getCurrentSession();
-        teacherEvaluate = (TeacherEvaluate) currentSession.merge(teacherEvaluate);
-
-
-        return "redirect:/teacher/{teacher_id}/list_student_by_teacher/{company_id}";
+        return "redirect:/teacher/"+teacherEvaluate.getTeacher().getTeacher_id()+"/list_student_by_teacher/"+teacherEvaluate.getStudent().getCompany().getCompany_id();
     }
 }

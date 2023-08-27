@@ -3,12 +3,14 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="${pageContext.request.contextPath}/assets/css/mentor/liststudent.css" rel="stylesheet">
+<%--    <link href="${pageContext.request.contextPath}/assets/css/mentor/liststudent.css" rel="stylesheet">--%>
+    <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 
 <body>
 
-<jsp:include page="/WEB-INF/view/layout/navbar.jsp"/>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/>
+<br>
 <div class="navbar2"><br><br><br>
     <div style="margin-left: 160px">
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>

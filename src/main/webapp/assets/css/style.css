@@ -82,22 +82,22 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-#header {
-  transition: all 0.5s;
-  z-index: 997;
-  transition: all 0.5s;
-  padding: 24px 0;
-  background: rgba(103, 176, 209, 0.8);
-}
+/*#header {*/
+/*  transition: all 0.5s;*/
+/*  z-index: 997;*/
+/*  transition: all 0.5s;*/
+/*  padding: 24px 0;*/
+/*  background: #990D28;*/
+/*}*/
 
-#header.header-transparent {
-  background: transparent;
-}
+/*#header.header-transparent {*/
+/*  background: transparent;*/
+/*}*/
 
-#header.header-scrolled {
-  background: rgba(55, 142, 181, 0.9);
-  padding: 12px;
-}
+/*#header.header-scrolled {*/
+/*  background: #990D28;*/
+/*  padding: 12px;*/
+/*}*/
 
 #header .logo h1 {
   font-size: 24px;
@@ -203,7 +203,7 @@ h6 {
   font-size: 15px;
   text-transform: none;
   font-weight: 600;
-  color: #2f4d5a;
+  color: #990D28;
 }
 
 .navbar .dropdown ul a i {
@@ -213,7 +213,7 @@ h6 {
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  color: #67b0d1;
+  color: #990D28;
 }
 
 .navbar .dropdown:hover>ul {
@@ -1380,4 +1380,18 @@ section {
   #footer .footer-top .footer-info {
     margin: -20px 0 30px 0;
   }
+}
+body{
+  margin: 0;
+  font-family: 'Prompt', sans-serif;
+
+}
+.editpro_header1{
+  font-size: 25px;
+  color: #7EBC1B;
+}
+.editpro_header2{
+  font-size: 20px;
+  color: #DD7818;
+  margin-bottom: -100px;
 }

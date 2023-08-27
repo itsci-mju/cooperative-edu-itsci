@@ -13,4 +13,6 @@ public interface TeacherEvaluateDao {
     void saveTeacherEvaluate(TeacherEvaluate teacherEvaluate);
 
     TeacherEvaluate updateTeacherEvaluate (TeacherEvaluate teacherEvaluate);
+
+    TeacherEvaluate getTeacherEvaluateById(long ass_id);
 }

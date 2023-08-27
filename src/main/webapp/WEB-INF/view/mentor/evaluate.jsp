@@ -8,12 +8,13 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="${pageContext.request.contextPath}/assets/css/mentor/liststudent.css" rel="stylesheet">
+<%--    <link href="${pageContext.request.contextPath}/assets/css/mentor/liststudent.css" rel="stylesheet">--%>
+    <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 
 <body>
-<jsp:include page="/WEB-INF/view/layout/navbar.jsp"/>
-
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/>
+<br>
 <form action="${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>" method="POST" >
     <div class="navbar2"><br><br><br>
         <div style="margin-left: 160px">
@@ -42,6 +43,7 @@
         </tr>
     </table><br><br>
 
+    <div id="form1" class="tabcontent">
 <p>ส่วนที่ 1 ให้คะแนนความประพฤติกรรมการปฏิบัติงานสหกิจศึกษาของนักศึกษาในแต่ละด้านและความพึงพอใจโดยรวม (คะแนนเต็ม 60 คะแนน) </p>
 
 <table style="margin-left: 165px;">
@@ -184,6 +186,9 @@
         </td>
     </tr>
 </table><br><br>
+    </div>
+
+    <div id="form2" class="tabcontent">
 
 <p>ส่วนที่ 2 ความคิดเห็นเกี่ยวกับการฝึกปฏิบัติสหกิจศึกษาของนักศึกษา </p>
 
@@ -222,12 +227,22 @@
         <td><input name="answerText5" style="width: 200px; height: 25px"/></td>
     </tr>
 </table>
-    <div style="margin: 35px 0px 100px 640px;">
-        <button type="submit" class="btn btn-success">บันทึก</button>
-        <button type="button" class="btn btn-warning">ยกเลิก</button>
+        <div style="margin: 35px 0px 100px 640px;">
+            <button type="submit" class="btn btn-success">บันทึก</button>
+            <button type="button" class="btn btn-warning">ยกเลิก</button>
+        </div>
     </div>
 </form>
-
+<%--<div class="list_course_detail" align="center">--%>
+<%--    <div class="hr_line"></div>--%>
+<%--    <button id="FClick" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>--%>
+<%--    <button class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>--%>
+<%--</div>--%>
+<div class="list_course_detail" align="center">
+    <div class="hr_line"></div>
+    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>
+    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>
+</div>
 
 <script>
     function getSumAndSet () {
@@ -249,5 +264,47 @@
 </script>
 
 </body>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        var backButton = document.getElementById('backButton');
+        var nextButton = document.getElementById('nextButton');
+        var evaluationForm = document.getElementById('evaluationForm');
+
+        backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับตอนเริ่มต้น
+
+        // เมื่อคลิกปุ่ม "ต่อไป"
+        nextButton.addEventListener('click', function () {
+            backButton.style.display = "inline-block"; // แสดงปุ่มย้อนกลับ
+            nextButton.style.display = "none"; // ซ่อนปุ่มต่อไป
+            evaluationForm.action = "${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>";
+        });
+
+        // เมื่อคลิกปุ่ม "ย้อนกลับ"
+        backButton.addEventListener('click', function () {
+            backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับ
+            nextButton.style.display = "inline-block"; // แสดงปุ่มต่อไป
+            evaluationForm.action = "${pageContext.request.contextPath}/mentor/back_to_form1";
+        });
+    });
+    // window.addEventListener('DOMContentLoaded', (event) => {
+    //     var button = document.getElementById('FClick');
+    //     button.click()
+    // });
+    function openList(evt, list_name) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            // tablinks[i].style.display = "none";
+        }
+        document.getElementById(list_name).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
 </html>

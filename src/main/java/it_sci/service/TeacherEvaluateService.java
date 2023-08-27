@@ -12,4 +12,6 @@ public interface TeacherEvaluateService {
     void saveTeacherEvaluate(TeacherEvaluate teacherEvaluate);
 
     TeacherEvaluate updateTeacherEvaluate (TeacherEvaluate teacherEvaluate);
+
+    TeacherEvaluate getTeacherEvaluateById(long ass_id);
 }

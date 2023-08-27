@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/>
 
-<form action="${pageContext.request.contextPath}/teacher/submit_evaluate_by_teacher" method="POST" >
+<form action="${pageContext.request.contextPath}/teacher/submit_evaluate_by_teacher/${ass_id}" method="POST" >
 
     <div class="navbar2"><br><br><br>
         <div style="margin-left: 160px">
@@ -153,11 +153,6 @@
     </tr>
 
 </table><br><br>
-
-    <div>
-        <button type="button" class="btn btn-warning">ต่อไป</button>
-    </div>
-
 <p>ส่วนที่ 2 ความคิดเห็นเกี่ยวกับการฝึกปฏิบัติสหกิจศึกษาของนักศึกษา </p>
 
 <table align="center">
