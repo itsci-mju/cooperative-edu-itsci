@@ -110,6 +110,22 @@
             margin-bottom: 30px;
         }
     }
+    #header {
+        transition: all 0.5s;
+        z-index: 997;
+        transition: all 0.5s;
+        padding: 24px 0;
+        background: #990D28;
+    }
+
+    #header.header-transparent {
+        background: transparent;
+    }
+
+    #header.header-scrolled {
+        background: #990D28;
+        padding: 12px;
+    }
 </style>
 <body>
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/>
@@ -117,8 +133,8 @@
 <!-- ======= Hero Section ======= -->
 <section id="main_header_hero">
     <div class="hero-container" data-aos="fade-up">
-        <h1>Welcome to Squad</h1>
-        <h2>We are team of talented designers making websites with Bootstrap</h2>
+        <h1>Welcome to ITSCIMJU</h1>
+        <h2>We learn to Design, Build and Test IT Solutions for Tomorrow</h2>
         <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
 </section><!-- End Hero -->
@@ -260,7 +276,7 @@
         <div class="container">
 
             <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-                <h2>Team</h2>
+                <h2>บุคลากรของหลักสูตร</h2>
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
             </div>
 

@@ -6,14 +6,14 @@
 <html>
 <head>
     <title>Title</title>
-<%--    <link href="${pageContext.request.contextPath}/assets/css/mentor/liststudent.css" rel="stylesheet">--%>
+    <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 
-<body>
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/>
+<body><br><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 
-<form action="${pageContext.request.contextPath}/teacher/submit_evaluate_by_teacher" method="POST" >
+<form action="${pageContext.request.contextPath}/teacher/submit_evaluate_by_teacher/${ass_id}" method="POST" >
 
     <div class="navbar2"><br><br><br>
         <div style="margin-left: 160px">
@@ -153,11 +153,6 @@
     </tr>
 
 </table><br><br>
-
-    <div>
-        <button type="button" class="btn btn-warning">ต่อไป</button>
-    </div>
-
 <p>ส่วนที่ 2 ความคิดเห็นเกี่ยวกับการฝึกปฏิบัติสหกิจศึกษาของนักศึกษา </p>
 
 <table align="center">

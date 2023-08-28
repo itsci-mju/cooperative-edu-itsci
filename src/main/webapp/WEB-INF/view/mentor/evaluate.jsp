@@ -8,12 +8,12 @@
 <html>
 <head>
     <title>Title</title>
-<%--    <link href="${pageContext.request.contextPath}/assets/css/mentor/liststudent.css" rel="stylesheet">--%>
+    <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 
-<body>
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/>
+<body><br><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <br>
 <form action="${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>" method="POST" >
     <div class="navbar2"><br><br><br>

@@ -6,12 +6,12 @@
 <html>
 <head>
     <title>Title</title>
-<%--    <link href="${pageContext.request.contextPath}/assets/css/mentor/liststudent.css" rel="stylesheet">--%>
+    <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 
-<body>
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/>
+<body><br><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 
 <form action="${pageContext.request.contextPath}/teacher/submit_evaluate_by_teacher/${ass_id}" method="POST" >
 

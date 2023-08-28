@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>${title}</title>
-<%--    <link href="${pageContext.request.contextPath}/assets/css/mentor/liststudent.css" rel="stylesheet">--%>
-    <link href="/assets/css/mentor/liststudent.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 
 </head>
@@ -15,10 +14,10 @@
         margin-top: 50px;
     }
 </style>
-<body>
+<body><br><br>
 
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <br>
 <form action="${pageContext.request.contextPath}/mentor/${mentor_profile.mentor_id}/update_mentor_profile" method="POST" >
     <div class="navbar2"><br><br>
