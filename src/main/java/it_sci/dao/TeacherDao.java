@@ -9,6 +9,8 @@ public interface TeacherDao {
     Teacher getTeacherById(int teacher_id);
 
     Teacher getteacherProfile(int id);
+    Student getStudent(String id);
+    List<Mentor> getMentorsByStudentId(String studentId);
 
     List<Teacher> getAllTeachers();
 

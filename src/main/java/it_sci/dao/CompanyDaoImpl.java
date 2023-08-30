@@ -40,6 +40,13 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
+    public Company getCompany(int company_id) {
+        Session session = sessionFactory.getCurrentSession();
+        Company company = session.get(Company.class,company_id );
+        return company;
+    }
+
+    @Override
     public void saveCompany(Company company) {
         Session session = sessionFactory.getCurrentSession();
         session.save(company);

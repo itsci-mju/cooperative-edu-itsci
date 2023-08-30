@@ -3,19 +3,19 @@
 <html>
 <head>
     <title>Title</title>
-<%--    <link href="${pageContext.request.contextPath}/assets/css/mentor/liststudent.css" rel="stylesheet">--%>
+    <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 
-<body>
+<body><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <div class="navbar2"><br><br>
     <div style="margin-left: 160px">
         <p class="editpro_header1">ระบบการกำหนดอาจารย์นิเทศการฝึกสหกิจศึกษา (อาจารย์ผู้ประสานงาน)</p>
         <p class="editpro_header2">รายชื่อบริษัท</p>
     </div>
-</div><br>
+</div><br><br><br>
     <table class="table table-hover" >
         <tr>
             <td>รหัสบริษัท</td>

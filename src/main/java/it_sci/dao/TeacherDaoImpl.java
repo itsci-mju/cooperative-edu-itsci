@@ -1,10 +1,7 @@
 package it_sci.dao;
 
 
-import it_sci.model.Company;
-import it_sci.model.MentorEvaluate;
-import it_sci.model.Teacher;
-import it_sci.model.TeacherEvaluate;
+import it_sci.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -30,6 +27,21 @@ public class TeacherDaoImpl implements TeacherDao{
         Session session = sessionFactory.getCurrentSession();
         Teacher teacher = session.get(Teacher.class, id);
         return teacher;
+    }
+
+    @Override
+    public Student getStudent(String student_id) {
+        Session session = sessionFactory.getCurrentSession();
+        Student student = session.get(Student.class, student_id);
+        return student;
+    }
+
+    @Override
+    public List<Mentor> getMentorsByStudentId(String studentId) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Mentor> query = session.createQuery("SELECT m FROM Mentor m INNER JOIN m.students s WHERE s.student_id =:stuid", Mentor.class);
+        query.setParameter("stuid",studentId);
+        return query.getResultList();
     }
 
     @Override

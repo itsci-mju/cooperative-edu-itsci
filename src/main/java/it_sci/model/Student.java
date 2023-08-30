@@ -22,7 +22,7 @@ public class Student {
     private String password;
 
     @Column(name = "workposition" ,length = 45,nullable = false)
-    private String workstation;
+    private String workposition;
 
     @Column(name = "startdate" ,nullable = false)
     private Date startdate;
@@ -53,12 +53,12 @@ public class Student {
     public Student() {
     }
 
-    public Student(String student_id, String student_name, String student_lastname, String password, String workstation, Date startdate, Date enddate, String semester, double mentor_score, double teacher_score, Company company, Teacher teacher, List<Mentor> mentors) {
+    public Student(String student_id, String student_name, String student_lastname, String password, String workposition, Date startdate, Date enddate, String semester, double mentor_score, double teacher_score, Company company, Teacher teacher, List<Mentor> mentors) {
         this.student_id = student_id;
         this.student_name = student_name;
         this.student_lastname = student_lastname;
         this.password = password;
-        this.workstation = workstation;
+        this.workposition = workposition;
         this.startdate = startdate;
         this.enddate = enddate;
         this.semester = semester;
@@ -101,12 +101,12 @@ public class Student {
         this.password = password;
     }
 
-    public String getWorkstation() {
-        return workstation;
+    public String getWorkposition() {
+        return workposition;
     }
 
-    public void setWorkstation(String workstation) {
-        this.workstation = workstation;
+    public void setWorkposition(String workposition) {
+        this.workposition = workposition;
     }
 
     public Date getStartdate() {

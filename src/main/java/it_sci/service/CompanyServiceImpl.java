@@ -28,6 +28,12 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     @Transactional
+    public Company getCompany(int company_id) {
+        return companyDao.getCompany(company_id);
+    }
+
+    @Override
+    @Transactional
     public void saveCompany(Company company) {
         companyDao.saveCompany(company);
     }

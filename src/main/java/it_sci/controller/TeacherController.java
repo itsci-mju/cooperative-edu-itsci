@@ -143,4 +143,12 @@ public class TeacherController {
 
         return "redirect:/teacher/"+teacherEvaluate.getTeacher().getTeacher_id()+"/list_student_by_teacher/"+teacherEvaluate.getStudent().getCompany().getCompany_id();
     }
+
+    @GetMapping("/{id}/view_student_detail")
+    public String getStudent(@PathVariable("id") String id, Model model) {
+        Student student = teacherService.getStudent(id);
+        model.addAttribute("student_detail", student);
+        model.addAttribute("mentors",teacherService.getMentorsByStudentId(student.getStudent_id()));
+        return "teacher/student_detail";
+    }
 }

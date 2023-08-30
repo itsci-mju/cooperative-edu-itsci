@@ -1,11 +1,9 @@
 package it_sci.service;
 
 import it_sci.dao.CompanyDao;
+import it_sci.dao.StudentDao;
 import it_sci.dao.TeacherDao;
-import it_sci.model.Company;
-import it_sci.model.MentorEvaluate;
-import it_sci.model.Teacher;
-import it_sci.model.TeacherEvaluate;
+import it_sci.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +24,19 @@ public class TeacherServiceImpl implements TeacherService{
     public List<Teacher> getAllTeachers() {
         return teacherDao.getAllTeachers();
     }
+
+    @Override
+    @Transactional
+    public Student getStudent(String student_id) {
+        return teacherDao.getStudent(student_id);
+    }
+
+    @Override
+    @Transactional
+    public List<Mentor> getMentorsByStudentId(String studentId) {
+        return teacherDao.getMentorsByStudentId(studentId);
+    }
+
 
     @Override
     @Transactional

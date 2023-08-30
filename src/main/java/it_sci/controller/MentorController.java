@@ -142,6 +142,6 @@ public class MentorController {
         mentorEvaluate = (MentorEvaluate) currentSession.merge(mentorEvaluate);
 
 
-        return "redirect:/mentor/list_student_by_mentor";
+        return "redirect:/mentor/list_student_by_mentor/";
     }
 }
