@@ -46,8 +46,8 @@
     <div id="form1" class="tabcontent">
 <p>ส่วนที่ 1 ให้คะแนนความประพฤติกรรมการปฏิบัติงานสหกิจศึกษาของนักศึกษาในแต่ละด้านและความพึงพอใจโดยรวม (คะแนนเต็ม 60 คะแนน) </p>
 
-<table style="margin-left: 165px;">
-    <tr>
+<table class="table table-hover" style="margin-left: 165px;">
+    <tr class="table-primary">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>คะแนน</td>
@@ -192,8 +192,8 @@
 
 <p>ส่วนที่ 2 ความคิดเห็นเกี่ยวกับการฝึกปฏิบัติสหกิจศึกษาของนักศึกษา </p>
 
-<table align="center">
-    <tr>
+<table class="table table-hover" align="center">
+    <tr class="table-primary">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>ความคิดเห็น</td>

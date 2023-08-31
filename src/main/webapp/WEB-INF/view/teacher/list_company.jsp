@@ -6,6 +6,7 @@
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
+<jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 
 <body><br><br>
 
@@ -15,9 +16,9 @@
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
         <p class="editpro_header2">รายชื่อบริษัท</p>
     </div>
-</div><br>
+</div>
 <table class="table table-hover"  >
-    <tr>
+    <tr class="table-primary" id="font">
         <td>รหัสบริษัท</td>
         <td>ชื่อบริษัท</td>
         <td>จำนวนนักศึกษา</td>
@@ -30,10 +31,14 @@
             <td> ${company.company_id}</td>
             <td> ${company.company_name}</td>
             <td>${company.students.size()}</td>
-            <td><i class="fas fa-id-card" style="width: 50px"></i></td>
+            <td>
+                <a href="${pageContext.request.contextPath}/company/${company.company_id}/view_company_detail">
+                    <i class="bi bi-postcard" style="font-size: 28px;"></i>
+                </a>
+            </td>
             <td>
                 <a href="${pageContext.request.contextPath}/teacher/${teacher_id}/list_student_by_teacher/${company.company_id}">
-                    <button type="button" class="btn btn-primary">ประเมินนักศึกษา</button>
+                    <i class="bi bi-file-person" style="font-size: 28px;"></i>
                 </a>
             </td>
         </tr>

@@ -14,19 +14,18 @@
         margin-top: 50px;
     }
 </style>
+<jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <body><br><br>
-
-
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
-<br>
+
 <form action="${pageContext.request.contextPath}/mentor/${mentor_profile.mentor_id}/update_mentor_profile" method="POST" >
     <div class="navbar2"><br><br>
-        <div style="margin-left: 160px">
+        <div style="margin-left: 160px;">
             <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
             <p class="editpro_header2">รายชื่อนักศึกษา</p>
         </div>
     </div>
-<table class="edit_profile" >
+<table class="edit_profile" align="center">
     <tr>
         <td colspan="4">
             <img class="profile" src="${pageContext.request.contextPath}/assets/img/profile.png">

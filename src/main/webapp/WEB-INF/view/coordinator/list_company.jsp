@@ -6,7 +6,7 @@
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
-
+<jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <body><br><br>
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
@@ -15,9 +15,9 @@
         <p class="editpro_header1">ระบบการกำหนดอาจารย์นิเทศการฝึกสหกิจศึกษา (อาจารย์ผู้ประสานงาน)</p>
         <p class="editpro_header2">รายชื่อบริษัท</p>
     </div>
-</div><br><br><br>
+</div>
     <table class="table table-hover" >
-        <tr>
+        <tr class="table-primary" id="font">
             <td>รหัสบริษัท</td>
             <td>ชื่อบริษัท</td>
             <td>เบอร์โทรศัพท์</td>
@@ -30,7 +30,9 @@
             <td> ${company.company_id}</td>
             <td> ${company.company_name}</td>
             <td>${company.phone_number}</td>
-            <td><i class="fas fa-id-card" style="width: 50px"></i></td>
+            <td><a href="${pageContext.request.contextPath}/company/${company.company_id}/view_company_detail">
+                <i class="bi bi-postcard" style="font-size: 28px;"></i>
+            </a>
             <td>
                 <a href="${pageContext.request.contextPath}/teacher/${company.company_id}/assign_teacher">
                     <button type="button" class="btn btn-primary">มอบหมายอาจารย์</button>

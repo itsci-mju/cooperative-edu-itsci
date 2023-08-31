@@ -17,25 +17,25 @@
         <p class="editpro_header2">รายชื่อนักศึกษา</p>
     </div>
 </div><br>
-    <table class="table table-hover" >
-        <tr>
-            <td>รหัสนักศึกษา</td>
-            <td>ชื่อนักศึกษา</td>
-            <td>ตำแหน่ง</td>
-            <td>วันที่การประเมิน</td>
-            <td>คะแนน</td>
-        </tr>
-<%--        ${students}--%>
-        <c:forEach var="mentorevaluate" items="${mentorevaluate}">
-        <tr>
-            <td> ${mentorevaluate.student.student_id}</td>
-            <td> ${mentorevaluate.student.student_name} ${mentorevaluate.student.student_lastname}</td>
-            <td>${mentorevaluate.student.workstation}</td>
-            <td>${mentorevaluate.assessment_date}</td>
-            <td>${mentorevaluate.score}</td>
-        </tr>
-        </c:forEach>
-    </table>
+<%--    <table class="table table-hover" >--%>
+<%--        <tr class="table-primary" id="font">--%>
+<%--            <td>รหัสนักศึกษา</td>--%>
+<%--            <td>ชื่อนักศึกษา</td>--%>
+<%--            <td>ตำแหน่ง</td>--%>
+<%--            <td>วันที่การประเมิน</td>--%>
+<%--            <td>คะแนน</td>--%>
+<%--        </tr>--%>
+<%--&lt;%&ndash;        ${students}&ndash;%&gt;--%>
+<%--        <c:forEach var="mentorevaluate" items="${mentorevaluate}">--%>
+<%--        <tr>--%>
+<%--            <td> ${mentorevaluate.student.student_id}</td>--%>
+<%--            <td> ${mentorevaluate.student.student_name} ${mentorevaluate.student.student_lastname}</td>--%>
+<%--            <td>${mentorevaluate.student.workstation}</td>--%>
+<%--            <td>${mentorevaluate.assessment_date}</td>--%>
+<%--            <td>${mentorevaluate.score}</td>--%>
+<%--        </tr>--%>
+<%--        </c:forEach>--%>
+<%--    </table>--%>
 
 
 </body>

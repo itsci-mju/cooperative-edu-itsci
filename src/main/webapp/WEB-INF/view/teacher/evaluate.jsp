@@ -8,7 +8,7 @@
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
-
+<jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <body><br><br>
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 
@@ -29,14 +29,14 @@
 
         <tr>
             <td><p>รหัสนักศึกษา </p></td>
-            <td><input type="text"  value="${student.student_id}" name="studentId" id="studentId" readonly></td>
+            <td><input type="text"  value="${student.student_id}" name="studentId" id="studentId" disabled></td>
             <td><p style="text-align: right;">&nbsp;&nbsp; ชื่อนักศึกษา &nbsp;&nbsp;</p></td>
             <td><input type="text"  value="${student.student_name} ${student.student_lastname}" disabled></td>
         </tr>
 
         <tr>
             <td><p>ตำแหน่งงานที่ฝึกปฎิบัติ</p></td>
-            <td><input type="text"  value="${student.workstation}" disabled></td>
+            <td><input type="text"  value="${student.workposition}" disabled></td>
             <td><p style="text-align: right;">&nbsp;&nbsp; ระยะเวลาการประเมิน &nbsp;&nbsp;</p></td>
             <td><input type="text"  disabled></td>
         </tr>
@@ -44,14 +44,14 @@
 
 <p>ส่วนที่ 1 ให้คะแนนความประพฤติกรรมการปฏิบัติงานสหกิจศึกษาของนักศึกษาในแต่ละด้านและความพึงพอใจโดยรวม (คะแนนเต็ม 20 คะแนน) </p>
 
-<table align="center">
-    <tr>
+<table class="table table-hover" align="center">
+    <tr class="table-primary" id="font">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>คะแนน</td>
     </tr>
     <tr>
-        <td></td>
+        <td>1</td>
         <td>คะแนนพฤติกรรมและความรับผิดชอบ</td>
         <td>
             <input type="radio" name="score1" value="10" onclick="getSumAndSet()">10
@@ -67,7 +67,7 @@
         </td>
     </tr>
     <tr>
-        <td></td>
+        <td>2</td>
         <td>คะแนนด้านศักยภาพการทำงานและการพัฒนาตัวเอง</td>
         <td>
             <input type="radio" name="score2" value="10" onclick="getSumAndSet()">10
@@ -84,7 +84,7 @@
 
     </tr>
     <tr>
-        <td></td>
+        <td>3</td>
         <td>คะแนนความพอพึงใจจากพี่เลี้ยงที่มีต่อนักศึกษา</td>
         <td>
             <input type="radio" name="score3" value="10" onclick="getSumAndSet()">10
@@ -101,7 +101,7 @@
 
     </tr>
     <tr>
-        <td></td>
+        <td>4</td>
         <td>คะแนนความพอพึงใจของอาจารย์นิเทศสหกิจที่มีต่อการดูแลของพี่เลี้ยง</td>
         <td>
             <input type="radio" name="score4" value="10" onclick="getSumAndSet()">10
@@ -118,7 +118,7 @@
 
     </tr>
     <tr>
-        <td></td>
+        <td>5</td>
         <td>นักศึกษามีทักษะการเรียนรู้เทคโนโลยีและการแก้ไขปัญหาในการทำงานเป็นที่พึงพอใจของบริษัท</td>
         <td>
             <input type="radio" name="score5" value="10" onclick="getSumAndSet()">10
@@ -135,7 +135,7 @@
 
     </tr>
     <tr>
-        <td></td>
+        <td>6</td>
         <td>คะแนนความพอพึงใจของอาจารย์นิเทศสหกิจที่มีต่อการนิเทศสหกิจศึกษาในภาพรวม</td>
         <td>
             <input type="radio" name="score6" value="10" onclick="getSumAndSet()">10
@@ -154,19 +154,19 @@
 </table><br><br>
 <p>ส่วนที่ 2 ความคิดเห็นเกี่ยวกับการฝึกปฏิบัติสหกิจศึกษาของนักศึกษา </p>
 
-<table align="center">
-    <tr>
+<table class="table table-hover" align="center">
+    <tr class="table-primary" id="font">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>ความคิดเห็น</td>
     </tr>
     <tr>
-        <td></td>
+        <td>1</td>
         <td>นักศึกษาได้ปฏิบัติงานตรงตามตำแหน่งที่สาขาวิชาส่งไปหรือไม่?</td>
         <td><input name="answerText1" /></td>
     </tr>
     <tr>
-        <td></td>
+        <td>2</td>
         <td>ข้อความบันทึก/หมายเหตุเพิ่มเติม (ถ้ามี)</td>
         <td><input name="answerText2" /></td>
     </tr>

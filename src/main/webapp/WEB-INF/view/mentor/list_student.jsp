@@ -1,28 +1,26 @@
 <%@ page import="it_sci.model.Mentor" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    Mentor mentor = (Mentor) session.getAttribute("mentor");
-%>
 <html>
 <head>
     <title>Title</title>
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
-
+<%
+    Mentor mentor = (Mentor) session.getAttribute("mentor");
+%>
 <body><br><br>
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
-<br>
-<div class="navbar2"><br><br><br>
+<div class="navbar2"><br><br>
     <div style="margin-left: 160px">
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
         <p class="editpro_header2">รายชื่อนักศึกษา</p>
     </div>
 </div><br>
     <table class="table table-hover"  >
-        <tr>
+        <tr class="table-primary" id="font">
             <td>รหัสนักศึกษา</td>
             <td>ชื่อนักศึกษา</td>
             <td>ตำแหน่ง</td>

@@ -10,6 +10,7 @@
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
+<jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <%
     Teacher teacher = (Teacher) session.getAttribute("teacher");
 %>
@@ -21,9 +22,9 @@
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
         <p class="editpro_header2">รายชื่อนักศึกษา</p>
     </div>
-</div><br>
+</div>
     <table class="table table-hover"  >
-        <tr>
+        <tr class="table-primary" id="font">
             <td>รหัสนักศึกษา</td>
             <td>ชื่อนักศึกษา</td>
             <td>ตำแหน่ง</td>
@@ -38,9 +39,9 @@
         <tr>
             <td> ${teacherEvaluate.student.student_id}</td>
             <td> ${teacherEvaluate.student.student_name} ${teacherEvaluate.student.student_lastname}</td>
-            <td>${teacherEvaluate.student.workstation}</td>
+            <td>${teacherEvaluate.student.workposition}</td>
             <td>
-                <fmt:formatDate pattern="MM/dd/yyyy" value="${startdate}" /> -  <fmt:formatDate pattern="MM/dd/yyyy" value="${enddate}" />
+                <fmt:formatDate pattern="dd/MM/yyyy" value="${startdate}" /> -  <fmt:formatDate pattern="dd/MM/yyyy" value="${enddate}" />
             </td>
 
             <td>

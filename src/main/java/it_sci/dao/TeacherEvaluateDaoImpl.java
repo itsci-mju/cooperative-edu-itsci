@@ -33,6 +33,7 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
 //        System.out.println(query.getSingleResult());
 //        System.out.println(mentor_id);
 //        System.out.println(query.getSingleResult().getStudents().size());
+        System.out.println(query.getResultList().size());
         return query.getResultList();
     }
 
