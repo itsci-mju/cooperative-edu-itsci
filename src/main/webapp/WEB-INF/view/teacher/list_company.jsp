@@ -10,33 +10,33 @@
 
 <body><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
-<div class="navbar2"><br><br>
-    <div style="margin-left: 160px">
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<div class="navbar2"><br>
+    <div style="margin-left: 160px; margin-top: 0px;" >
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
         <p class="editpro_header2">รายชื่อบริษัท</p>
     </div>
 </div>
 <table class="table table-hover"  >
     <tr class="table-primary" id="font">
-        <td>รหัสบริษัท</td>
+        <td align="center">รหัสบริษัท</td>
         <td>ชื่อบริษัท</td>
-        <td>จำนวนนักศึกษา</td>
-        <td>ข้อมูลบริษัท</td>
-        <td>ประเมินผลนักศึกษา</td>
+        <td align="center">จำนวนนักศึกษา</td>
+        <td align="center">ข้อมูลบริษัท</td>
+        <td align="center">ประเมินผลนักศึกษา</td>
     </tr>
     <%--        ${students}--%>
     <c:forEach var="company" items="${companies}">
         <tr>
-            <td> ${company.company_id}</td>
+            <td align="center"> ${company.company_id}</td>
             <td> ${company.company_name}</td>
-            <td>${company.students.size()}</td>
-            <td>
+            <td align="center">${company.students.size()}</td>
+            <td align="center">
                 <a href="${pageContext.request.contextPath}/company/${company.company_id}/view_company_detail">
                     <i class="bi bi-postcard" style="font-size: 28px;"></i>
                 </a>
             </td>
-            <td>
+            <td align="center">
                 <a href="${pageContext.request.contextPath}/teacher/${teacher_id}/list_student_by_teacher/${company.company_id}">
                     <i class="bi bi-file-person" style="font-size: 28px;"></i>
                 </a>

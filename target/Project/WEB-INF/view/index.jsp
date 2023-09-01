@@ -126,6 +126,15 @@
         background: #990D28;
         padding: 12px;
     }
+    .about .content .about-btn {
+        display: inline-block;
+        background: #990D28;
+        padding: 6px 44px 8px 30px;
+        color: #fff;
+        border-radius: 50px;
+        transition: 0.3s;
+        position: relative;
+    }
 </style>
 <body>
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/>

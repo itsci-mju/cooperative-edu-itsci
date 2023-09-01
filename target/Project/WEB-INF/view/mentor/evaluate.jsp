@@ -11,12 +11,16 @@
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
-
-<body><br><br>
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
-<br>
+<style>
+    /* ซ่อนฟอร์มทั้งหมด */
+    .tabcontent {
+        display: none;
+    }
+</style>
+<body><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
 <form action="${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>" method="POST" >
-    <div class="navbar2"><br><br><br>
+    <div class="navbar2"><br>
         <div style="margin-left: 160px">
             <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
             <p class="editpro_header2">รายชื่อนักศึกษา/ประเมินการฝึกสหกิจศึกษา</p>
@@ -37,7 +41,7 @@
 
         <tr>
             <td><p>ตำแหน่งงานที่ฝึกปฎิบัติ</p></td>
-            <td><input type="text"  value="${student.workstation}" disabled></td>
+            <td><input type="text"  value="${student.workposition}" disabled></td>
             <td><p style="text-align: right;">&nbsp;&nbsp; ระยะเวลาการประเมิน &nbsp;&nbsp;</p></td>
             <td><input type="text"  disabled></td>
         </tr>
@@ -46,8 +50,8 @@
     <div id="form1" class="tabcontent">
 <p>ส่วนที่ 1 ให้คะแนนความประพฤติกรรมการปฏิบัติงานสหกิจศึกษาของนักศึกษาในแต่ละด้านและความพึงพอใจโดยรวม (คะแนนเต็ม 60 คะแนน) </p>
 
-<table style="margin-left: 165px;">
-    <tr>
+<table class="table table-hover" >
+    <tr class="table-primary">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>คะแนน</td>
@@ -192,8 +196,8 @@
 
 <p>ส่วนที่ 2 ความคิดเห็นเกี่ยวกับการฝึกปฏิบัติสหกิจศึกษาของนักศึกษา </p>
 
-<table align="center">
-    <tr>
+<table class="table table-hover" align="center">
+    <tr class="table-primary">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>ความคิดเห็น</td>
@@ -227,7 +231,7 @@
         <td><input name="answerText5" style="width: 200px; height: 25px"/></td>
     </tr>
 </table>
-        <div style="margin: 35px 0px 100px 640px;">
+        <div align="center" style="margin: 50px 0px 40px 0px;">
             <button type="submit" class="btn btn-success">บันทึก</button>
             <button type="button" class="btn btn-warning">ยกเลิก</button>
         </div>
@@ -240,8 +244,10 @@
 <%--</div>--%>
 <div class="list_course_detail" align="center">
     <div class="hr_line"></div>
-    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>
-    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>
+<%--    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>--%>
+<%--    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>--%>
+    <button onclick="openForm2()" id="next" class="btn btn-success" style="margin-bottom: 30px">ต่อไป</button>
+    <button onclick="openForm1()" id="back" class="btn btn-primary" style="margin-bottom: 30px">ย้อนกลับ</button>
 </div>
 
 <script>
@@ -266,31 +272,45 @@
 </body>
 
 <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        var backButton = document.getElementById('backButton');
-        var nextButton = document.getElementById('nextButton');
-        var evaluationForm = document.getElementById('evaluationForm');
+    <%--window.addEventListener('DOMContentLoaded', (event) => {--%>
+    <%--    var backButton = document.getElementById('backButton');--%>
+    <%--    var nextButton = document.getElementById('nextButton');--%>
+    <%--    var evaluationForm = document.getElementById('evaluationForm');--%>
 
-        backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับตอนเริ่มต้น
+    <%--    backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับตอนเริ่มต้น--%>
 
-        // เมื่อคลิกปุ่ม "ต่อไป"
-        nextButton.addEventListener('click', function () {
-            backButton.style.display = "inline-block"; // แสดงปุ่มย้อนกลับ
-            nextButton.style.display = "none"; // ซ่อนปุ่มต่อไป
-            evaluationForm.action = "${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>";
-        });
+    <%--    // เมื่อคลิกปุ่ม "ต่อไป"--%>
+    <%--    nextButton.addEventListener('click', function () {--%>
+    <%--        backButton.style.display = "inline-block"; // แสดงปุ่มย้อนกลับ--%>
+    <%--        nextButton.style.display = "none"; // ซ่อนปุ่มต่อไป--%>
+    <%--        evaluationForm.action = "${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>";--%>
+    <%--    });--%>
 
-        // เมื่อคลิกปุ่ม "ย้อนกลับ"
-        backButton.addEventListener('click', function () {
-            backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับ
-            nextButton.style.display = "inline-block"; // แสดงปุ่มต่อไป
-            evaluationForm.action = "${pageContext.request.contextPath}/mentor/back_to_form1";
-        });
-    });
-    // window.addEventListener('DOMContentLoaded', (event) => {
-    //     var button = document.getElementById('FClick');
-    //     button.click()
-    // });
+    <%--    // เมื่อคลิกปุ่ม "ย้อนกลับ"--%>
+    <%--    backButton.addEventListener('click', function () {--%>
+    <%--        backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับ--%>
+    <%--        nextButton.style.display = "inline-block"; // แสดงปุ่มต่อไป--%>
+    <%--        evaluationForm.action = "${pageContext.request.contextPath}/mentor/back_to_form1";--%>
+    <%--    });--%>
+    <%--});--%>
+    <%--// window.addEventListener('DOMContentLoaded', (event) => {--%>
+    <%--//     var button = document.getElementById('FClick');--%>
+    <%--//     button.click()--%>
+    <%--// });--%>
+    <%--function openList(evt, list_name) {--%>
+    <%--    var i, tabcontent, tablinks;--%>
+    <%--    tabcontent = document.getElementsByClassName("tabcontent");--%>
+    <%--    for (i = 0; i < tabcontent.length; i++) {--%>
+    <%--        tabcontent[i].style.display = "none";--%>
+    <%--    }--%>
+    <%--    tablinks = document.getElementsByClassName("tablinks");--%>
+    <%--    for (i = 0; i < tablinks.length; i++) {--%>
+    <%--        tablinks[i].className = tablinks[i].className.replace(" active", "");--%>
+    <%--        // tablinks[i].style.display = "none";--%>
+    <%--    }--%>
+    <%--    document.getElementById(list_name).style.display = "block";--%>
+    <%--    evt.currentTarget.className += " active";--%>
+    <%--}--%>
     function openList(evt, list_name) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -300,10 +320,32 @@
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
-            // tablinks[i].style.display = "none";
         }
         document.getElementById(list_name).style.display = "block";
         evt.currentTarget.className += " active";
+    }
+    document.getElementById("form1").style.display = "block";
+    document.getElementById("back").style.display = "none"
+    function openForm1() {
+        // แสดงฟอร์มที่ 1
+        document.getElementById("form1").style.display = "block";
+        // ซ่อนฟอร์มที่ 2 (ถ้ามี)
+        document.getElementById("form2").style.display = "none";
+
+        document.getElementById("next").style.display = "block"
+
+        document.getElementById("back").style.display = "none"
+    }
+
+    function openForm2() {
+        // แสดงฟอร์มที่ 2
+        document.getElementById("form2").style.display = "block";
+        // ซ่อนฟอร์มที่ 1 (ถ้ามี)
+        document.getElementById("form1").style.display = "none";
+
+        document.getElementById("back").style.display = "block"
+
+        document.getElementById("next").style.display = "none"
     }
 </script>
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>

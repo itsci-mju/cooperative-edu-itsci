@@ -1,9 +1,6 @@
 <%@ page import="it_sci.model.Mentor" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    Mentor mentor = (Mentor) session.getAttribute("mentor");
-%>
 <html>
 <head>
     <title>Title</title>
@@ -11,32 +8,40 @@
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 
-<body><br><br>
+<jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
+<%
+    Mentor mentor = (Mentor) session.getAttribute("mentor");
+%>
+<body><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
-<br>
-<div class="navbar2"><br><br><br>
-    <div style="margin-left: 160px">
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<div class="navbar2">
+    <div style="margin-left: 160px; margin-top: 18px;">
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
         <p class="editpro_header2">รายชื่อนักศึกษา</p>
     </div>
-</div><br>
+</div>
     <table class="table table-hover"  >
-        <tr>
-            <td>รหัสนักศึกษา</td>
-            <td>ชื่อนักศึกษา</td>
-            <td>ตำแหน่ง</td>
-            <td>ระยะเวลาการฝึกสหกิจศึกษา</td>
-            <td>ประเมินผลนักศึกษา</td>
+        <tr class="table-primary" id="font">
+            <td align="center">รหัสนักศึกษา</td>
+            <td align="center">ชื่อนักศึกษา</td>
+            <td align="center">ตำแหน่ง</td>
+            <td align="center">ระยะเวลาการฝึกสหกิจศึกษา</td>
+            <td align="center">ประเมินผลนักศึกษา</td>
         </tr>
 <%--        ${students}--%>
         <c:forEach var="student" items="${students}">
+            <c:set var="startdate" value="${student.startdate}" />
+            <c:set var="enddate" value="${student.enddate}"/>
         <tr>
-            <td> ${student.student_id}</td>
-            <td> ${student.student_name} ${student.student_lastname}</td>
-            <td>${student.workstation}</td>
-            <td>${student.startdate} - ${student.enddate}</td>
-            <td>
+            <td align="center"> ${student.student_id}</td>
+            <td align="center"> ${student.student_name} ${student.student_lastname}</td>
+            <td align="center">${student.workposition}</td>
+            <td align="center">${student.startdate}</td>
+<%--            <td align="center">--%>
+<%--                <fmt:formatDate pattern="dd/MM/yyyy" value="${startdate}" /> -  <fmt:formatDate pattern="dd/MM/yyyy" value="${enddate}" />--%>
+<%--            </td>--%>
+            <td align="center">
                 <a href="${pageContext.request.contextPath}/mentor/${student.student_id}/evaluate/<%=mentor.getMentor_id()%>">
 <%--                    <input type="submit" value="ประเมิน" class="sub_editprofile">--%>
                     <button type="submit" class="btn btn-success">ประเมิน</button>

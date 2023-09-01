@@ -28,7 +28,7 @@
 <%
     Teacher teacher = (Teacher) session.getAttribute("teacher");
 %>
-<header id="header" class="fixed-top header-transparent">
+<header id="header" class="fixed-top header-transparent" style="background: #990D28">
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
         <div class="logo">

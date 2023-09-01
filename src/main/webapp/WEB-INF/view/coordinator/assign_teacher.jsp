@@ -10,9 +10,9 @@
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <body><br><br>
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
-<div class="navbar2"><br><br>
-    <div style="margin-left: 160px;">
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<div class="navbar2"><br>
+    <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1" style="margin-top: 2px;">ระบบการกำหนดอาจารย์นิเทศการฝึกสหกิจศึกษา (อาจารย์ผู้ประสานงาน)</p>
         <p class="editpro_header2">กำหนดอาจารย์นิเทศ</p>
     </div>
@@ -31,10 +31,10 @@
 <%--    </div>--%>
     <tr>
         <td colspan="4">ภาคการศึกษา<select name="semester" id="semester">
-            <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
-            <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
-            <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
             <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>
+            <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
+            <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
+            <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
         </select>
         </td>
     </tr>

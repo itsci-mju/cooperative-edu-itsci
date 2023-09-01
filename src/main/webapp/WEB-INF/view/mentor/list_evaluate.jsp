@@ -6,36 +6,39 @@
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
+<jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
+<body><br>
 
-<body><br><br>
-
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
-<br>
-<div class="navbar2"><br><br><br>
-    <div style="margin-left: 160px">
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<div class="navbar2">
+    <div style="margin-left: 160px; margin-top: 18px;">
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
         <p class="editpro_header2">รายชื่อนักศึกษา</p>
     </div>
-</div><br>
-<%--    <table class="table table-hover" >--%>
-<%--        <tr class="table-primary" id="font">--%>
-<%--            <td>รหัสนักศึกษา</td>--%>
-<%--            <td>ชื่อนักศึกษา</td>--%>
-<%--            <td>ตำแหน่ง</td>--%>
-<%--            <td>วันที่การประเมิน</td>--%>
-<%--            <td>คะแนน</td>--%>
-<%--        </tr>--%>
-<%--&lt;%&ndash;        ${students}&ndash;%&gt;--%>
-<%--        <c:forEach var="mentorevaluate" items="${mentorevaluate}">--%>
-<%--        <tr>--%>
-<%--            <td> ${mentorevaluate.student.student_id}</td>--%>
-<%--            <td> ${mentorevaluate.student.student_name} ${mentorevaluate.student.student_lastname}</td>--%>
-<%--            <td>${mentorevaluate.student.workstation}</td>--%>
-<%--            <td>${mentorevaluate.assessment_date}</td>--%>
-<%--            <td>${mentorevaluate.score}</td>--%>
-<%--        </tr>--%>
-<%--        </c:forEach>--%>
-<%--    </table>--%>
+</div>
+    <table class="table table-hover" >
+        <tr class="table-primary" id="font">
+            <td  align="center">รหัสนักศึกษา</td>
+            <td  align="center">ชื่อนักศึกษา</td>
+            <td  align="center">ตำแหน่ง</td>
+            <td  align="center">วันที่การประเมิน</td>
+            <td  align="center">คะแนน</td>
+        </tr>
+<%--        ${students}--%>
+        <c:forEach var="mentorevaluates" items="${mentorevaluate}">
+            <c:set var="assessmentdate" value="${mentorevaluates.assessment_date}" />
+        <tr>
+            <td  align="center"> ${mentorevaluates.student.student_id}</td>
+            <td  align="center"> ${mentorevaluates.student.student_name} ${mentorevaluates.student.student_lastname}</td>
+            <td  align="center">${mentorevaluates.student.workposition}</td>
+            <td align="center">${mentorevaluates.assessment_date}</td>
+<%--            <td align="center">--%>
+<%--                <fmt:formatDate pattern="dd/MM/yyyy" value="${assessmentdate}"/>--%>
+<%--            </td>--%>
+            <td  align="center">${mentorevaluates.score}</td>
+        </tr>
+        </c:forEach>
+    </table>
 
 
 </body>
