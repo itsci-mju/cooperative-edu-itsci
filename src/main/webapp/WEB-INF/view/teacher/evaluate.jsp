@@ -8,33 +8,40 @@
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
+<style>
+    /* ซ่อนฟอร์มทั้งหมด */
+    .tabcontent {
+        display: none;
+    }
+</style>
+
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
-<body><br><br>
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
+<body><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
 
 <form action="${pageContext.request.contextPath}/teacher/submit_evaluate_by_teacher/${ass_id}" method="POST" >
 
-    <div class="navbar2"><br><br><br>
-        <div style="margin-left: 160px">
+    <div class="navbar2" style="margin-top: 40px;"><br>
+        <div style="margin-left: 160px;">
             <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
             <p class="editpro_header2">รายชื่อนักศึกษา/ประเมินการฝึกสหกิจศึกษา</p>
         </div>
     </div>
 
     <table class="evaluate" align="center"><br><br>
-        <tr>
+        <tr align="center">
             <td><p>ภาคการศึกษา</p></td>
             <td><input type="text" value="${student.semester}" disabled></td>
         </tr>
 
-        <tr>
+        <tr >
             <td><p>รหัสนักศึกษา </p></td>
             <td><input type="text"  value="${student.student_id}" name="studentId" id="studentId" disabled></td>
             <td><p style="text-align: right;">&nbsp;&nbsp; ชื่อนักศึกษา &nbsp;&nbsp;</p></td>
             <td><input type="text"  value="${student.student_name} ${student.student_lastname}" disabled></td>
         </tr>
 
-        <tr>
+        <tr >
             <td><p>ตำแหน่งงานที่ฝึกปฎิบัติ</p></td>
             <td><input type="text"  value="${student.workposition}" disabled></td>
             <td><p style="text-align: right;">&nbsp;&nbsp; ระยะเวลาการประเมิน &nbsp;&nbsp;</p></td>
@@ -42,15 +49,17 @@
         </tr>
     </table><br><br>
 
+    <div id="form1" class="tabcontent">
+
 <p>ส่วนที่ 1 ให้คะแนนความประพฤติกรรมการปฏิบัติงานสหกิจศึกษาของนักศึกษาในแต่ละด้านและความพึงพอใจโดยรวม (คะแนนเต็ม 20 คะแนน) </p>
 
 <table class="table table-hover" align="center">
-    <tr class="table-primary" id="font">
+    <tr class="table-primary" id="font" align="center">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>คะแนน</td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>1</td>
         <td>คะแนนพฤติกรรมและความรับผิดชอบ</td>
         <td>
@@ -66,7 +75,7 @@
             <input type="radio" name="score1" value="1" onclick="getSumAndSet()">1
         </td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>2</td>
         <td>คะแนนด้านศักยภาพการทำงานและการพัฒนาตัวเอง</td>
         <td>
@@ -83,7 +92,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>3</td>
         <td>คะแนนความพอพึงใจจากพี่เลี้ยงที่มีต่อนักศึกษา</td>
         <td>
@@ -100,7 +109,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>4</td>
         <td>คะแนนความพอพึงใจของอาจารย์นิเทศสหกิจที่มีต่อการดูแลของพี่เลี้ยง</td>
         <td>
@@ -117,7 +126,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>5</td>
         <td>นักศึกษามีทักษะการเรียนรู้เทคโนโลยีและการแก้ไขปัญหาในการทำงานเป็นที่พึงพอใจของบริษัท</td>
         <td>
@@ -134,7 +143,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>6</td>
         <td>คะแนนความพอพึงใจของอาจารย์นิเทศสหกิจที่มีต่อการนิเทศสหกิจศึกษาในภาพรวม</td>
         <td>
@@ -152,31 +161,43 @@
     </tr>
 
 </table><br><br>
+    </div>
+
+    <div id="form2" class="tabcontent">
+
 <p>ส่วนที่ 2 ความคิดเห็นเกี่ยวกับการฝึกปฏิบัติสหกิจศึกษาของนักศึกษา </p>
 
 <table class="table table-hover" align="center">
-    <tr class="table-primary" id="font">
+    <tr class="table-primary" id="font" align="center">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>ความคิดเห็น</td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>1</td>
         <td>นักศึกษาได้ปฏิบัติงานตรงตามตำแหน่งที่สาขาวิชาส่งไปหรือไม่?</td>
         <td><input name="answerText1" /></td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>2</td>
         <td>ข้อความบันทึก/หมายเหตุเพิ่มเติม (ถ้ามี)</td>
         <td><input name="answerText2" /></td>
     </tr>
 </table>
-    <div style="margin: 35px 0px 100px 640px;">
+    <div align="center">
         <button type="submit" class="btn btn-success">บันทึก</button>
         <button type="button" class="btn btn-warning">ยกเลิก</button>
     </div>
+    </div>
 </form>
 
+<div class="list_course_detail" align="center">
+    <div class="hr_line"></div>
+    <%--    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>--%>
+    <%--    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>--%>
+    <button onclick="openForm2()" id="next" class="btn btn-success" style="margin-bottom: 30px">ต่อไป</button>
+    <button onclick="openForm1()" id="back" class="btn btn-primary" style="margin-bottom: 30px">ย้อนกลับ</button>
+</div>
 <script>
     function getSumAndSet () {
         var sumScore = 0;
@@ -197,5 +218,84 @@
 </script>
 
 </body>
+
+<script>
+    <%--window.addEventListener('DOMContentLoaded', (event) => {--%>
+    <%--    var backButton = document.getElementById('backButton');--%>
+    <%--    var nextButton = document.getElementById('nextButton');--%>
+    <%--    var evaluationForm = document.getElementById('evaluationForm');--%>
+
+    <%--    backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับตอนเริ่มต้น--%>
+
+    <%--    // เมื่อคลิกปุ่ม "ต่อไป"--%>
+    <%--    nextButton.addEventListener('click', function () {--%>
+    <%--        backButton.style.display = "inline-block"; // แสดงปุ่มย้อนกลับ--%>
+    <%--        nextButton.style.display = "none"; // ซ่อนปุ่มต่อไป--%>
+    <%--        evaluationForm.action = "${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>";--%>
+    <%--    });--%>
+
+    <%--    // เมื่อคลิกปุ่ม "ย้อนกลับ"--%>
+    <%--    backButton.addEventListener('click', function () {--%>
+    <%--        backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับ--%>
+    <%--        nextButton.style.display = "inline-block"; // แสดงปุ่มต่อไป--%>
+    <%--        evaluationForm.action = "${pageContext.request.contextPath}/mentor/back_to_form1";--%>
+    <%--    });--%>
+    <%--});--%>
+    <%--// window.addEventListener('DOMContentLoaded', (event) => {--%>
+    <%--//     var button = document.getElementById('FClick');--%>
+    <%--//     button.click()--%>
+    <%--// });--%>
+    <%--function openList(evt, list_name) {--%>
+    <%--    var i, tabcontent, tablinks;--%>
+    <%--    tabcontent = document.getElementsByClassName("tabcontent");--%>
+    <%--    for (i = 0; i < tabcontent.length; i++) {--%>
+    <%--        tabcontent[i].style.display = "none";--%>
+    <%--    }--%>
+    <%--    tablinks = document.getElementsByClassName("tablinks");--%>
+    <%--    for (i = 0; i < tablinks.length; i++) {--%>
+    <%--        tablinks[i].className = tablinks[i].className.replace(" active", "");--%>
+    <%--        // tablinks[i].style.display = "none";--%>
+    <%--    }--%>
+    <%--    document.getElementById(list_name).style.display = "block";--%>
+    <%--    evt.currentTarget.className += " active";--%>
+    <%--}--%>
+    function openList(evt, list_name) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(list_name).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.getElementById("form1").style.display = "block";
+    document.getElementById("back").style.display = "none"
+    function openForm1() {
+        // แสดงฟอร์มที่ 1
+        document.getElementById("form1").style.display = "block";
+        // ซ่อนฟอร์มที่ 2 (ถ้ามี)
+        document.getElementById("form2").style.display = "none";
+
+        document.getElementById("next").style.display = "block"
+
+        document.getElementById("back").style.display = "none"
+    }
+
+    function openForm2() {
+        // แสดงฟอร์มที่ 2
+        document.getElementById("form2").style.display = "block";
+        // ซ่อนฟอร์มที่ 1 (ถ้ามี)
+        document.getElementById("form1").style.display = "none";
+
+        document.getElementById("back").style.display = "block"
+
+        document.getElementById("next").style.display = "none"
+    }
+</script>
+
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
 </html>

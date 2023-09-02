@@ -51,12 +51,12 @@
 <p>ส่วนที่ 1 ให้คะแนนความประพฤติกรรมการปฏิบัติงานสหกิจศึกษาของนักศึกษาในแต่ละด้านและความพึงพอใจโดยรวม (คะแนนเต็ม 60 คะแนน) </p>
 
 <table class="table table-hover" >
-    <tr class="table-primary">
+    <tr class="table-primary" align="center">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>คะแนน</td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>1</td>
         <td>ความเข้าใจในงานที่ได้รับมอบหมายและสามารถปฏิบัติงานได้ตามที่กำหนดหรือคาดหวัง</td>
         <td>
@@ -67,7 +67,7 @@
             <input type="radio" name="score1" value="1" onclick="getSumAndSet()">1
         </td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>2</td>
         <td>ปริมาณงาน และคุณภาพของงานที่นักศึกษาสามารถปฏิบัติสำเร็จ  </td>
         <td><input type="radio" name="score2" value="5" onclick="getSumAndSet()">5
@@ -78,7 +78,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>3</td>
         <td>การมีความคิดสร้างสรรค์ในการพัฒนางานที่ได้รับมอบหมาย</td>
         <td>
@@ -90,7 +90,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>4</td>
         <td>ความเป็นผู้มีระเบียบวินัย ตรงต่อเวลา รับผิดชอบต่อหน้าที่ที่ได้รับมอบหมาย</td>
         <td>
@@ -102,7 +102,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>5</td>
         <td>ความสามารถในการใช้ทักษะทางเทคโนโลยีสารสนเทศในการทำงาน</td>
         <td>
@@ -114,7 +114,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>6</td>
         <td>ความสามารถการทำงานร่วมกับผู้อื่นและการมีมนุษยสัมพันธ์ที่ดี</td>
         <td>
@@ -126,7 +126,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>7</td>
         <td>ทักษะการแก้ไขปัญหาด้วยตนเองเมื่อประสบปัญหาระหว่างทำงาน</td>
         <td>
@@ -138,7 +138,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>8</td>
         <td>ความสามารถในการสื่อสารกับผู้ที่เกี่ยวข้องทั้งภาษาไทยและภาษาอังกฤษ</td>
         <td>
@@ -150,7 +150,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>9</td>
         <td>มีการเรียนรู้ศึกษาค้นคว้าหาความรู้เพิ่มเติมด้วยตนเอง</td>
         <td>
@@ -162,7 +162,7 @@
         </td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>10</td>
         <td>การส่งมอบงานเป็นไปตามระยะเวลาที่พี่เลี้ยงกำหนด</td>
         <td>
@@ -173,7 +173,7 @@
             <input type="radio" name="score10" value="1" onclick="getSumAndSet()">1
         </td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>11</td>
         <td>ความพึงพอใจต่อการฝึกปฏิบัติสหกิจของนักศึกษาครั้งนี้โดยรวมท่านจะให้กี่คะแนน</td>
         <td>
@@ -197,35 +197,35 @@
 <p>ส่วนที่ 2 ความคิดเห็นเกี่ยวกับการฝึกปฏิบัติสหกิจศึกษาของนักศึกษา </p>
 
 <table class="table table-hover" align="center">
-    <tr class="table-primary">
+    <tr class="table-primary" align="center">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>ความคิดเห็น</td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>1</td>
         <td>ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้  มีจุดเด่นในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>
         <td><input name="answerText1" style="width: 200px; height: 25px"/></td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>2</td>
         <td>ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้ มีจุดด้อยในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>
         <td><input name="answerText2" style="width: 200px; height: 25px"/></td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>3</td>
         <td>จากข้อก่อนหน้า นักศึกษาควรได้รับการพัฒนาปรับปรุงทักษะใดเพิ่มเติม เพื่อให้มีความพร้อมสำหรับการทำงานสายไอทีและเป็นไปตามที่บริษัทต้องการ</td>
         <td><input name="answerText3" style="width: 200px; height: 25px"/></td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>4</td>
         <td>ในปีการศึกษาถัดไป บริษัทมีความต้องการรับนักศึกษาสาขาวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่โจ้ เข้าฝึกปฏิบัติสหกิจศึกษาอีกหรือไม่?</td>
         <td><input name="answerText4" style="width: 200px; height: 25px"/></td>
 
     </tr>
-    <tr>
+    <tr align="center">
         <td>5</td>
         <td>ความคิดเห็นอื่นๆ (ถ้ามี)</td>
         <td><input name="answerText5" style="width: 200px; height: 25px"/></td>

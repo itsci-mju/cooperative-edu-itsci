@@ -15,12 +15,12 @@
     }
 </style>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
-<body><br><br>
+<body><br>
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 
 <form action="${pageContext.request.contextPath}/mentor/${mentor_profile.mentor_id}/update_mentor_profile" method="POST" >
-    <div class="navbar2"><br><br>
-        <div style="margin-left: 160px; margin-top: -18px;">
+    <div class="navbar2" style="margin-top: 40px;"><br><br>
+        <div style="margin-left: 160px; margin-top: -25px;">
             <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
             <p class="editpro_header2">รายชื่อนักศึกษา</p>
         </div>
