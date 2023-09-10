@@ -37,6 +37,13 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
         return query.getResultList();
     }
 
+    @Override
+    public List<TeacherEvaluate> getTeacherEvaluate() {
+        Session session = sessionFactory.getCurrentSession();
+        Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate t ", TeacherEvaluate.class);
+        return query.getResultList();
+    }
+
 
     @Override
     public void saveTeacherEvaluate(TeacherEvaluate teacherEvaluate){

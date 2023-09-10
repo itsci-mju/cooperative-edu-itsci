@@ -50,4 +50,9 @@ public class MentorEvaluateServiceImpl implements MentorEvaluateService {
     public void deleteMentorEvaluate(String mEvaId) {
 
     }
+
+    @Override
+    public double getSumScoreMentor(String stu_id) {
+        return mentorEvaluateDao.getSumScoreMentor(stu_id);
+    }
 }

@@ -144,4 +144,11 @@ public class MentorController {
 
         return "redirect:/mentor/list_student_by_mentor/";
     }
+
+    @RequestMapping("/view_summary")
+    public String gotoSummaryPage (Model model) {
+        List<Student> students = studentService.getAllStudents();
+        model.addAttribute("list_students", students);
+        return "coordinator/view_summary";
+    }
 }

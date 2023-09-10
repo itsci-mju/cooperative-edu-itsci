@@ -41,4 +41,10 @@ public class TeacherEvaluateServiceImpl implements TeacherEvaluateService {
     public TeacherEvaluate getTeacherEvaluateById(long ass_id) {
         return teacherEvaluateDao.getTeacherEvaluateById(ass_id);
     }
+
+    @Override
+    @Transactional
+    public List<TeacherEvaluate> getTeacherEvaluate() {
+        return teacherEvaluateDao.getTeacherEvaluate();
+    }
 }

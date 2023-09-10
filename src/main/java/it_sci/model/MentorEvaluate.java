@@ -34,6 +34,10 @@ public class MentorEvaluate {
     @JoinColumn(name = "mentorid")
     private Mentor mentor;
 
+    public String getAssessment_status() {
+        return assessment_status;
+    }
+
     public MentorEvaluate(long assessment_id, int score, Date assessment_date, Date assessment_startdate, Date assessment_enddate, String assessment_status, Student student, Mentor mentor) {
         this.assessment_id = assessment_id;
         this.score = score;

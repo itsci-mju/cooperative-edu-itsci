@@ -54,6 +54,21 @@ public class MentorEvaluateDaoImpl implements MentorEvaluateDao {
 
     }
 
+    @Override
+    public double getSumScoreMentor(String stu_id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<MentorEvaluate> query = session.createQuery("FROM MentorEvaluate m " +
+                "where m.student.student_id=:stuid ", MentorEvaluate.class);
+        query.setParameter("stuid", stu_id);
+
+        double sum = 0.0;
+        for(MentorEvaluate mentorEvaluate : query.getResultList()){
+            sum = sum + mentorEvaluate.getScore();
+        }
+        sum = sum / query.getResultList().size();
+        return sum;
+    }
+
 
     @Override
     public void deleteMentorEvaluate(String mEvaId) {

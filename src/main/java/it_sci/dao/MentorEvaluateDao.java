@@ -12,5 +12,6 @@ public interface MentorEvaluateDao {
     MentorEvaluate updateMentorEvaluate (MentorEvaluate mentorEvaluate);
     List<MentorEvaluate> getMentorEvaluateByMentorId (int mEvaId);
     void deleteMentorEvaluate (String mEvaId);
+    double getSumScoreMentor(String stu_id);
 
 }

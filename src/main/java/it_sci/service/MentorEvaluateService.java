@@ -14,4 +14,5 @@ public interface MentorEvaluateService {
     List<MentorEvaluate> getMentorEvaluateByMentorId (int mEvaId);
     void deleteMentorEvaluate (String mEvaId);
 
+    double getSumScoreMentor(String stu_id);
 }

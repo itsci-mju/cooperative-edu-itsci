@@ -1,13 +1,16 @@
 package it_sci.model;
 
+import it_sci.service.TeacherEvaluateService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "student")
 public class Student {
-
     @Id
     @Column(name = "studentid" ,length = 10)
     private String student_id;
@@ -49,6 +52,38 @@ public class Student {
 
     @ManyToMany(cascade=CascadeType.ALL, mappedBy="students")
     private List<Mentor> mentors;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<MentorEvaluate> mentorEvaluateList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TeacherEvaluate> teacherEvaluates = new ArrayList<>();
+
+    // เมธอดเพื่อเพิ่มข้อมูล Register เข้า List
+    public double getSumScoreMentor() {
+        double sum = 0.0;
+        for (MentorEvaluate mentorEvaluate : mentorEvaluateList) {
+            if (student_id.equals(mentorEvaluate.getStudent().getStudent_id())) {
+                sum += mentorEvaluate.getScore();
+            }
+        }
+        if (!mentorEvaluateList.isEmpty()) {
+            sum /= mentorEvaluateList.size();
+        }
+        return sum;
+    }
+    // เมธอดเพื่อรวมคะแนนครู
+    public double getSumScoreTeacher() {
+        double sum = 0.0;
+        for (TeacherEvaluate teacherEvaluates : teacherEvaluates) {
+            if (student_id.equals(teacherEvaluates.getStudent().getStudent_id())) {
+                sum += teacherEvaluates.getScore();
+            }
+        }
+        return sum;
+    }
+
+
 
     public Student() {
     }

@@ -9,10 +9,10 @@
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
-<body><br><br>
+<body><br>
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
-<div class="navbar2"><br>
-    <div style="margin-left: 160px; margin-top: 0px;">
+<div class="navbar2" style="margin-top: 40px;"><br>
+    <div style="margin-left: 160px;">
         <p class="editpro_header1" style="margin-top: 2px;">ระบบการกำหนดอาจารย์นิเทศการฝึกสหกิจศึกษา (อาจารย์ผู้ประสานงาน)</p>
         <p class="editpro_header2">กำหนดอาจารย์นิเทศ</p>
     </div>

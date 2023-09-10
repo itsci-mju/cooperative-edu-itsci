@@ -14,4 +14,5 @@ public interface TeacherEvaluateService {
     TeacherEvaluate updateTeacherEvaluate (TeacherEvaluate teacherEvaluate);
 
     TeacherEvaluate getTeacherEvaluateById(long ass_id);
+    List<TeacherEvaluate> getTeacherEvaluate();
 }
