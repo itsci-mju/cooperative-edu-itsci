@@ -2,10 +2,7 @@ package it_sci.controller;
 
 
 import it_sci.model.*;
-import it_sci.service.CompanyService;
-import it_sci.service.StudentService;
-import it_sci.service.TeacherEvaluateService;
-import it_sci.service.TeacherService;
+import it_sci.service.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +36,10 @@ public class TeacherController {
     private TeacherEvaluateService teacherEvaluateService;
     @Autowired
     private TeacherService teacherService;
-//    @Autowired
-//    private MentorEvaluateService mentorEvaluateService;
-//
+
+    @Autowired
+    private MentorEvaluateService mentorEvaluateService;
+
 //    @RequestMapping("/list_student_by_mentor")
 //    public String gotoListStudentPage (Model model) {
 //        Mentor mentor = mentorService.getMentorById(6);
@@ -144,11 +142,27 @@ public class TeacherController {
         return "redirect:/teacher/"+teacherEvaluate.getTeacher().getTeacher_id()+"/list_student_by_teacher/"+teacherEvaluate.getStudent().getCompany().getCompany_id();
     }
 
+    @GetMapping("/list_evaluate_by_teacher/{teacher_id}")
+    public String getViewTeacherEvaluate(@PathVariable("teacher_id") int id, Model model) {
+        List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getViewTeacherEvaluate(id);
+        model.addAttribute("list_teacher_evaluate", teacherEvaluates);
+        return "teacher/list_evaluate";
+    }
+
     @GetMapping("/{id}/view_student_detail")
     public String getStudent(@PathVariable("id") String id, Model model) {
         Student student = teacherService.getStudent(id);
         model.addAttribute("student_detail", student);
         model.addAttribute("mentors",teacherService.getMentorsByStudentId(student.getStudent_id()));
         return "teacher/student_detail";
+    }
+
+    @GetMapping("/list_status/")
+    public String getListStatus(Model model) {
+        List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
+        List<MentorEvaluate> mentorEvaluates = mentorEvaluateService.getAllMentorEvaluates();
+        model.addAttribute("list_mentor_status", mentorEvaluates);
+        model.addAttribute("list_teacher_status", teacherEvaluates);
+        return "coordinator/track_status";
     }
 }

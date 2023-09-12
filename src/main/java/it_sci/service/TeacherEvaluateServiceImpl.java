@@ -25,6 +25,12 @@ public class TeacherEvaluateServiceImpl implements TeacherEvaluateService {
 
     @Override
     @Transactional
+    public List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id) {
+        return teacherEvaluateDao.getViewTeacherEvaluate(teacher_id);
+    }
+
+    @Override
+    @Transactional
     public void saveTeacherEvaluate(TeacherEvaluate teacherEvaluate) {
         teacherEvaluateDao.saveTeacherEvaluate(teacherEvaluate);
     }

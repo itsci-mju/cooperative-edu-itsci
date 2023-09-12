@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,16 +28,18 @@
 <%--        ${students}--%>
         <c:forEach var="mentorevaluates" items="${mentorevaluate}">
             <c:set var="assessmentdate" value="${mentorevaluates.assessment_date}" />
-        <tr>
-            <td  align="center"> ${mentorevaluates.student.student_id}</td>
-            <td  align="center"> ${mentorevaluates.student.student_name} ${mentorevaluates.student.student_lastname}</td>
-            <td  align="center">${mentorevaluates.student.workposition}</td>
-            <td align="center">${mentorevaluates.assessment_date}</td>
-<%--            <td align="center">--%>
-<%--                <fmt:formatDate pattern="dd/MM/yyyy" value="${assessmentdate}"/>--%>
-<%--            </td>--%>
-            <td  align="center">${mentorevaluates.score}</td>
-        </tr>
+
+            <c:if test="${mentorevaluates.assessment_status == 'ประเมินแล้ว'}">
+                <tr>
+                    <td  align="center"> ${mentorevaluates.student.student_id}</td>
+                    <td  align="center"> ${mentorevaluates.student.student_name} ${mentorevaluates.student.student_lastname}</td>
+                    <td  align="center">${mentorevaluates.student.workposition}</td>
+                    <td align="center">
+                        <fmt:formatDate pattern="dd/MM/yyyy" value="${assessmentdate}"/>
+                    </td>
+                    <td  align="center">${mentorevaluates.score}</td>
+                </tr>
+            </c:if>
         </c:forEach>
     </table>
 

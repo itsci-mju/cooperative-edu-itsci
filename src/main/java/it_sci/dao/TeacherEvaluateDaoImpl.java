@@ -38,6 +38,14 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
     }
 
     @Override
+    public List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate te WHERE te.teacher.teacher_id =: tId", TeacherEvaluate.class);
+        query.setParameter("tId", teacher_id);
+        return query.getResultList();
+    }
+
+    @Override
     public List<TeacherEvaluate> getTeacherEvaluate() {
         Session session = sessionFactory.getCurrentSession();
         Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate t ", TeacherEvaluate.class);

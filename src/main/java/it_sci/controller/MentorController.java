@@ -40,9 +40,8 @@ public class MentorController {
 
     @RequestMapping("/list_student_by_mentor/{mentor_id}")
     public String gotoListStudentPage (Model model, @PathVariable("mentor_id") int mentor_id) {
-        Mentor mentor = mentorService.getMentorById(mentor_id);
-        model.addAttribute("students", mentor.getStudents());
-        System.out.println(mentor.getStudents().size());
+        List<MentorEvaluate> mentors = mentorEvaluateService.getMentorEvaluateByMentorId(mentor_id);
+        model.addAttribute("mentors", mentors);
 //        List<Student> students = mentorService.getMentorDoesNotHaveStudent(21);
 //        System.out.println(students.size());
 //        model.addAttribute("students",students);

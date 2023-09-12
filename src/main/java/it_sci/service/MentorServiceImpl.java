@@ -22,6 +22,11 @@ public class MentorServiceImpl implements MentorService {
     }
 
     @Override
+    public List<Mentor> getMentorByIdAndStuId(int mentor_id) {
+        return mentorDao.getMentorByIdAndStuId(mentor_id);
+    }
+
+    @Override
     @Transactional
     public Mentor getMentorProfile(int id) {
         return mentorDao.getMentorProfile(id);

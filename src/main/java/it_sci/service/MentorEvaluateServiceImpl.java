@@ -18,8 +18,9 @@ public class MentorEvaluateServiceImpl implements MentorEvaluateService {
     private MentorEvaluateDao mentorEvaluateDao;
 
     @Override
+    @Transactional
     public List<MentorEvaluate> getAllMentorEvaluates() {
-        return null;
+        return mentorEvaluateDao.getAllMentorEvaluates();
     }
 
     @Override
