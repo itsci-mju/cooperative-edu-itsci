@@ -29,25 +29,10 @@
     <ul>
         <li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/">หน้าแรก</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/<%=teacher.getTeacher_id()%>/list_company_by_teacher">ประเมินผลการฝึกสหกิจศึกษา</a></li>
-        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/">ผลการประเมินการฝึกสหกิจศึกษา</a></li>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_evaluate_by_teacher/<%=teacher.getTeacher_id()%>">ผลการประเมินการฝึกสหกิจศึกษา</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/company/list_company/">กำหนดอาจารย์นิเทศ</a></li>
-        <li><a class="nav-link scrollto" href="#team">Team</a></li>
-        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li><a href="#">Drop Down 1</a></li>
-                <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                    <ul>
-                        <li><a href="#">Deep Drop Down 1</a></li>
-                        <li><a href="#">Deep Drop Down 2</a></li>
-                        <li><a href="#">Deep Drop Down 3</a></li>
-                        <li><a href="#">Deep Drop Down 4</a></li>
-                        <li><a href="#">Deep Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Drop Down 2</a></li>
-                <li><a href="#">Drop Down 3</a></li>
-                <li><a href="#">Drop Down 4</a></li>
-            </ul>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_status/">ตรวจสอบสถานะ</a></li>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mentor/view_summary">ดูผลคะแนน</a></li>
         <li class="nav-item">
             <a class="nav-link" style="color: #FFFFFF" href="${pageContext.request.contextPath}/doLogout">ออกจากระบบ</a>
         </li>

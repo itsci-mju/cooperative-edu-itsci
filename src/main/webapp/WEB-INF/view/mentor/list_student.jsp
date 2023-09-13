@@ -13,12 +13,12 @@
 <%
     Mentor mentor = (Mentor) session.getAttribute("mentor");
 %>
-<body><br>
+<body><br><br>
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
-<div class="navbar2">
-    <div style="margin-left: 160px; margin-top: 65px;">
-        <p class="editpro_header1" style="padding-top: 18px;">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
+<div class="navbar2"><br>
+    <div style="margin-left: 160px; margin-top: 0px;">
+        <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
         <p class="editpro_header2">รายชื่อนักศึกษา</p>
     </div>
 </div>

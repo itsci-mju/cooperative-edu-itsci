@@ -40,7 +40,7 @@
             <ul>
                 <li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/">หน้าแรก</a></li>
                 <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/<%=teacher.getTeacher_id()%>/list_company_by_teacher">ประเมินผลการฝึกสหกิจศึกษา</a></li>
-                <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/">ผลการประเมินการฝึกสหกิจศึกษา</a></li>
+                <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_evaluate_by_teacher/<%=teacher.getTeacher_id()%>">ผลการประเมินการฝึกสหกิจศึกษา</a></li>
                 <li><a class="nav-link scrollto" href="#team">Team</a></li>
                 <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
