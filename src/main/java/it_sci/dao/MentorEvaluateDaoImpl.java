@@ -3,6 +3,7 @@ package it_sci.dao;
 import it_sci.model.Company;
 import it_sci.model.Mentor;
 import it_sci.model.MentorEvaluate;
+import it_sci.model.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -26,8 +27,11 @@ public class MentorEvaluateDaoImpl implements MentorEvaluateDao {
     }
 
     @Override
-    public MentorEvaluate getMentorEvaluateById(String mEvaId) {
-        return null;
+    public MentorEvaluate getMentorEvaluateById(long mEvaId) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<MentorEvaluate> query = session.createQuery("FROM MentorEvaluate m WHERE m.assessment_id =: aId", MentorEvaluate.class);
+        query.setParameter("aId", mEvaId);
+        return query.getSingleResult();
     }
 
     @Override
@@ -41,9 +45,6 @@ public class MentorEvaluateDaoImpl implements MentorEvaluateDao {
         Session session = sessionFactory.getCurrentSession();
         Query<MentorEvaluate> query = session.createQuery("FROM MentorEvaluate me WHERE me.mentor.id =: mId", MentorEvaluate.class);
         query.setParameter("mId", mEvaId);
-//        System.out.println(query.getSingleResult());
-//        System.out.println(mentor_id);
-//        System.out.println(query.getSingleResult().getStudents().size());
         return query.getResultList();
     }
     @Override

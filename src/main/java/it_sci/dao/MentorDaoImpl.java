@@ -59,6 +59,14 @@ public class MentorDaoImpl implements MentorDao {
     }
 
     @Override
+    public List<Mentor> getListStudentByMenterId(int mentor_id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Mentor> query = session.createQuery("from Mentor where mentor_id =: mId",Mentor.class);
+        query.setParameter("mId",mentor_id);
+        return query.getResultList();
+    }
+
+    @Override
     public Mentor updateMentor(Mentor mentor) {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(mentor);

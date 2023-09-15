@@ -24,8 +24,9 @@ public class MentorEvaluateServiceImpl implements MentorEvaluateService {
     }
 
     @Override
-    public MentorEvaluate getMentorEvaluateById(String mEvaId) {
-        return null;
+    @Transactional
+    public MentorEvaluate getMentorEvaluateById(long mEvaId) {
+        return mentorEvaluateDao.getMentorEvaluateById(mEvaId);
     }
 
     @Override

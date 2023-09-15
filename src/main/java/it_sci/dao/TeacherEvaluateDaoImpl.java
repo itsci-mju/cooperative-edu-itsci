@@ -1,9 +1,6 @@
 package it_sci.dao;
 
-import it_sci.model.Company;
-import it_sci.model.MentorEvaluate;
-import it_sci.model.Teacher;
-import it_sci.model.TeacherEvaluate;
+import it_sci.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -50,6 +47,12 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
         Session session = sessionFactory.getCurrentSession();
         Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate t ", TeacherEvaluate.class);
         return query.getResultList();
+    }
+
+    @Override
+    public void saveTeacherAnswer(TeacherAnswer teacherAnswer) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(teacherAnswer);
     }
 
 

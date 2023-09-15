@@ -7,6 +7,7 @@ import java.util.List;
 public interface MentorDao {
     Mentor getMentorById(int mentor_id);
     List<Mentor> getMentorByIdAndStuId(int mentor_id);
+    List<Mentor> getListStudentByMenterId(int mentor_id);
     Mentor getMentorProfile(int id);
 
     Mentor updateMentor (Mentor mentor) ;

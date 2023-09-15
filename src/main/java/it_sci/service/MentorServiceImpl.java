@@ -22,6 +22,7 @@ public class MentorServiceImpl implements MentorService {
     }
 
     @Override
+    @Transactional
     public List<Mentor> getMentorByIdAndStuId(int mentor_id) {
         return mentorDao.getMentorByIdAndStuId(mentor_id);
     }
@@ -42,6 +43,12 @@ public class MentorServiceImpl implements MentorService {
     @Transactional
     public List<Student> getMentorDoesNotHaveStudent(int id) {
         return mentorDao.getMentorDoesNotHaveStudent(id);
+    }
+
+    @Override
+    @Transactional
+    public List<Mentor> getListStudentByMenterId(int mentor_id) {
+        return mentorDao.getListStudentByMenterId(mentor_id);
     }
 
 

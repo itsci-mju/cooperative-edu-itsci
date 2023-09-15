@@ -4,6 +4,7 @@ package it_sci.service;
 import it_sci.dao.MentorEvaluateDao;
 import it_sci.dao.TeacherEvaluateDao;
 import it_sci.model.MentorEvaluate;
+import it_sci.model.TeacherAnswer;
 import it_sci.model.TeacherEvaluate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,12 @@ public class TeacherEvaluateServiceImpl implements TeacherEvaluateService {
     public TeacherEvaluate updateTeacherEvaluate (TeacherEvaluate teacherEvaluate) {
         teacherEvaluateDao.updateTeacherEvaluate(teacherEvaluate);
         return teacherEvaluate;
+    }
+
+    @Override
+    @Transactional
+    public void saveTeacherAnswer(TeacherAnswer teacherAnswer) {
+        teacherEvaluateDao.saveTeacherAnswer(teacherAnswer);
     }
 
     @Override

@@ -2,6 +2,7 @@ package it_sci.service;
 
 import it_sci.model.Mentor;
 import it_sci.model.MentorEvaluate;
+import it_sci.model.TeacherAnswer;
 import it_sci.model.TeacherEvaluate;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface TeacherEvaluateService {
 
     TeacherEvaluate updateTeacherEvaluate (TeacherEvaluate teacherEvaluate);
 
+    void saveTeacherAnswer(TeacherAnswer teacherAnswer);
     TeacherEvaluate getTeacherEvaluateById(long ass_id);
     List<TeacherEvaluate> getTeacherEvaluate();
 }

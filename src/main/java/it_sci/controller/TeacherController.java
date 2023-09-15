@@ -123,13 +123,18 @@ public class TeacherController {
         return "teacher/evaluate";
     }
 
+//    @Transactional
     @PostMapping("/submit_evaluate_by_teacher/{ass_id}")
     public String submitEvaluateByTeacher (@RequestParam Map<String, String> map, @PathVariable long ass_id) {
         TeacherEvaluate teacherEvaluate = teacherEvaluateService.getTeacherEvaluateById(ass_id);
         int sumScore = 0;
+        String radioAnswer = "";
         for (int i = 0; i <= 5; i++) {
             int score = Integer.parseInt(map.get("score" + (i + 1)));
+            String radio = map.get("score"+(i+1));
             sumScore += score;
+            radioAnswer = radioAnswer + radio + ",";
+
         }
         Date assessment_date = new Date();
 
@@ -137,6 +142,17 @@ public class TeacherController {
         teacherEvaluate.setAssessment_date(assessment_date);
         teacherEvaluate.setAssessment_status("ประเมินแล้ว");
         teacherEvaluateService.updateTeacherEvaluate(teacherEvaluate);
+
+        String answerText1 = map.get("answerText1");
+        String answerText2 = map.get("answerText2");
+
+        String answerTextTotal = answerText1 +","+ answerText2;
+
+        TeacherEvaluate teacherEvaluate1 = teacherEvaluateService.getTeacherEvaluateById(teacherEvaluate.getAssessment_id());
+        TeacherAnswer teacherAnswer = new TeacherAnswer(answerTextTotal,radioAnswer,teacherEvaluate1);
+        teacherEvaluateService.saveTeacherAnswer(teacherAnswer);
+//        mentorEvaluateService.saveMentorEvaluate(mentorEvaluate);
+//        teacherAnswer = (TeacherAnswer) currentSession.merge(teacherAnswer);
 
 
         return "redirect:/teacher/"+teacherEvaluate.getTeacher().getTeacher_id()+"/list_student_by_teacher/"+teacherEvaluate.getStudent().getCompany().getCompany_id();
@@ -165,4 +181,6 @@ public class TeacherController {
         model.addAttribute("list_teacher_status", teacherEvaluates);
         return "coordinator/track_status";
     }
+
+
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public interface MentorEvaluateDao {
 
     List<MentorEvaluate> getAllMentorEvaluates ();
-    MentorEvaluate getMentorEvaluateById (String mEvaId);
+    MentorEvaluate getMentorEvaluateById (long mEvaId);
     void saveMentorEvaluate(MentorEvaluate mentorEvaluate);
     MentorEvaluate updateMentorEvaluate (MentorEvaluate mentorEvaluate);
     List<MentorEvaluate> getMentorEvaluateByMentorId (int mEvaId);

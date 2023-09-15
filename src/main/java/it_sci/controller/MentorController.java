@@ -1,9 +1,6 @@
 package it_sci.controller;
 
-import it_sci.model.FormMentorEvaluateItem;
-import it_sci.model.Mentor;
-import it_sci.model.MentorEvaluate;
-import it_sci.model.Student;
+import it_sci.model.*;
 import it_sci.service.MentorEvaluateService;
 import it_sci.service.MentorService;
 import it_sci.service.StudentService;
@@ -40,12 +37,10 @@ public class MentorController {
 
     @RequestMapping("/list_student_by_mentor/{mentor_id}")
     public String gotoListStudentPage (Model model, @PathVariable("mentor_id") int mentor_id) {
-        List<MentorEvaluate> mentors = mentorEvaluateService.getMentorEvaluateByMentorId(mentor_id);
-        model.addAttribute("mentors", mentors);
-//        List<Student> students = mentorService.getMentorDoesNotHaveStudent(21);
-//        System.out.println(students.size());
-//        model.addAttribute("students",students);
-//        System.out.println(students.size());
+        List<MentorEvaluate> mentorEvaluates = mentorEvaluateService.getMentorEvaluateByMentorId(mentor_id);
+        List<Mentor> mentors1 = mentorService.getListStudentByMenterId(mentor_id);
+        model.addAttribute("mentorEvaluates",mentorEvaluates);
+        model.addAttribute("mentors", mentors1);
         return "mentor/list_student";
     }
 
@@ -97,21 +92,18 @@ public class MentorController {
     @PostMapping("/submit_evaluate_by_mentor/{mentor_id}")
     public String submitEvaluateByMentor (@RequestParam Map<String, String> map, @PathVariable("mentor_id") int mentor_id) {
         int sumScore = 0;
+        String radioAnswer = "";
         for (int i = 0; i < 11; i++) {
             int score = Integer.parseInt(map.get("score" + (i + 1)));
+            String radio = map.get("score"+(i+1));
             sumScore += score;
+            radioAnswer = radioAnswer + radio + ",";
+
         }
         Mentor mentor = mentorService.getMentorById(mentor_id);
         String student_id = map.get("studentId");
         Student student = studentService.getStudentById(student_id);
-//        System.out.println(sumScore);
-
-        //String assessment_id = "ME0000006";
-
         Date assessment_date = new Date();
-
-//        String student_id = map.get("studentId");
-//        Student student = studentService.getStudentById(student_id);
 
         Date assessment_startdate = student.getEnddate();
 
@@ -135,13 +127,25 @@ public class MentorController {
 //        Mentor mentor = mentorService.getMentorById(1);
 
         MentorEvaluate mentorEvaluate = new MentorEvaluate(sumScore, assessment_date, assessment_startdate_fin, assessment_enddate, assessment_status,student, mentor);
-
-//        mentorEvaluateService.saveMentorEvaluate(mentorEvaluate);
         Session currentSession = sessionFactory.getCurrentSession();
         mentorEvaluate = (MentorEvaluate) currentSession.merge(mentorEvaluate);
 
+        String answerText1 = map.get("answerText1");
+        String answerText2 = map.get("answerText2");
+        String answerText3 = map.get("answerText3");
+        String answerText4 = map.get("answerText4");
+        String answerText5 = map.get("answerText5");
 
-        return "redirect:/mentor/list_student_by_mentor/";
+        String answerTextTotal = answerText1 +","+ answerText2 +","+ answerText3 +","+ answerText4 +","+ answerText5;
+
+        MentorEvaluate mentorEvaluate1 = mentorEvaluateService.getMentorEvaluateById(mentorEvaluate.getAssessment_id());
+        MentorAnswer mentorAnswer = new MentorAnswer(answerTextTotal,radioAnswer,mentorEvaluate1);
+//        mentorEvaluateService.saveMentorEvaluate(mentorEvaluate);
+        mentorAnswer = (MentorAnswer) currentSession.merge(mentorAnswer);
+
+
+
+        return "redirect:/mentor/list_student_by_mentor/"+mentor_id;
     }
 
     @RequestMapping("/view_summary")
