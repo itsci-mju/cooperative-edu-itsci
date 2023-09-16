@@ -182,5 +182,10 @@ public class TeacherController {
         return "coordinator/track_status";
     }
 
-
+    @RequestMapping("/view_summary")
+    public String gotoSummaryPage (Model model) {
+        List<Student> students = studentService.getAllStudents();
+        model.addAttribute("list_students", students);
+        return "coordinator/view_summary";
+    }
 }

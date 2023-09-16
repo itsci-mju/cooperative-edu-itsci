@@ -23,6 +23,9 @@
     ul{
         font-size: 15px;
     }
+    body{
+        font-family: 'Prompt', sans-serif;
+    }
 </style>
 <body>
 <%

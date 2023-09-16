@@ -14,6 +14,7 @@
 
 
 </head>
+
 <body>
 <%
     Teacher teacher = (Teacher) session.getAttribute("teacher");
@@ -27,14 +28,14 @@
         </div>
 <nav id="navbar" class="navbar">
     <ul>
-        <li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/">หน้าแรก</a></li>
-        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/<%=teacher.getTeacher_id()%>/list_company_by_teacher">ประเมินผลการฝึกสหกิจศึกษา</a></li>
-        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_evaluate_by_teacher/<%=teacher.getTeacher_id()%>">ผลการประเมินการฝึกสหกิจศึกษา</a></li>
-        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/company/list_company/">กำหนดอาจารย์นิเทศ</a></li>
-        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_status/">ตรวจสอบสถานะ</a></li>
-        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mentor/view_summary">ดูผลคะแนน</a></li>
+        <li><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/" style="font-family: 'Prompt', sans-serif">หน้าแรก</a></li>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/<%=teacher.getTeacher_id()%>/list_company_by_teacher" style="font-family: 'Prompt', sans-serif">ประเมินผลการฝึกสหกิจศึกษา</a></li>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_evaluate_by_teacher/<%=teacher.getTeacher_id()%>" style="font-family: 'Prompt', sans-serif">ผลการประเมินการฝึกสหกิจศึกษา</a></li>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/company/list_company/" style="font-family: 'Prompt', sans-serif">กำหนดอาจารย์นิเทศ</a></li>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_status/" style="font-family: 'Prompt', sans-serif">ตรวจสอบสถานะ</a></li>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mentor/view_summary" style="font-family: 'Prompt', sans-serif">ดูผลคะแนน</a></li>
         <li class="nav-item">
-            <a class="nav-link" style="color: #FFFFFF" href="${pageContext.request.contextPath}/doLogout">ออกจากระบบ</a>
+            <a class="nav-link" style="color: #FFFFFF" href="${pageContext.request.contextPath}/doLogout" style="font-family: 'Prompt', sans-serif">ออกจากระบบ</a>
         </li>
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>

@@ -14,12 +14,12 @@
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
-    <div style="margin-left: 160px;">
-        <p class="editpro_header1" style="margin-top: 2px;">ระบบการกำหนดอาจารย์นิเทศการฝึกสหกิจศึกษา (อาจารย์ผู้ประสานงาน)</p>
+        <p class="editpro_header1">ระบบการกำหนดอาจารย์นิเทศการฝึกสหกิจศึกษา (อาจารย์ผู้ประสานงาน)</p>
         <p class="editpro_header2">กำหนดอาจารย์นิเทศ</p>
     </div>
-</div><br>
-<h3>กำหนดอาจารย์นิเทศในบริษัท${companies.company_name}</h3><br>
+</div><br><br>
+<h3 style="font-family: 'Prompt', sans-serif; margin-left: 50px; color: #990D28">กำหนดอาจารย์นิเทศในบริษัท  ${companies.company_name}</h3>
+<hr style="height: 3px; width: 800px; background-color: #990D28; margin: -5px 0px 0px 50px; border: none; box-shadow: 0 4px 6px #990D28;"><br><br>
 
 <form action="${pageContext.request.contextPath}/teacher/${companies.company_id}/submit_evaluate" method="POST" >
 <table class="dropdown" align="center" >

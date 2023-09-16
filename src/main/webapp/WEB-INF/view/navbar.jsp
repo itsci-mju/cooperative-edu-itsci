@@ -10,6 +10,11 @@
 <head>
     <title>Title</title>
 </head>
+<style>
+    body{
+        font-family: 'Prompt', sans-serif;
+    }
+</style>
 <body>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top header-transparent" style="background: #990D28">
