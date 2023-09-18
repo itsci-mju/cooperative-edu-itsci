@@ -188,4 +188,24 @@ public class TeacherController {
         model.addAttribute("list_students", students);
         return "coordinator/view_summary";
     }
+
+//    @RequestMapping(value = "/ViewExportSummaryReport" , method = RequestMethod.GET)
+//    public String ViewExportSummaryReport(HttpServletRequest  request ,HttpSession session) {
+//
+//        ListStudentDB ListStu = new ListStudentDB();
+//        teacherManager ListTM = new teacherManager();
+//        String searchDate = request.getParameter("getsemester");
+//
+//
+//        List<String> semesterList =  ListStu.AllListsemester();
+//        List<Student> StuSemester = ListStu.AllListStuSemester(searchDate);
+//        List<teacher> teacherList =  ListTM.SearchteacherALL();
+//
+//        session.setAttribute("StuSemester", StuSemester);
+//        session.setAttribute("teacherList", teacherList);
+//        session.setAttribute("getSemester", searchDate);
+//
+//        return "ExportSummaryReport";
+//    }
+
 }
