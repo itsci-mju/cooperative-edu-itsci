@@ -3,8 +3,11 @@ package it_sci.controller;
 
 import it_sci.model.*;
 import it_sci.service.*;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -182,9 +185,17 @@ public class TeacherController {
         return "coordinator/track_status";
     }
 
-    @RequestMapping("/view_summary")
-    public String gotoSummaryPage (Model model) {
+    @GetMapping("/view_summary")
+    public String gotoSummaryPage(Model model) {
         List<Student> students = studentService.getAllStudents();
+
+        try (Session session = sessionFactory.openSession()) {
+            for (Student student : students) {
+                // ดึงข้อมูล TeacherEvaluates และคำนวณคะแนนรวม
+                Hibernate.initialize(student.getTeacherEvaluates());
+            }
+        }
+
         model.addAttribute("list_students", students);
         return "coordinator/view_summary";
     }

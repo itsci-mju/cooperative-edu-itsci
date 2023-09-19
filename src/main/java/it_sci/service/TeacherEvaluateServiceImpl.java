@@ -2,8 +2,10 @@ package it_sci.service;
 
 
 import it_sci.dao.MentorEvaluateDao;
+import it_sci.dao.StudentDao;
 import it_sci.dao.TeacherEvaluateDao;
 import it_sci.model.MentorEvaluate;
+import it_sci.model.Student;
 import it_sci.model.TeacherAnswer;
 import it_sci.model.TeacherEvaluate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class TeacherEvaluateServiceImpl implements TeacherEvaluateService {
 
     @Autowired
     private TeacherEvaluateDao teacherEvaluateDao;
+
+    @Autowired
+    private StudentDao studentDao;
 
     @Override
     @Transactional
@@ -60,4 +65,5 @@ public class TeacherEvaluateServiceImpl implements TeacherEvaluateService {
     public List<TeacherEvaluate> getTeacherEvaluate() {
         return teacherEvaluateDao.getTeacherEvaluate();
     }
+
 }

@@ -55,21 +55,23 @@ public class Student {
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MentorEvaluate> mentorEvaluateList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<TeacherEvaluate> teacherEvaluates = new ArrayList<>();
 
     // เมธอดเพื่อเพิ่มข้อมูล Register เข้า List
     public double getSumScoreMentor() {
         double sum = 0.0;
+        int count = 0;
         for (MentorEvaluate mentorEvaluate : mentorEvaluateList) {
             if (student_id.equals(mentorEvaluate.getStudent().getStudent_id())) {
                 sum += mentorEvaluate.getScore();
+                count++;
             }
         }
         if (!mentorEvaluateList.isEmpty()) {
-            sum /= mentorEvaluateList.size();
+            sum /= count;
         }
+        System.out.println(sum);
         return sum;
     }
     // เมธอดเพื่อรวมคะแนนครู
@@ -80,8 +82,17 @@ public class Student {
                 sum += teacherEvaluates.getScore();
             }
         }
+        System.out.println(sum);
         return sum;
     }
+    public double calculateSumScoreTeacher() {
+        double sum = 0.0;
+        for (TeacherEvaluate teacherEvaluate : teacherEvaluates) {
+            sum += teacherEvaluate.getScore();
+        }
+        return sum;
+    }
+
 
 
 
@@ -206,5 +217,21 @@ public class Student {
 
     public void setMentors(List<Mentor> mentors) {
         this.mentors = mentors;
+    }
+
+    public List<MentorEvaluate> getMentorEvaluateList() {
+        return mentorEvaluateList;
+    }
+
+    public void setMentorEvaluateList(List<MentorEvaluate> mentorEvaluateList) {
+        this.mentorEvaluateList = mentorEvaluateList;
+    }
+
+    public List<TeacherEvaluate> getTeacherEvaluates() {
+        return teacherEvaluates;
+    }
+
+    public void setTeacherEvaluates(List<TeacherEvaluate> teacherEvaluates) {
+        this.teacherEvaluates = teacherEvaluates;
     }
 }

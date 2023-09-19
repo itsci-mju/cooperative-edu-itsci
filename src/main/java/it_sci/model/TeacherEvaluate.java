@@ -35,7 +35,7 @@ public class TeacherEvaluate {
     @JoinColumn(name = "teacherid")
     private Teacher teacher;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "student_studentid")
     private Student student;
 

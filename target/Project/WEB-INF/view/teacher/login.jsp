@@ -84,7 +84,7 @@
 <body>
 <section class="login-container">
     <div class="login-box">
-        <h2>Login</h2>
+        <h2>เข้าสู่ระบบอาจารย์</h2>
         <form:form action="${pageContext.request.contextPath}/doLoginTeacher" method="POST">
             <div class="form-group">
                 <label >Email:</label>
@@ -98,47 +98,6 @@
         </form:form>
     </div>
 </section>
-<%--<section class="h-100 gradient-form">--%>
-<%--    <div class="container py-5 h-100">--%>
-<%--        <div class="row d-flex justify-content-center align-items-center h-100">--%>
-<%--            <div class="col-xl-10">--%>
-<%--                <div class="card rounded-3 text-black">--%>
-<%--                    <div class="row g-0">--%>
-<%--                        <div class="col-lg-6">--%>
-<%--                            <div class="card-body p-md-5 mx-md-4">--%>
-
-<%--                                <form:form action="${pageContext.request.contextPath}/doLoginTeacher" method="POST">--%>
-<%--                                    <p class="h4 mb-4">Please login to your account</p>--%>
-
-<%--                                    <div class="form-outline mb-4">--%>
-<%--                                        <input type="email" name="email" id="form2Example11" class="form-control"--%>
-<%--                                               placeholder="Email" />--%>
-<%--                                        <label class="form-label" for="form2Example11">Email</label>--%>
-<%--                                    </div>--%>
-
-<%--                                    <div class="form-outline mb-4">--%>
-<%--                                        <input type="password" name="password" id="form2Example22"--%>
-<%--                                               class="form-control" />--%>
-<%--                                        <label class="form-label" for="form2Example22">Password</label>--%>
-<%--                                    </div>--%>
-
-<%--                                    <div class="d-flex justify-content-between align-items-center">--%>
-<%--                                        <div class="text-muted">--%>
-<%--                                            <a href="#" class="text-muted">Forgot password?</a>--%>
-<%--                                        </div>--%>
-<%--                                        <button type="submit" class="btn btn-primary">Login</button>--%>
-<%--                                    </div>--%>
-
-<%--                                </form:form>--%>
-
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</section>--%>
 
 </body>
 </html>
