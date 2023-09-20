@@ -46,8 +46,8 @@
                 <td align="center">
                     <fmt:formatDate pattern="dd/MM/yyyy" value="${startdate}" /> -  <fmt:formatDate pattern="dd/MM/yyyy" value="${enddate}" />
                 </td>
-                <td align="center">0</td>
-                <td align="center">${list.sumScoreTeacher}</td>
+                <td align="center">${list.sumScoreMentor}</td>
+<%--                <td align="center">${list.sumScoreTeacher}</td>--%>
             </tr>
     </c:forEach>
 </table>

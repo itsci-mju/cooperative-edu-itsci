@@ -109,6 +109,8 @@ public class TeacherController {
                                        @PathVariable("company_id") int company_id,Model model) {
         List<TeacherEvaluate> teacherEvaluate = teacherEvaluateService.getTeacherEvaluateByTeacherId(teacher_id,company_id);
         model.addAttribute("ListStudents", teacherEvaluate);
+
+        System.out.println(teacherEvaluate);
 //        List<Student> students = mentorService.getMentorDoesNotHaveStudent(21);
 //        System.out.println(students.size());
 //        model.addAttribute("students",students);

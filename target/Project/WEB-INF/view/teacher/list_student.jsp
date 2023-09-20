@@ -32,6 +32,7 @@
             <td align="center">ข้อมูลนักศึกษา</td>
             <td align="center">ประเมินผลนักศึกษา</td>
         </tr>
+
 <%--        ${students}--%>
         <c:forEach var="teacherEvaluate" items="${ListStudents}">
             <c:if test="${teacherEvaluate.assessment_status == 'ยังไม่ได้ประเมิน'}">
@@ -61,7 +62,8 @@
         </c:forEach>
     </table>
 
-
 </body>
+
+
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
 </html>

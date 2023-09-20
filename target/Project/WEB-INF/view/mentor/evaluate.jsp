@@ -9,16 +9,21 @@
 <head>
     <title>Title</title>
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
+<jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
+<body><br><br>
+
 <style>
     /* ซ่อนฟอร์มทั้งหมด */
     .tabcontent {
         display: none;
     }
 </style>
-<body><br>
+
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+
 <form action="${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>" method="POST" >
     <div class="navbar2"><br>
         <div style="margin-left: 160px">
