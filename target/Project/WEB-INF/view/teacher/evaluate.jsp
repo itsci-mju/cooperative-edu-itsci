@@ -159,8 +159,11 @@
             <input type="radio" name="score6" value="1" onclick="getSumAndSet()">1
         </td>
     </tr>
-
 </table><br><br>
+        <div align="center">
+            <button  type="button" onclick="openForm2()" id="next" class="btn btn-success" style="margin-bottom: 30px"; >ต่อไป</button>
+        </div>
+
     </div>
 
     <div id="form2" class="tabcontent">
@@ -184,20 +187,19 @@
         <td><input name="answerText2" /></td>
     </tr>
 </table>
-    <div align="center">
-        <button type="submit" class="btn btn-success">บันทึก</button>
-        <button type="button" class="btn btn-warning">ยกเลิก</button>
+    <div align="center" style="display: inline-block; width: 100%">
+        <div style="display: inline-block;"><button type="submit" class="btn btn-success">บันทึก</button></div>
+        <div style="display: inline-block;"><button type="button" onclick="openForm1()" id="back" class="btn btn-primary" style="margin-bottom: 30px">ย้อนกลับ</button></div>
     </div>
     </div>
 </form>
 
-<div class="list_course_detail" align="center">
-    <div class="hr_line"></div>
-    <%--    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>--%>
-    <%--    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>--%>
-    <button onclick="openForm2()" id="next" class="btn btn-success" style="margin-bottom: 30px">ต่อไป</button>
-    <button onclick="openForm1()" id="back" class="btn btn-primary" style="margin-bottom: 30px">ย้อนกลับ</button>
-</div>
+<%--<div align="center">--%>
+<%--    <div class="hr_line"></div>--%>
+<%--    &lt;%&ndash;    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>&ndash;%&gt;--%>
+<%--    &lt;%&ndash;    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>&ndash;%&gt;--%>
+<%--    --%>
+<%--</div>--%>
 <script>
     function getSumAndSet () {
         var sumScore = 0;
@@ -220,45 +222,6 @@
 </body>
 
 <script>
-    <%--window.addEventListener('DOMContentLoaded', (event) => {--%>
-    <%--    var backButton = document.getElementById('backButton');--%>
-    <%--    var nextButton = document.getElementById('nextButton');--%>
-    <%--    var evaluationForm = document.getElementById('evaluationForm');--%>
-
-    <%--    backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับตอนเริ่มต้น--%>
-
-    <%--    // เมื่อคลิกปุ่ม "ต่อไป"--%>
-    <%--    nextButton.addEventListener('click', function () {--%>
-    <%--        backButton.style.display = "inline-block"; // แสดงปุ่มย้อนกลับ--%>
-    <%--        nextButton.style.display = "none"; // ซ่อนปุ่มต่อไป--%>
-    <%--        evaluationForm.action = "${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>";--%>
-    <%--    });--%>
-
-    <%--    // เมื่อคลิกปุ่ม "ย้อนกลับ"--%>
-    <%--    backButton.addEventListener('click', function () {--%>
-    <%--        backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับ--%>
-    <%--        nextButton.style.display = "inline-block"; // แสดงปุ่มต่อไป--%>
-    <%--        evaluationForm.action = "${pageContext.request.contextPath}/mentor/back_to_form1";--%>
-    <%--    });--%>
-    <%--});--%>
-    <%--// window.addEventListener('DOMContentLoaded', (event) => {--%>
-    <%--//     var button = document.getElementById('FClick');--%>
-    <%--//     button.click()--%>
-    <%--// });--%>
-    <%--function openList(evt, list_name) {--%>
-    <%--    var i, tabcontent, tablinks;--%>
-    <%--    tabcontent = document.getElementsByClassName("tabcontent");--%>
-    <%--    for (i = 0; i < tabcontent.length; i++) {--%>
-    <%--        tabcontent[i].style.display = "none";--%>
-    <%--    }--%>
-    <%--    tablinks = document.getElementsByClassName("tablinks");--%>
-    <%--    for (i = 0; i < tablinks.length; i++) {--%>
-    <%--        tablinks[i].className = tablinks[i].className.replace(" active", "");--%>
-    <%--        // tablinks[i].style.display = "none";--%>
-    <%--    }--%>
-    <%--    document.getElementById(list_name).style.display = "block";--%>
-    <%--    evt.currentTarget.className += " active";--%>
-    <%--}--%>
     function openList(evt, list_name) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");

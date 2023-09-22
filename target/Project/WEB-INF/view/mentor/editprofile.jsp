@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,7 +19,7 @@
 <body><br><br>
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
-<form action="${pageContext.request.contextPath}/mentor/${mentor_profile.mentor_id}/update_mentor_profile" method="POST" >
+<form action="${pageContext.request.contextPath}/mentor/${mentor_profile.mentor_id}/update_mentor_profile" method="POST" enctype="multipart/form-data">
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
             <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
@@ -28,7 +29,12 @@
 <table class="edit_profile" align="center">
     <tr>
         <td colspan="4">
-            <img class="profile" src="${pageContext.request.contextPath}/assets/img/profile.png">
+            <input name="profile" type="file" id="profile">
+            <c:if test="${not empty mentor_profile.mentor_image}">
+                <input type="hidden" name="original_img" value="${mentor_profile.mentor_image}">
+                <img class="profile" src="${pageContext.request.contextPath}/assets/img/mentor_profile/${mentor_profile.mentor_image}">
+            </c:if>
+
         </td>
     </tr>
     <div class="linehorizontal"></div>

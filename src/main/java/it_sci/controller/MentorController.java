@@ -4,15 +4,21 @@ import it_sci.model.*;
 import it_sci.service.MentorEvaluateService;
 import it_sci.service.MentorService;
 import it_sci.service.StudentService;
+import it_sci.utils.ImgPath;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -72,7 +78,10 @@ public class MentorController {
 
 
     @PostMapping (path="/{id}/update_mentor_profile")
-    public String updateMentor(@PathVariable("id") int mentor_id,@RequestParam Map<String, String> allReqParams) throws ParseException {
+    public String updateMentor(@PathVariable("id") int mentor_id,
+                               @RequestParam ("profile") MultipartFile img,
+                               @RequestParam (value = "original_img", required = false) String original_img,
+                               @RequestParam Map<String, String> allReqParams) throws ParseException {
         Mentor mentor = mentorService.getMentorById(mentor_id);
         if (mentor != null) {
             mentor.setMentor_name(allReqParams.get("mentor_name"));
@@ -83,7 +92,26 @@ public class MentorController {
             mentor.setMentor_line(allReqParams.get("mentor_line"));
             mentor.setMentor_email(allReqParams.get("mentor_email"));
             mentor.setPassword(allReqParams.get("password"));
-            mentorService.updateMentor(mentor);
+            try {
+                String ImgPath = it_sci.utils.ImgPath.pathImg + "/mentor_profile/";
+
+                Path path = Paths.get(ImgPath,original_img);
+
+                if (!img.isEmpty()) {
+                    if (original_img != null) {
+                        if (Files.exists(path)){
+                            Files.delete(path);
+                        }
+                    }
+                    Files.write(path,img.getBytes());
+                    mentor.setMentor_image(original_img);
+
+                    mentorService.updateMentor(mentor);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
         }
         return "redirect:/";
     }
