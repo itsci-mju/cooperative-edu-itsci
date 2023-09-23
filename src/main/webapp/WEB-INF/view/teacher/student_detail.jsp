@@ -18,7 +18,7 @@
     </div>
 </div><br><br>
 
-<h5 style="margin-left: 200px; font-family: 'Kanit', sans-serif">ข้อมูลนักศึกษา</h5>
+<h5 style="margin-left: 200px; font-family: 'Kanit', sans-serif; font-weight: bold;">ข้อมูลนักศึกษา</h5>
 <hr style="height: 3px; width: 1060px; background-color: #990D28; border: none; box-shadow: 0 4px 6px #990D28; margin-left: 200px;"><br>
 <table class="student_detail" align="center">
     <tr>
@@ -34,7 +34,7 @@
 </table><br>
 <hr style="height: 3px; width: 1060px;  background-color: #990D28; border: none; box-shadow: 0 4px 6px #990D28; margin-left: 200px;"><br>
 
-<h5 style="margin-left: 200px; font-family: 'Kanit', sans-serif">ข้อมูลสหกิจศึกษา</h5>
+<h5 style="margin-left: 200px; font-family: 'Kanit', sans-serif; font-weight: bold;">ข้อมูลสหกิจศึกษา</h5>
 <table align="center"><br>
     <tr>
         <td><p>ชื่อบริษัท</p></td>
@@ -60,7 +60,7 @@
 </table><br>
 <hr style="height: 3px; width: 1060px;  background-color: #990D28; border: none; box-shadow: 0 4px 6px #990D28; margin-left: 200px;"><br>
 
-<h5 style="margin-left: 200px; font-family: 'Kanit', sans-serif">ข้อมูลพนักงานพี่เลี้ยง</h5>
+<h5 style="margin-left: 200px; font-family: 'Kanit', sans-serif; font-weight: bold;">ข้อมูลพนักงานพี่เลี้ยง</h5>
 <table class="table table-hover" style="width: 1000px;" align="center"><br>
     <tr class="table-primary" align="center">
         <td align="center">ชื่อพนักงานพี่เลี้ยง</td>

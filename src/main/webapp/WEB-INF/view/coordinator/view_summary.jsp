@@ -23,6 +23,15 @@
         <p class="editpro_header2">ตรวจสอบสถานะการประเมิน</p>
     </div>
 </div>
+
+<div>
+    <p>ภาคการศึกษา</p><select name="semester" id="semester">
+    <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>
+    <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
+    <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
+    <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
+</select>
+</div>
 <div>
 <%--    <input type="text" value="${student.semester}" disabled>--%>
 </div>
