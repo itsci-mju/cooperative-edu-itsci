@@ -190,15 +190,26 @@ public class TeacherController {
     @GetMapping("/view_summary")
     public String gotoSummaryPage(Model model) {
         List<Student> students = studentService.getAllStudents();
-
-        try (Session session = sessionFactory.openSession()) {
+        List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
+        System.out.println("Size : " + teacherEvaluates.size());
+        Session session = null;
+        try  {
+            session = sessionFactory.openSession();
             for (Student student : students) {
                 // ดึงข้อมูล TeacherEvaluates และคำนวณคะแนนรวม
                 Hibernate.initialize(student.getTeacherEvaluates());
             }
         }
+        catch (Exception e) {
+            // จัดการข้อผิดพลาด
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close(); // ปิดเซสชัน
+            }
+        }
 
         model.addAttribute("list_students", students);
+        model.addAttribute("list_teacherEvaluates",teacherEvaluates);
         return "coordinator/view_summary";
     }
 

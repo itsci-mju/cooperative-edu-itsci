@@ -49,4 +49,19 @@ public class StudentServiceImpl implements StudentService {
     public void deleteStudent(String student_id) {
         studentDao.deleteStudent(student_id);
     }
+
+    @Transactional
+    public Student getStudentWithEvaluates(String studentId) {
+        Student student = null;
+
+        try {
+            student = studentDao.getStudentById(studentId);
+            // โหลด teacherEvaluates พร้อมกับ Student
+            student.getTeacherEvaluates().size(); // หรือใช้ fetch join ในคำสั่ง HQL แทน
+        } catch (Exception e) {
+            // จัดการข้อผิดพลาด
+        }
+
+        return student;
+    }
 }

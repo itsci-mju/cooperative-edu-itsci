@@ -18,7 +18,7 @@ public class TeacherEvaluate {
     private int score;
     @Column(name = "semester",nullable = false)
     private String semester;
-    @Column(name = "assessmentdate",nullable = false)
+    @Column(name = "assessmentdate")
     private Date assessment_date;
     @Column(name = "assessmentstartdate",nullable = false)
     private Date assessment_startdate;

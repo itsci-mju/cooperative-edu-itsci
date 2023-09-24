@@ -23,14 +23,6 @@
 
 <form action="${pageContext.request.contextPath}/teacher/${companies.company_id}/submit_evaluate" method="POST" >
 <table class="dropdown" align="center" >
-<%--    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-<%--        ภาคการศึกษา--%>
-<%--    </button>--%>
-<%--    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--%>
-<%--        <a class="dropdown-item" href="#">ภาคเรียนที่2/2563</a>--%>
-<%--        <a class="dropdown-item" href="#">ภาคเรียนที่2/2565</a>--%>
-<%--        <a class="dropdown-item" href="#">ภาคเรียนที่3/2565</a>--%>
-<%--    </div>--%>
     <tr>
         <td colspan="4">ภาคการศึกษา<select name="semester" id="semester">
             <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>
@@ -47,12 +39,12 @@
         <td><input type="text" name="teachersupervisiontime" id="teachersupervisiontime"></td>
     </tr>
     <tr>
-        <td colspan="2">กำหนดอาจารย์นิเทศ</td>
+        <td colspan="2" style="padding: 50px 0px 0px 70px;">กำหนดอาจารย์นิเทศ</td>
     </tr>
-    <tr>
-        <td colspan="2">
+    <tr >
+        <td colspan="2" style="padding: 20px 0px 0px 100px;">
             <c:forEach var="teacher" items="${teachers}">
-                <input type="radio" name="teacher" value="${teacher.teacher_id}" >${teacher.teacher_name} ${teacher.teacher_lastname}<br>
+                <input type="radio" name="teacher" value="${teacher.teacher_id}" style="margin-top: 20px;">${teacher.teacher_name} ${teacher.teacher_lastname}<br>
             </c:forEach>
 <%--            <input type="radio" name="teacher" value="${teachers}" >ผศ.ดร.สายัณห์ อุ่นนันกาศ<br>--%>
 <%--            <input type="radio" name="teacher" value="อ.ดร.จักรกฤช เตโช" >อ.ดร.จักรกฤช เตโช<br>--%>

@@ -2,6 +2,7 @@ package it_sci.model;
 
 import it_sci.service.TeacherEvaluateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -56,10 +57,11 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MentorEvaluate> mentorEvaluateList = new ArrayList<>();
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<TeacherEvaluate> teacherEvaluates = new ArrayList<>();
+    private List<TeacherEvaluate> teacherEvaluateslist = new ArrayList<>();
 
     // เมธอดเพื่อเพิ่มข้อมูล Register เข้า List
     public double getSumScoreMentor() {
+        System.out.println("Size : "+teacherEvaluateslist.size());
         double sum = 0.0;
         int count = 0;
         for (MentorEvaluate mentorEvaluate : mentorEvaluateList) {
@@ -75,19 +77,29 @@ public class Student {
         return sum;
     }
     // เมธอดเพื่อรวมคะแนนครู
+
     public double getSumScoreTeacher() {
+//        System.out.println("Size : " + teacherEvaluates.size());
         double sum = 0.0;
-        for (TeacherEvaluate teacherEvaluates : teacherEvaluates) {
-            if (student_id.equals(teacherEvaluates.getStudent().getStudent_id())) {
-                sum += teacherEvaluates.getScore();
+        try {
+            for (TeacherEvaluate teacherEvaluate : teacherEvaluateslist) {
+                System.out.println("Test for");
+                if (student_id.equals(teacherEvaluate.getStudent().getStudent_id())) {
+                    sum += teacherEvaluate.getScore();
+                    System.out.println("Test if");
+                }
             }
+            System.out.println("Total : " + sum);
+
+        } catch (Exception e) {
+            System.out.println("fail");
         }
-        System.out.println(sum);
         return sum;
     }
+
     public double calculateSumScoreTeacher() {
         double sum = 0.0;
-        for (TeacherEvaluate teacherEvaluate : teacherEvaluates) {
+        for (TeacherEvaluate teacherEvaluate : teacherEvaluateslist) {
             sum += teacherEvaluate.getScore();
         }
         return sum;
@@ -228,10 +240,10 @@ public class Student {
     }
 
     public List<TeacherEvaluate> getTeacherEvaluates() {
-        return teacherEvaluates;
+        return teacherEvaluateslist;
     }
 
-    public void setTeacherEvaluates(List<TeacherEvaluate> teacherEvaluates) {
-        this.teacherEvaluates = teacherEvaluates;
+    public void setTeacherEvaluates(List<TeacherEvaluate> teacherEvaluateslist) {
+        this.teacherEvaluateslist = teacherEvaluateslist;
     }
 }

@@ -24,14 +24,14 @@
     </div>
 </div>
 
-<div>
-    <p>ภาคการศึกษา</p><select name="semester" id="semester">
-    <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>
-    <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
-    <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
-    <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
-</select>
-</div>
+<%--<div>--%>
+<%--    <p>ภาคการศึกษา</p><select name="semester" id="semester">--%>
+<%--    <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>--%>
+<%--    <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>--%>
+<%--    <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>--%>
+<%--    <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>--%>
+<%--</select>--%>
+<%--</div>--%>
 <div>
 <%--    <input type="text" value="${student.semester}" disabled>--%>
 </div>
@@ -56,7 +56,11 @@
                     <fmt:formatDate pattern="dd/MM/yyyy" value="${startdate}" /> -  <fmt:formatDate pattern="dd/MM/yyyy" value="${enddate}" />
                 </td>
                 <td align="center">${list.sumScoreMentor}</td>
-<%--                <td align="center">${list.sumScoreTeacher}</td>--%>
+<%--                <c:forEach var="listTeacher" items="${list.teacherEvaluates}">--%>
+<%--                    <c:set var="sum" value="<%=0%>"></c:set>--%>
+<%--                    <c:set var="total" value="${sum + listTeacher.score}"></c:set>--%>
+<%--                </c:forEach>--%>
+                <td align="center">${list.sumScoreTeacher}</td>
             </tr>
     </c:forEach>
 </table>

@@ -18,7 +18,8 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public List<Student> getAllStudents() {
         Session session = sessionFactory.getCurrentSession();
-        Query<Student> query = session.createQuery("FROM Student", Student.class);
+        Query<Student> query = session.createQuery("SELECT s FROM Student s LEFT JOIN FETCH s.teacherEvaluateslist", Student.class);
+        System.out.println("," + query.getResultList());
         List<Student> students = query.getResultList();
         return students;
     }
