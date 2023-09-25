@@ -22,16 +22,23 @@
         <p class="editpro_header1">ระบบตรวจสอบสถานะการประเมิน (อาจารย์ผู้ประสานงาน)</p>
         <p class="editpro_header2">ตรวจสอบสถานะการประเมิน</p>
     </div>
+</div><br><br>
+
+<div align="center" >
+    <p style="display: inline-block;">ภาคการศึกษา</p><select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">
+    <option value="ภาคเรียนที่1/2566" >ภาคเรียนที่1/2566</option>
+    <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
+    <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
+    <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
+</select>
 </div>
 
-<%--<div>--%>
-<%--    <p>ภาคการศึกษา</p><select name="semester" id="semester">--%>
-<%--    <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>--%>
-<%--    <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>--%>
-<%--    <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>--%>
-<%--    <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>--%>
-<%--</select>--%>
-<%--</div>--%>
+<div style="margin-left: 1365px;">
+    <a href="${pageContext.request.contextPath}/">
+        <button type="submit" class="btn btn-success">Export Excel File</button>
+    </a>
+</div>
+
 <div>
 <%--    <input type="text" value="${student.semester}" disabled>--%>
 </div>

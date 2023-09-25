@@ -191,7 +191,6 @@ public class TeacherController {
     public String gotoSummaryPage(Model model) {
         List<Student> students = studentService.getAllStudents();
         List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
-        System.out.println("Size : " + teacherEvaluates.size());
         Session session = null;
         try  {
             session = sessionFactory.openSession();

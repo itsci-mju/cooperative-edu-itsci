@@ -23,14 +23,6 @@ public class CompanyDaoImpl implements CompanyDao {
         return companies;
     }
 
-//    @Override
-//    public List<Company> getCompanies() {
-//        Session session = sessionFactory.getCurrentSession();
-//        Query<Company> query = session.createQuery("FROM Company", Company.class);
-//        List<Company> companies = query.getResultList();
-//        return companies;
-//    }
-
     @Override
     public Company getCompanyById(int company_id) {
         Session session = sessionFactory.getCurrentSession();

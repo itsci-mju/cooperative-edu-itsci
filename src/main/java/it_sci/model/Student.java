@@ -61,7 +61,6 @@ public class Student {
 
     // เมธอดเพื่อเพิ่มข้อมูล Register เข้า List
     public double getSumScoreMentor() {
-        System.out.println("Size : "+teacherEvaluateslist.size());
         double sum = 0.0;
         int count = 0;
         for (MentorEvaluate mentorEvaluate : mentorEvaluateList) {
@@ -79,14 +78,11 @@ public class Student {
     // เมธอดเพื่อรวมคะแนนครู
 
     public double getSumScoreTeacher() {
-//        System.out.println("Size : " + teacherEvaluates.size());
         double sum = 0.0;
         try {
             for (TeacherEvaluate teacherEvaluate : teacherEvaluateslist) {
-                System.out.println("Test for");
                 if (student_id.equals(teacherEvaluate.getStudent().getStudent_id())) {
                     sum += teacherEvaluate.getScore();
-                    System.out.println("Test if");
                 }
             }
             System.out.println("Total : " + sum);

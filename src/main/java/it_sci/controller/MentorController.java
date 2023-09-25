@@ -179,7 +179,7 @@ public class MentorController {
     @RequestMapping("/view_summary")
     public String gotoSummaryPage (Model model) {
         List<Student> students = studentService.getAllStudents();
-        System.out.println(students);
+//        System.out.println(students);
         model.addAttribute("list_students", students);
         return "coordinator/view_summary";
     }
