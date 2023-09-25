@@ -34,14 +34,23 @@
 <%--</div>--%>
 
 <br>
-<div class="list_course_detail" align="center">
+
+<div align="center" >
+    <p style="display: inline-block;">ตรวจสอบสถานะการประเมิน</p><select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">
+    <option value="ภาคเรียนที่1/2566" >ภาคเรียนที่1/2566</option>
+    <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
+    <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
+    <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
+</select>
+</div>
+
+<div align="center">
     <div class="hr_line"></div>
     <button onclick="openForm2()" id="next"class="btn btn-outline-dark" style="margin-bottom: 30px">อาจารย์</button>
     <button onclick="openForm1()" id="back" class="btn btn-outline-dark" style="margin-bottom: 30px">พนักงานพี่เลี้ยง</button>
 </div>
 
 <div id="form1" class="tabcontent">
-    <h4>อาจารย์</h4>
     <table class="table table-hover"  >
         <tr class="table-primary" id="font">
             <td align="center">รหัสนักศึกษา</td>
@@ -79,7 +88,6 @@
 </div>
 
 <div id="form2" class="tabcontent">
-    <h4>พนักงานพี่เลี้ยง</h4>
     <table class="table table-hover"  >
         <tr class="table-primary" id="font">
             <td align="center">รหัสนักศึกษา</td>

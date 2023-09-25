@@ -22,8 +22,8 @@
 <form action="${pageContext.request.contextPath}/mentor/${mentor_profile.mentor_id}/update_mentor_profile" method="POST" enctype="multipart/form-data">
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
-            <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
-            <p class="editpro_header2">รายชื่อนักศึกษา</p>
+            <p class="editpro_header1">ระบบการแก้ไขข้อมูลส่วนตัว (พนักงานพี่เลี้ยง)</p>
+            <p class="editpro_header2">แก้ไขข้อมูลส่วนตัว</p>
         </div>
     </div>
 <table class="edit_profile" align="center">
