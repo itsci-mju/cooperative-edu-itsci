@@ -171,15 +171,12 @@ public class MentorController {
 //        mentorEvaluateService.saveMentorEvaluate(mentorEvaluate);
         mentorAnswer = (MentorAnswer) currentSession.merge(mentorAnswer);
 
-
-
         return "redirect:/mentor/list_student_by_mentor/"+mentor_id;
     }
 
     @RequestMapping("/view_summary")
     public String gotoSummaryPage (Model model) {
         List<Student> students = studentService.getAllStudents();
-//        System.out.println(students);
         model.addAttribute("list_students", students);
         return "coordinator/view_summary";
     }

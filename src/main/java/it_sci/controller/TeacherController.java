@@ -43,13 +43,7 @@ public class TeacherController {
     @Autowired
     private MentorEvaluateService mentorEvaluateService;
 
-//    @RequestMapping("/list_student_by_mentor")
-//    public String gotoListStudentPage (Model model) {
-//        Mentor mentor = mentorService.getMentorById(6);
-//        model.addAttribute("students", mentor.getStudents());
-//        System.out.println(mentor.getStudents().size());
-//        return "mentor/list_student";
-//    }
+
     @RequestMapping("/{company_id}/assign_teacher")
     public String gotoAssignTeacherPage (@PathVariable("company_id") int company_id, Model model) {
         Company company = companyService.getCompanyById(company_id);

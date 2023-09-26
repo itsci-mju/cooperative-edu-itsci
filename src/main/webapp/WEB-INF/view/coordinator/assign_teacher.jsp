@@ -25,14 +25,18 @@
 <form action="${pageContext.request.contextPath}/teacher/${companies.company_id}/submit_evaluate" method="POST" >
 <table align="center" id="myTable" >
     <tr>
-        <td colspan="4" style="padding-left: 40%;">ภาคการศึกษา<select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">
-            <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>
-            <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
-            <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
-            <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
-        </select>
-        </td>
-    </tr>
+            <td colspan="4" style="padding-left: 40%;">ภาคการศึกษา<select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">
+                <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>
+                <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
+                <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
+                <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
+            </select>
+            </td>
+        </tr>
+<%--    <tr >--%>
+<%--        <td><p>ภาคการศึกษา</p></td>--%>
+<%--        <td><input type="text" value="${student.semester}" disabled></td>--%>
+<%--    </tr>--%>
     <tr >
         <td style=" padding-left: 30px;">วันที่นิเทศ</td>
         <td style=" padding-left: 30px;"><input type="date" name="teachersupervisiondate" id="teachersupervisiondate"></td>

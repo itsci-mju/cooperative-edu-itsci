@@ -210,12 +210,6 @@
     </div>
 </form>
 
-<%--<div align="center">--%>
-<%--    <div class="hr_line"></div>--%>
-<%--    &lt;%&ndash;    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>&ndash;%&gt;--%>
-<%--    &lt;%&ndash;    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>&ndash;%&gt;--%>
-<%--    --%>
-<%--</div>--%>
 <script>
     function getSumAndSet () {
         var sumScore = 0;
