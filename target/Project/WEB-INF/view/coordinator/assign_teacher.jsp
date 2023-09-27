@@ -10,7 +10,49 @@
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
-<body><br><br>
+
+<style>
+    /* สีพื้นหลังของตาราง */
+    #myTable {
+        background-color: #f2f2f2; /* สีเทาอ่อน */
+        border-collapse: collapse; /* รวมเส้นกรอบของเซลล์ */
+        width: 80%; /* กว้างของตารางเท่ากับ 80% ของพื้นที่ที่มีอยู่ */
+        margin: 0 auto; /* จัดตารางตรงกลาง */
+        padding: 20px; /* เพิ่มระยะห่างรอบตาราง 20px */
+        border-radius: 50px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* สีพื้นหลังของเซลล์ */
+    #myTable td {
+        background-color: #fff; /* สีขาว */
+        padding: 10px; /* เพิ่มระยะห่างรอบเซลล์ 10px */
+        border: 2px solid #ddd; /* สร้างเส้นกรอบด้วยสีเทาอ่อน */
+        font-weight: bold;
+    }
+
+    /* สีขอบของเซลล์เมื่อชี้ไปที่เซลล์ */
+    #myTable td:hover {
+        background-color: #f0f0f0; /* เปลี่ยนสีพื้นหลังเมื่อชี้ไปที่เซลล์เป็นสีเทาอ่อน */
+    }
+
+    /* สีขอบของปุ่มเมื่อชี้ไปที่ปุ่มแต่ปุ่มยกเลิก */
+    .btn.btn-warning:hover {
+        background-color: #ec5b0c; /* เปลี่ยนสีพื้นหลังเมื่อชี้ไปที่ปุ่มยกเลิกเป็นสีส้ม */
+        border: 1px solid #f2b933; /* เปลี่ยนสีเส้นกรอบของปุ่มยกเลิกเมื่อชี้ไปที่ปุ่ม */
+    }
+
+    /* สีขอบของปุ่มเมื่อชี้ไปที่ปุ่มบันทึก */
+    .btn.btn-success:hover {
+        background-color: #367342; /* เปลี่ยนสีพื้นหลังเมื่อชี้ไปที่ปุ่มบันทึกเป็นสีเขียว */
+        border: 1px solid #4CAF50; /* เปลี่ยนสีเส้นกรอบของปุ่มบันทึกเมื่อชี้ไปที่ปุ่ม */
+    }
+
+
+</style>
+<%--style="background-color: #fcfaf1;"--%>
+<body ><br><br>
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
 <div class="navbar2"><br>
@@ -25,19 +67,23 @@
 <form action="${pageContext.request.contextPath}/teacher/${companies.company_id}/submit_evaluate" method="POST" >
 <table align="center" id="myTable" >
     <tr>
-        <td colspan="4" style="padding-left: 40%;">ภาคการศึกษา<select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">
-            <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>
-            <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
-            <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
-            <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
-        </select>
-        </td>
-    </tr>
+            <td colspan="4" style="padding-left: 40%;">ภาคการศึกษา<select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">
+                <option value="ภาคเรียนที่1/2566">ภาคเรียนที่1/2566</option>
+                <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
+                <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
+                <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
+            </select>
+            </td>
+        </tr>
+<%--    <tr >--%>
+<%--        <td><p>ภาคการศึกษา</p></td>--%>
+<%--        <td><input type="text" value="${student.semester}" disabled></td>--%>
+<%--    </tr>--%>
     <tr >
         <td style=" padding-left: 30px;">วันที่นิเทศ</td>
         <td style=" padding-left: 30px;"><input type="date" name="teachersupervisiondate" id="teachersupervisiondate"></td>
         <td style=" padding-left: 30px;">เวลานิเทศ</td>
-        <td style=" padding-left: 30px;"><input type="text" name="teachersupervisiontime" id="teachersupervisiontime"></td>
+        <td style=" padding-left: 30px;"><input type="text" name="teachersupervisiontime" id="teachersupervisiontime" ></td>
     </tr>
     <tr>
         <td colspan="4" style="padding: 30px 0px 30px 150px; background-color: #bee5eb">เลือกอาจารย์</td>

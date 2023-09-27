@@ -47,7 +47,7 @@
         <tr >
             <td><p>ตำแหน่งงานที่ฝึกปฎิบัติ</p></td>
             <td><input type="text"  value="${student.workposition}" disabled></td>
-            <td><p style="text-align: right;">&nbsp;&nbsp; ระยะเวลาการประเมิน &nbsp;&nbsp;</p></td>
+            <td><p style="text-align: right;">&nbsp;&nbsp; วันที่ประเมิน &nbsp;&nbsp;</p></td>
             <td><input type="text"  disabled></td>
         </tr>
     </table><br><br>
@@ -194,16 +194,55 @@
         <td align="center">11</td>
         <td style="padding-left: 100px;">ความพึงพอใจต่อการฝึกปฏิบัติสหกิจของนักศึกษาครั้งนี้โดยรวมท่านจะให้กี่คะแนน</td>
         <td style="padding-left: 130px;">
-            <input type="radio" name="score11" value="10" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">10
-            <input type="radio" name="score11" value="9" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">9
-            <input type="radio" name="score11" value="8" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">8
-            <input type="radio" name="score11" value="7" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">7
-            <input type="radio" name="score11" value="6" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">6
-            <input type="radio" name="score11" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">5
-            <input type="radio" name="score11" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">4
-            <input type="radio" name="score11" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">3
-            <input type="radio" name="score11" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">2
-            <input type="radio" name="score11" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">1
+           <table>
+               <tr>
+                   <td style="padding-left: 147px;">
+                       <span style="margin-right: 30px; font-size: 16px;">10</span>
+                       <span style="margin-right: 30px; font-size: 16px;">9</span>
+                       <span style="margin-right: 30px; font-size: 16px;">8</span>
+                       <span style="margin-right: 30px; font-size: 16px;">7</span>
+                       <span>6</span>
+                   </td>
+               </tr>
+               <tr>
+                   <td style="padding: 5px 0px 10px 145px;">
+                       <input type="radio" name="score11" value="10" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="9" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="8" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="7" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="6" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+               </tr>
+               <tr>
+                   <td style="padding-left: 147px;">
+                       <span style="margin-right: 32px; font-size: 16px;">5</span>
+                       <span style="margin-right: 32px; font-size: 16px;">4</span>
+                       <span style="margin-right: 32px; font-size: 16px;">3</span>
+                       <span style="margin-right: 32px; font-size: 16px;">2</span>
+                       <span>1</span>
+                   </td>
+               </tr>
+               <tr>
+                   <td style="padding: 5px 0px 5px 145px;">
+                       <input type="radio" name="score11" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                   </td>
+               </tr>
+
+               </tr>
+           </table>
+<%--            <input type="radio" name="score11" value="10" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">10--%>
+<%--            <input type="radio" name="score11" value="9" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">9--%>
+<%--            <input type="radio" name="score11" value="8" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">8--%>
+<%--            <input type="radio" name="score11" value="7" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">7--%>
+<%--            <input type="radio" name="score11" value="6" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">6--%>
+<%--            <input type="radio" name="score11" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">5--%>
+<%--            <input type="radio" name="score11" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">4--%>
+<%--            <input type="radio" name="score11" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">3--%>
+<%--            <input type="radio" name="score11" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">2--%>
+<%--            <input type="radio" name="score11" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">1--%>
         </td>
     </tr>
 </table><br><br>

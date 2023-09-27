@@ -32,22 +32,22 @@
         </div>
     </div>
     <table class="evaluate" align="center"><br><br>
-        <tr>
+        <tr >
             <td><p>ภาคการศึกษา</p></td>
             <td><input type="text" value="${student.semester}" disabled></td>
         </tr>
 
-        <tr>
+        <tr >
             <td><p>รหัสนักศึกษา </p></td>
-            <td><input type="text"  value="${student.student_id}" name="studentId" id="studentId" readonly></td>
+            <td><input type="text"  value="${student.student_id}" name="studentId" id="studentId" disabled></td>
             <td><p style="text-align: right;">&nbsp;&nbsp; ชื่อนักศึกษา &nbsp;&nbsp;</p></td>
             <td><input type="text"  value="${student.student_name} ${student.student_lastname}" disabled></td>
         </tr>
 
-        <tr>
+        <tr >
             <td><p>ตำแหน่งงานที่ฝึกปฎิบัติ</p></td>
             <td><input type="text"  value="${student.workposition}" disabled></td>
-            <td><p style="text-align: right;">&nbsp;&nbsp; ระยะเวลาการประเมิน &nbsp;&nbsp;</p></td>
+            <td><p style="text-align: right;">&nbsp;&nbsp; วันที่ประเมิน &nbsp;&nbsp;</p></td>
             <td><input type="text"  disabled></td>
         </tr>
     </table><br><br>
@@ -56,189 +56,244 @@
 <p>ส่วนที่ 1 ให้คะแนนความประพฤติกรรมการปฏิบัติงานสหกิจศึกษาของนักศึกษาในแต่ละด้านและความพึงพอใจโดยรวม (คะแนนเต็ม 60 คะแนน) </p>
 
 <table class="table table-hover" >
-    <tr class="table-primary" align="center">
-        <td>ข้อที่</td>
-        <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
-        <td>คะแนน</td>
+    <tr class="table-primary">
+        <td align="center">ข้อที่</td>
+        <td style="padding-left: 100px;">เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
+        <td align="center">คะแนน</td>
     </tr>
-    <tr align="center">
-        <td>1</td>
-        <td>ความเข้าใจในงานที่ได้รับมอบหมายและสามารถปฏิบัติงานได้ตามที่กำหนดหรือคาดหวัง</td>
-        <td>
-            <input type="radio" name="score1" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score1" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score1" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score1" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score1" value="1" onclick="getSumAndSet()">1
+    <tr>
+        <td ></td>
+        <td ></td>
+        <td style="padding-left: 280px;">
+            <span style="margin-right: 30px; font-size: 16px;">5</span>
+            <span style="margin-right: 30px; font-size: 16px;">4</span>
+            <span style="margin-right: 30px; font-size: 16px;">3</span>
+            <span style="margin-right: 30px; font-size: 16px;">2</span>
+            <span>1</span>
         </td>
     </tr>
-    <tr align="center">
-        <td>2</td>
-        <td>ปริมาณงาน และคุณภาพของงานที่นักศึกษาสามารถปฏิบัติสำเร็จ  </td>
-        <td><input type="radio" name="score2" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score2" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score2" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score2" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score2" value="1" onclick="getSumAndSet()">1
+    <tr >
+        <td align="center">1</td>
+        <td style="padding-left: 100px;">ความเข้าใจในงานที่ได้รับมอบหมายและสามารถปฏิบัติงานได้ตามที่กำหนดหรือคาดหวัง</td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score1" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score1" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score1" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score1" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score1" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
         </td>
-
     </tr>
-    <tr align="center">
-        <td>3</td>
-        <td>การมีความคิดสร้างสรรค์ในการพัฒนางานที่ได้รับมอบหมาย</td>
-        <td>
-            <input type="radio" name="score3" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score3" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score3" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score3" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score3" value="1" onclick="getSumAndSet()">1
-        </td>
-
-    </tr>
-    <tr align="center">
-        <td>4</td>
-        <td>ความเป็นผู้มีระเบียบวินัย ตรงต่อเวลา รับผิดชอบต่อหน้าที่ที่ได้รับมอบหมาย</td>
-        <td>
-            <input type="radio" name="score4" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score4" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score4" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score4" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score4" value="1" onclick="getSumAndSet()">1
+    <tr >
+        <td align="center">2</td>
+        <td style="padding-left: 100px;">ปริมาณงาน และคุณภาพของงานที่นักศึกษาสามารถปฏิบัติสำเร็จ  </td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score2" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score2" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score2" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score2" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score2" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
         </td>
 
     </tr>
-    <tr align="center">
-        <td>5</td>
-        <td>ความสามารถในการใช้ทักษะทางเทคโนโลยีสารสนเทศในการทำงาน</td>
-        <td>
-            <input type="radio" name="score5" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score5" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score5" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score5" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score5" value="1" onclick="getSumAndSet()">1
+    <tr >
+        <td align="center">3</td>
+        <td style="padding-left: 100px;">การมีความคิดสร้างสรรค์ในการพัฒนางานที่ได้รับมอบหมาย</td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score3" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score3" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score3" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score3" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score3" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
         </td>
 
     </tr>
-    <tr align="center">
-        <td>6</td>
-        <td>ความสามารถการทำงานร่วมกับผู้อื่นและการมีมนุษยสัมพันธ์ที่ดี</td>
-        <td>
-            <input type="radio" name="score6" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score6" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score6" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score6" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score6" value="1" onclick="getSumAndSet()">1
+    <tr >
+        <td align="center">4</td>
+        <td style="padding-left: 100px;">ความเป็นผู้มีระเบียบวินัย ตรงต่อเวลา รับผิดชอบต่อหน้าที่ที่ได้รับมอบหมาย</td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score4" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score4" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score4" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score4" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score4" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
         </td>
 
     </tr>
-    <tr align="center">
-        <td>7</td>
-        <td>ทักษะการแก้ไขปัญหาด้วยตนเองเมื่อประสบปัญหาระหว่างทำงาน</td>
-        <td>
-            <input type="radio" name="score7" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score7" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score7" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score7" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score7" value="1" onclick="getSumAndSet()">1
+    <tr >
+        <td align="center">5</td>
+        <td style="padding-left: 100px;">ความสามารถในการใช้ทักษะทางเทคโนโลยีสารสนเทศในการทำงาน</td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score5" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score5" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score5" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score5" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score5" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
         </td>
 
     </tr>
-    <tr align="center">
-        <td>8</td>
-        <td>ความสามารถในการสื่อสารกับผู้ที่เกี่ยวข้องทั้งภาษาไทยและภาษาอังกฤษ</td>
-        <td>
-            <input type="radio" name="score8" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score8" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score8" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score8" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score8" value="1" onclick="getSumAndSet()">1
+    <tr>
+        <td align="center">6</td>
+        <td style="padding-left: 100px;">ความสามารถการทำงานร่วมกับผู้อื่นและการมีมนุษยสัมพันธ์ที่ดี</td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score6" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score6" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score6" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score6" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score6" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
         </td>
 
     </tr>
-    <tr align="center">
-        <td>9</td>
-        <td>มีการเรียนรู้ศึกษาค้นคว้าหาความรู้เพิ่มเติมด้วยตนเอง</td>
-        <td>
-            <input type="radio" name="score9" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score9" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score9" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score9" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score9" value="1" onclick="getSumAndSet()">1
+    <tr >
+        <td align="center">7</td>
+        <td style="padding-left: 100px;">ทักษะการแก้ไขปัญหาด้วยตนเองเมื่อประสบปัญหาระหว่างทำงาน</td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score7" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score7" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score7" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score7" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score7" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
         </td>
 
     </tr>
-    <tr align="center">
-        <td>10</td>
-        <td>การส่งมอบงานเป็นไปตามระยะเวลาที่พี่เลี้ยงกำหนด</td>
-        <td>
-            <input type="radio" name="score10" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score10" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score10" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score10" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score10" value="1" onclick="getSumAndSet()">1
+    <tr >
+        <td align="center">8</td>
+        <td style="padding-left: 100px;">ความสามารถในการสื่อสารกับผู้ที่เกี่ยวข้องทั้งภาษาไทยและภาษาอังกฤษ</td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score8" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score8" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score8" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score8" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score8" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+        </td>
+
+    </tr>
+    <tr >
+        <td align="center">9</td>
+        <td style="padding-left: 100px;">มีการเรียนรู้ศึกษาค้นคว้าหาความรู้เพิ่มเติมด้วยตนเอง</td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score9" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score9" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score9" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score9" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score9" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+        </td>
+
+    </tr>
+    <tr >
+        <td align="center">10</td>
+        <td style="padding-left: 100px;">การส่งมอบงานเป็นไปตามระยะเวลาที่พี่เลี้ยงกำหนด</td>
+        <td style="padding-left: 275px;">
+            <input type="radio" name="score10" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score10" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score10" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score10" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+            <input type="radio" name="score10" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
         </td>
     </tr>
-    <tr align="center">
-        <td>11</td>
-        <td>ความพึงพอใจต่อการฝึกปฏิบัติสหกิจของนักศึกษาครั้งนี้โดยรวมท่านจะให้กี่คะแนน</td>
-        <td>
-            <input type="radio" name="score11" value="10" onclick="getSumAndSet()">10
-            <input type="radio" name="score11" value="9" onclick="getSumAndSet()">9
-            <input type="radio" name="score11" value="8" onclick="getSumAndSet()">8
-            <input type="radio" name="score11" value="7" onclick="getSumAndSet()">7
-            <input type="radio" name="score11" value="6" onclick="getSumAndSet()">6
-            <input type="radio" name="score11" value="5" onclick="getSumAndSet()">5
-            <input type="radio" name="score11" value="4" onclick="getSumAndSet()">4
-            <input type="radio" name="score11" value="3" onclick="getSumAndSet()">3
-            <input type="radio" name="score11" value="2" onclick="getSumAndSet()">2
-            <input type="radio" name="score11" value="1" onclick="getSumAndSet()">1
+    <tr>
+        <td align="center">11</td>
+        <td style="padding-left: 100px;">ความพึงพอใจต่อการฝึกปฏิบัติสหกิจของนักศึกษาครั้งนี้โดยรวมท่านจะให้กี่คะแนน</td>
+        <td style="padding-left: 130px;">
+           <table>
+               <tr>
+                   <td style="padding-left: 147px;">
+                       <span style="margin-right: 30px; font-size: 16px;">10</span>
+                       <span style="margin-right: 30px; font-size: 16px;">9</span>
+                       <span style="margin-right: 30px; font-size: 16px;">8</span>
+                       <span style="margin-right: 30px; font-size: 16px;">7</span>
+                       <span>6</span>
+                   </td>
+               </tr>
+               <tr>
+                   <td style="padding: 5px 0px 10px 145px;">
+                       <input type="radio" name="score11" value="10" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="9" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="8" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="7" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="6" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+               </tr>
+               <tr>
+                   <td style="padding-left: 147px;">
+                       <span style="margin-right: 32px; font-size: 16px;">5</span>
+                       <span style="margin-right: 32px; font-size: 16px;">4</span>
+                       <span style="margin-right: 32px; font-size: 16px;">3</span>
+                       <span style="margin-right: 32px; font-size: 16px;">2</span>
+                       <span>1</span>
+                   </td>
+               </tr>
+               <tr>
+                   <td style="padding: 5px 0px 5px 145px;">
+                       <input type="radio" name="score11" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                       <input type="radio" name="score11" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">
+                   </td>
+               </tr>
+
+               </tr>
+           </table>
+<%--            <input type="radio" name="score11" value="10" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">10--%>
+<%--            <input type="radio" name="score11" value="9" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">9--%>
+<%--            <input type="radio" name="score11" value="8" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">8--%>
+<%--            <input type="radio" name="score11" value="7" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">7--%>
+<%--            <input type="radio" name="score11" value="6" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">6--%>
+<%--            <input type="radio" name="score11" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">5--%>
+<%--            <input type="radio" name="score11" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">4--%>
+<%--            <input type="radio" name="score11" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">3--%>
+<%--            <input type="radio" name="score11" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">2--%>
+<%--            <input type="radio" name="score11" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">1--%>
         </td>
     </tr>
 </table><br><br>
+
+        <div align="center">
+            <button  type="button" onclick="openForm2()" id="next" class="btn btn-success" style="margin-bottom: 20px"; >ต่อไป</button>
+        </div>
     </div>
 
     <div id="form2" class="tabcontent">
 
 <p>ส่วนที่ 2 ความคิดเห็นเกี่ยวกับการฝึกปฏิบัติสหกิจศึกษาของนักศึกษา </p>
 
-<table class="table table-hover" align="center">
+<table class="table table-hover">
     <tr class="table-primary" align="center">
         <td>ข้อที่</td>
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>ความคิดเห็น</td>
     </tr>
-    <tr align="center">
-        <td>1</td>
-        <td>ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้  มีจุดเด่นในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>
-        <td><input name="answerText1" style="width: 200px; height: 25px"/></td>
+    <tr >
+        <td align="center">1</td>
+        <td style="padding-left: 100px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้  มีจุดเด่นในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>
+        <td align="center"><input name="answerText1" style="width: 200px; height: 25px"/></td>
     </tr>
-    <tr align="center">
-        <td>2</td>
-        <td>ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้ มีจุดด้อยในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>
-        <td><input name="answerText2" style="width: 200px; height: 25px"/></td>
+    <tr >
+        <td align="center">2</td>
+        <td style="padding-left: 100px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้ มีจุดด้อยในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>
+        <td align="center"><input name="answerText2" style="width: 200px; height: 25px"/></td>
 
     </tr>
-    <tr align="center">
-        <td>3</td>
-        <td>จากข้อก่อนหน้า นักศึกษาควรได้รับการพัฒนาปรับปรุงทักษะใดเพิ่มเติม เพื่อให้มีความพร้อมสำหรับการทำงานสายไอทีและเป็นไปตามที่บริษัทต้องการ</td>
-        <td><input name="answerText3" style="width: 200px; height: 25px"/></td>
+    <tr >
+        <td align="center">3</td>
+        <td style="padding-left: 100px;">จากข้อก่อนหน้า นักศึกษาควรได้รับการพัฒนาปรับปรุงทักษะใดเพิ่มเติม เพื่อให้มีความพร้อมสำหรับการทำงานสายไอทีและเป็นไปตามที่บริษัทต้องการ</td>
+        <td align="center"><input name="answerText3" style="width: 200px; height: 25px"/></td>
 
     </tr>
-    <tr align="center">
-        <td>4</td>
-        <td>ในปีการศึกษาถัดไป บริษัทมีความต้องการรับนักศึกษาสาขาวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่โจ้ เข้าฝึกปฏิบัติสหกิจศึกษาอีกหรือไม่?</td>
-        <td><input name="answerText4" style="width: 200px; height: 25px"/></td>
+    <tr >
+        <td align="center">4</td>
+        <td style="padding-left: 100px;">ในปีการศึกษาถัดไป บริษัทมีความต้องการรับนักศึกษาสาขาวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่โจ้ เข้าฝึกปฏิบัติสหกิจศึกษาอีกหรือไม่?</td>
+        <td align="center"><input name="answerText4" style="width: 200px; height: 25px"/></td>
 
     </tr>
-    <tr align="center">
-        <td>5</td>
-        <td>ความคิดเห็นอื่นๆ (ถ้ามี)</td>
-        <td><input name="answerText5" style="width: 200px; height: 25px"/></td>
+    <tr >
+        <td align="center">5</td>
+        <td style="padding-left: 100px;">ความคิดเห็นอื่นๆ (ถ้ามี)</td>
+        <td align="center"><input name="answerText5" style="width: 200px; height: 25px"/></td>
     </tr>
 </table>
-        <div align="center" style="margin: 50px 0px 40px 0px;">
-            <button type="submit" class="btn btn-success">บันทึก</button>
-            <button type="button" class="btn btn-warning">ยกเลิก</button>
+        <div align="center" style="display: inline-block; width: 100%; margin-top: 20px;">
+            <div style="display: inline-block;"><button type="button" onclick="openForm1()" id="back" class="btn btn-warning" >ย้อนกลับ</button></div>
+            <div style="display: inline-block;"><button type="submit" class="btn btn-success">บันทึก</button></div>
         </div>
     </div>
 </form>
@@ -247,13 +302,13 @@
 <%--    <button id="FClick" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>--%>
 <%--    <button class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>--%>
 <%--</div>--%>
-<div class="list_course_detail" align="center">
-    <div class="hr_line"></div>
-<%--    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>--%>
-<%--    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>--%>
-    <button onclick="openForm2()" id="next" class="btn btn-success" style="margin-bottom: 30px">ต่อไป</button>
-    <button onclick="openForm1()" id="back" class="btn btn-primary" style="margin-bottom: 30px">ย้อนกลับ</button>
-</div>
+<%--<div class="list_course_detail" align="center">--%>
+<%--    <div class="hr_line"></div>--%>
+<%--&lt;%&ndash;    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>&ndash;%&gt;--%>
+<%--&lt;%&ndash;    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>&ndash;%&gt;--%>
+<%--    <button onclick="openForm2()" id="next" class="btn btn-success" style="margin-bottom: 30px">ต่อไป</button>--%>
+<%--    <button onclick="openForm1()" id="back" class="btn btn-primary" style="margin-bottom: 30px">ย้อนกลับ</button>--%>
+<%--</div>--%>
 
 <script>
     function getSumAndSet () {

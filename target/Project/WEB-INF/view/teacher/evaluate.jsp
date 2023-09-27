@@ -44,7 +44,7 @@
         <tr >
             <td><p>ตำแหน่งงานที่ฝึกปฎิบัติ</p></td>
             <td><input type="text"  value="${student.workposition}" disabled></td>
-            <td><p style="text-align: right;">&nbsp;&nbsp; ระยะเวลาการประเมิน &nbsp;&nbsp;</p></td>
+            <td><p style="text-align: right;">&nbsp;&nbsp; วันที่ประเมิน &nbsp;&nbsp;</p></td>
             <td><input type="text"  disabled></td>
         </tr>
     </table><br><br>
@@ -210,12 +210,6 @@
     </div>
 </form>
 
-<%--<div align="center">--%>
-<%--    <div class="hr_line"></div>--%>
-<%--    &lt;%&ndash;    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>&ndash;%&gt;--%>
-<%--    &lt;%&ndash;    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>&ndash;%&gt;--%>
-<%--    --%>
-<%--</div>--%>
 <script>
     function getSumAndSet () {
         var sumScore = 0;
