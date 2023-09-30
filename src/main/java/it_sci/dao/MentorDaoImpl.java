@@ -79,15 +79,15 @@ public class MentorDaoImpl implements MentorDao {
         return mentor;
     }
 
-    @Override
-    public List<Student> getMentorDoesNotHaveStudent(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        Query<Student> query = session.createQuery("select s.students from Mentor s where s.mentor_id=:id");
-        query.setParameter("id",id);
-        List<Student> stuList1 = query.getResultList();
-        query = session.createQuery("from Student");
-        List<Student> stuList2 = query.getResultList();
-        stuList2.removeAll(stuList1);
-        return stuList2;
-    }
+//    @Override
+//    public List<Student> getMentorDoesNotHaveStudent(int id) {
+//        Session session = sessionFactory.getCurrentSession();
+//        Query<Student> query = session.createQuery("select s.students from Mentor s where s.mentor_id=:id");
+//        query.setParameter("id",id);
+//        List<Student> stuList1 = query.getResultList();
+//        query = session.createQuery("from Student");
+//        List<Student> stuList2 = query.getResultList();
+//        stuList2.removeAll(stuList1);
+//        return stuList2;
+//    }
 }

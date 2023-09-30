@@ -10,9 +10,9 @@
 <header id="header" class="fixed-top header-transparent" style="background: #990D28">
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
-        <div class="logo">
-            <h1 class="text-light"><a href="index.html"><span>Squadfree</span></a></h1>
-        </div>
+<%--        <div class="logo">--%>
+<%--            <h1 class="text-light"><a href="index.html"><span>Squadfree</span></a></h1>--%>
+<%--        </div>--%>
 
         <nav id="navbar" class="navbar">
             <ul>

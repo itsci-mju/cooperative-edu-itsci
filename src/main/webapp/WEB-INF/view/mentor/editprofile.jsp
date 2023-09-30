@@ -26,31 +26,39 @@
             <p class="editpro_header2">แก้ไขข้อมูลส่วนตัว</p>
         </div>
     </div>
-<table class="edit_profile" align="center">
-    <tr>
-        <td colspan="4">
-            <input name="profile" type="file" id="profile">
-            <c:if test="${not empty mentor_profile.mentor_image}">
-                <input type="hidden" name="original_img" value="${mentor_profile.mentor_image}">
-                <img class="profile" src="${pageContext.request.contextPath}/assets/img/mentor_profile/${mentor_profile.mentor_image}">
-            </c:if>
 
-        </td>
-    </tr>
-    <div class="linehorizontal"></div>
-    <tr>
-        <td colspan="2"><p>ข้อมูลพนักงานพี่เลี้ยง</p></td>
-    </tr>
-    <tr></tr>
+    <div align="center">
+        <label for="profile-image" class="profile-image-label">
+            <img class="profile" src="${pageContext.request.contextPath}/assets/img/mentor_profile/${mentor_profile.mentor_image}">
+            <i class="bi bi-pencil-square"></i>
+        </label>
+        <input name="profile" type="file" id="profile-image" class="profile-image-input">
+        <c:if test="${not empty mentor_profile.mentor_image}">
+            <input type="hidden" name="original_img" value="${mentor_profile.mentor_image}">
+        </c:if>
+    </div><br><br>
+    <h5 style="margin-left: 200px; font-family: 'Kanit', sans-serif; font-weight: bold;">ข้อมูลพนักงานพี่เลี้ยง</h5>
+    <hr style="height: 3px; width: 1060px; background-color: #990D28; border: none; box-shadow: 0 4px 6px #990D28; margin-left: 200px;"><br>
+<table class="edit_profile" align="center">
+<%--    <tr>--%>
+<%--            <td colspan="4">--%>
+<%--            <input name="profile" type="file" id="profile">--%>
+<%--            <c:if test="${not empty mentor_profile.mentor_image}">--%>
+<%--                <input type="hidden" name="original_img" value="${mentor_profile.mentor_image}">--%>
+<%--                <img class="profile" src="${pageContext.request.contextPath}/assets/img/mentor_profile/${mentor_profile.mentor_image}">--%>
+<%--            </c:if>--%>
+
+<%--        </td>--%>
+<%--    </tr>--%>
     <tr>
         <td ><p>รหัสพนักงาน</p></td>
-        <td><input type="text" value="${mentor_profile.mentor_id}" disabled></td>
+        <td ><input type="text" value="${mentor_profile.mentor_id}" disabled></td>
     </tr>
     <tr>
-        <td><p>ชื่อพนักงาน</p></td>
-        <td><input type="text" id="mentor_name" name="mentor_name" value="${mentor_profile.mentor_name}"></td>
-        <td><p >&nbsp;&nbsp; นามสกุล &nbsp;&nbsp;</p></td>
-        <td><input type="text" id="mentor_lastname" name="mentor_lastname" value="${mentor_profile.mentor_lastname}"></td>
+        <td ><p>ชื่อพนักงาน</p></td>
+        <td ><input type="text" id="mentor_name" name="mentor_name" value="${mentor_profile.mentor_name}"></td>
+        <td ><p >&nbsp;&nbsp; นามสกุล &nbsp;&nbsp;</p></td>
+        <td ><input type="text" id="mentor_lastname" name="mentor_lastname" value="${mentor_profile.mentor_lastname}"></td>
 
 
     </tr>
@@ -58,8 +66,8 @@
         <td><p>ชื่อเล่นพนักงาน</p></td>
         <td><input type="text" id="mentor_nickname" name="mentor_nickname" value="${mentor_profile.mentor_nickname}"></td>
 
-        <td><p style="text-align: right;">&nbsp;&nbsp; ตำแหน่ง &nbsp;&nbsp;</p></td>
-        <td><input type="text" id="mentor_position" name="mentor_position" value="${mentor_profile.mentor_position}"></td>
+        <td ><p style="text-align: right;">&nbsp;&nbsp; ตำแหน่ง &nbsp;&nbsp;</p></td>
+        <td ><input type="text" id="mentor_position" name="mentor_position" value="${mentor_profile.mentor_position}"></td>
     </tr>
     <tr></tr>
     <tr>

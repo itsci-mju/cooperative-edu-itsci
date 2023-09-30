@@ -11,6 +11,6 @@ public interface MentorDao {
     Mentor getMentorProfile(int id);
 
     Mentor updateMentor (Mentor mentor) ;
-    List<Student> getMentorDoesNotHaveStudent(int id);
+//    List<Student> getMentorDoesNotHaveStudent(int id);
 
 }

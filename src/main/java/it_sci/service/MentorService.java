@@ -11,7 +11,7 @@ public interface MentorService {
     Mentor getMentorProfile(int id);
 
     void updateMentor(Mentor mentor);
-    List<Student> getMentorDoesNotHaveStudent(int id);
+//    List<Student> getMentorDoesNotHaveStudent(int id);
 
     List<Mentor> getListStudentByMenterId(int mentor_id);
 }

@@ -39,11 +39,11 @@ public class MentorServiceImpl implements MentorService {
         mentorDao.updateMentor(mentor);
     }
 
-    @Override
-    @Transactional
-    public List<Student> getMentorDoesNotHaveStudent(int id) {
-        return mentorDao.getMentorDoesNotHaveStudent(id);
-    }
+//    @Override
+//    @Transactional
+//    public List<Student> getMentorDoesNotHaveStudent(int id) {
+//        return mentorDao.getMentorDoesNotHaveStudent(id);
+//    }
 
     @Override
     @Transactional
