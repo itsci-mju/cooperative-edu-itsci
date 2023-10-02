@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,6 +35,25 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
         return query.getResultList();
     }
 
+//    @Override
+//    public List<Student> getAllListSemester() {
+//        Session session = sessionFactory.getCurrentSession();
+//        Query<Student> query = session.createQuery("SELECT semester FROM Student GROUP BY semester ORDER BY semester DESC", Student.class);
+//        return query.getResultList();
+//    }
+
+    @Override
+    public List<String> getAllListSemester() {
+        Session session = sessionFactory.getCurrentSession();
+        Query<String> query = session.createQuery("SELECT DISTINCT s.semester FROM Student s ORDER BY s.semester DESC", String.class);
+        return query.getResultList();
+    }
+
+
+
+
+
+
     @Override
     public List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id) {
         Session session = sessionFactory.getCurrentSession();
@@ -48,6 +68,8 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
         Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate t ", TeacherEvaluate.class);
         return query.getResultList();
     }
+
+
 
     @Override
     public void saveTeacherAnswer(TeacherAnswer teacherAnswer) {
@@ -77,5 +99,10 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
         query.setParameter("tId", ass_id);
         return query.getSingleResult();
     }
+
+//    @Override
+//    public List<TeacherEvaluate> getTeacherEvaluateByCompany(int companyId) {
+//        return null;
+//    }
 
 }

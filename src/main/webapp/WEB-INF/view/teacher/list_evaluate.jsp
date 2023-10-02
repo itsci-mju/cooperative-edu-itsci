@@ -8,9 +8,9 @@
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
-<body><br><br>
+<body ><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ผลการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
@@ -43,6 +43,8 @@
     </table>
 
 
-</body>
-<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
+</body><br><br><br><br>
+
 </html>
+
+<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>

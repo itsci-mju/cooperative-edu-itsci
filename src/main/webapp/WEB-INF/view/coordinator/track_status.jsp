@@ -22,7 +22,7 @@
 </style>
 <body><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ระบบตรวจสอบสถานะการประเมิน (อาจารย์ผู้ประสานงาน)</p>
@@ -60,7 +60,18 @@
             <td align="center">อาจารย์</td>
             <td align="center">สถานะการประเมิน</td>
         </tr>
-        <%--        ${students}--%>
+
+<%--        <form action="/view_summary" method="get">--%>
+<%--            <select name="semester">--%>
+<%--                <option value="">เลือก Semester</option>--%>
+<%--                <c:forEach items="${list_semesters}" var="semester">--%>
+<%--                    <option value="${semester}">${semester}</option>--%>
+<%--                </c:forEach>--%>
+<%--            </select>--%>
+<%--            <button type="submit">ค้นหา</button>--%>
+<%--        </form>--%>
+
+
         <c:forEach var="teacherEvaluate" items="${list_teacher_status}">
             <c:set var="startdate" value="${teacherEvaluate.student.startdate}" />
             <c:set var="enddate" value="${teacherEvaluate.student.enddate}"/>
@@ -170,6 +181,6 @@
 
 
 
-</body>
-<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
+</body><br><br><br><br>
 </html>
+<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>

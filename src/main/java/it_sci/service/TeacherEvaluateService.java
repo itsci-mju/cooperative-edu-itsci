@@ -1,16 +1,17 @@
 package it_sci.service;
 
-import it_sci.model.Mentor;
-import it_sci.model.MentorEvaluate;
-import it_sci.model.TeacherAnswer;
-import it_sci.model.TeacherEvaluate;
+import it_sci.model.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface TeacherEvaluateService {
 
     List<TeacherEvaluate> getTeacherEvaluateByTeacherId (int tEvaId, int companyId);
+
     List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id);
+
+    List<String> getAllListSemester() ;
     void saveTeacherEvaluate(TeacherEvaluate teacherEvaluate);
 
     TeacherEvaluate updateTeacherEvaluate (TeacherEvaluate teacherEvaluate);
@@ -18,4 +19,5 @@ public interface TeacherEvaluateService {
     void saveTeacherAnswer(TeacherAnswer teacherAnswer);
     TeacherEvaluate getTeacherEvaluateById(long ass_id);
     List<TeacherEvaluate> getTeacherEvaluate();
+
 }

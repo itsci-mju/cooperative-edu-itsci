@@ -13,11 +13,17 @@
     .tabcontent {
         display: none;
     }
+
+    .table table-hover input[type="text"]{
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 </style>
 
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
-<body><br>
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<body ><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 
 <form action="${pageContext.request.contextPath}/teacher/submit_evaluate_by_teacher/${ass_id}" method="POST" >
 
@@ -192,15 +198,23 @@
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>ความคิดเห็น</td>
     </tr>
-    <tr >
+    <tr>
         <td align="center">1</td>
-        <td style="padding-left: 100px;">นักศึกษาได้ปฏิบัติงานตรงตามตำแหน่งที่สาขาวิชาส่งไปหรือไม่?</td>
-        <td align="center"><input name="answerText1" /></td>
+        <td style="padding-left: 10px;">นักศึกษาได้ปฏิบัติงานตรงตามตำแหน่งที่สาขาวิชาส่งไปหรือไม่?</td>
+        <td>
+            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
+                <textarea name="answerText1" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; width: 100%; height: 80px;"></textarea>
+            </div>
+        </td>
     </tr>
     <tr>
         <td align="center">2</td>
-        <td style="padding-left: 100px;">ข้อความบันทึก/หมายเหตุเพิ่มเติม (ถ้ามี)</td>
-        <td align="center"><input name="answerText2" /></td>
+        <td style="padding-left: 10px;">ข้อความบันทึก/หมายเหตุเพิ่มเติม (ถ้ามี)</td>
+        <td>
+            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
+                <textarea name="answerText2" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; width: 100%; height: 80px;"></textarea>
+            </div>
+        </td>
     </tr>
 </table>
     <div align="center" style="display: inline-block; width: 100%; margin-top: 20px;">
@@ -268,7 +282,7 @@
 
         document.getElementById("next").style.display = "none"
     }
-</script>
+</script><br><br><br><br>
 
-<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
 </html>
+<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>

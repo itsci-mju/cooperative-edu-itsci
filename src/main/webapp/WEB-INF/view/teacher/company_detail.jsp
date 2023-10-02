@@ -37,7 +37,7 @@
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <body><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
@@ -67,6 +67,6 @@
         <td><p>เบอร์โทรศัพท์</p></td>
         <td style="padding: 20px 0px 20px 0px;"><input type="text"  value="${company_detail.phone_number}" disabled></td>
     </tr>
-</table><br><br>
+</table><br><br><br><br>
 </body>
 </html>

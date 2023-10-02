@@ -262,34 +262,79 @@
         <td>เกณฑ์การประเมินการฝึกสหกิจศึกษา</td>
         <td>ความคิดเห็น</td>
     </tr>
-    <tr >
+    <tr>
         <td align="center">1</td>
-        <td style="padding-left: 100px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้  มีจุดเด่นในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>
-        <td align="center"><input name="answerText1" style="width: 200px; height: 25px"/></td>
+        <td style="padding-left: 10px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้  มีจุดเด่นในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง?</td>
+        <td>
+            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
+                <textarea name="answerText1" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; width: 100%; height: 80px;"></textarea>
+            </div>
+        </td>
     </tr>
-    <tr >
+    <tr>
         <td align="center">2</td>
-        <td style="padding-left: 100px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้ มีจุดด้อยในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>
-        <td align="center"><input name="answerText2" style="width: 200px; height: 25px"/></td>
-
+        <td style="padding-left: 10px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้ มีจุดด้อยในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>
+        <td>
+            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
+                <textarea name="answerText2" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; width: 100%; height: 80px;"></textarea>
+            </div>
+        </td>
     </tr>
-    <tr >
+    <tr>
         <td align="center">3</td>
-        <td style="padding-left: 100px;">จากข้อก่อนหน้า นักศึกษาควรได้รับการพัฒนาปรับปรุงทักษะใดเพิ่มเติม เพื่อให้มีความพร้อมสำหรับการทำงานสายไอทีและเป็นไปตามที่บริษัทต้องการ</td>
-        <td align="center"><input name="answerText3" style="width: 200px; height: 25px"/></td>
-
+        <td style="padding-left: 10px;">จากข้อก่อนหน้า นักศึกษาควรได้รับการพัฒนาปรับปรุงทักษะใดเพิ่มเติม เพื่อให้มีความพร้อมสำหรับการทำงานสายไอทีและเป็นไปตามที่บริษัทต้องการ</td>
+        <td>
+            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
+                <textarea name="answerText3" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; width: 100%; height: 80px;"></textarea>
+            </div>
+        </td>
     </tr>
-    <tr >
+    <tr>
         <td align="center">4</td>
-        <td style="padding-left: 100px;">ในปีการศึกษาถัดไป บริษัทมีความต้องการรับนักศึกษาสาขาวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่โจ้ เข้าฝึกปฏิบัติสหกิจศึกษาอีกหรือไม่?</td>
-        <td align="center"><input name="answerText4" style="width: 200px; height: 25px"/></td>
+        <td style="padding-left: 10px;">ในปีการศึกษาถัดไป บริษัทมีความต้องการรับนักศึกษาสาขาวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่โจ้ เข้าฝึกปฏิบัติสหกิจศึกษาอีกหรือไม่?</td>
+        <td>
+            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
+                <textarea name="answerText4" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; width: 100%; height: 80px;"></textarea>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">4</td>
+        <td style="padding-left: 10px;">ความคิดเห็นอื่นๆ (ถ้ามี)</td>
+        <td>
+            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
+                <textarea name="answerText5" style="padding: 5px; border: 1px solid #ccc; border-radius: 5px; width: 100%; height: 80px;"></textarea>
+            </div>
+        </td>
+    </tr>
+<%--    <tr >--%>
+<%--        <td align="center">1</td>--%>
+<%--        <td style="padding-left: 100px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้  มีจุดเด่นในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>--%>
+<%--        <td align="center"><input name="answerText1" style="width: 200px; height: 25px"/></td>--%>
+<%--    </tr>--%>
+<%--    <tr >--%>
+<%--        <td align="center">2</td>--%>
+<%--        <td style="padding-left: 100px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้ มีจุดด้อยในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>--%>
+<%--        <td align="center"><input name="answerText2" style="width: 200px; height: 25px"/></td>--%>
 
-    </tr>
-    <tr >
-        <td align="center">5</td>
-        <td style="padding-left: 100px;">ความคิดเห็นอื่นๆ (ถ้ามี)</td>
-        <td align="center"><input name="answerText5" style="width: 200px; height: 25px"/></td>
-    </tr>
+<%--    </tr>--%>
+<%--    <tr >--%>
+<%--        <td align="center">3</td>--%>
+<%--        <td style="padding-left: 100px;">จากข้อก่อนหน้า นักศึกษาควรได้รับการพัฒนาปรับปรุงทักษะใดเพิ่มเติม เพื่อให้มีความพร้อมสำหรับการทำงานสายไอทีและเป็นไปตามที่บริษัทต้องการ</td>--%>
+<%--        <td align="center"><input name="answerText3" style="width: 200px; height: 25px"/></td>--%>
+
+<%--    </tr>--%>
+<%--    <tr >--%>
+<%--        <td align="center">4</td>--%>
+<%--        <td style="padding-left: 100px;">ในปีการศึกษาถัดไป บริษัทมีความต้องการรับนักศึกษาสาขาวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่โจ้ เข้าฝึกปฏิบัติสหกิจศึกษาอีกหรือไม่?</td>--%>
+<%--        <td align="center"><input name="answerText4" style="width: 200px; height: 25px"/></td>--%>
+
+<%--    </tr>--%>
+<%--    <tr >--%>
+<%--        <td align="center">5</td>--%>
+<%--        <td style="padding-left: 100px;">ความคิดเห็นอื่นๆ (ถ้ามี)</td>--%>
+<%--        <td align="center"><input name="answerText5" style="width: 200px; height: 25px"/></td>--%>
+<%--    </tr>--%>
 </table>
         <div align="center" style="display: inline-block; width: 100%; margin-top: 20px;">
             <div style="display: inline-block;"><button type="button" onclick="openForm1()" id="back" class="btn btn-warning" >ย้อนกลับ</button></div>

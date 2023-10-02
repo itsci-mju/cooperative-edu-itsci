@@ -54,7 +54,7 @@
 <%--style="background-color: #fcfaf1;"--%>
 <body ><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ระบบการกำหนดอาจารย์นิเทศการฝึกสหกิจศึกษา (อาจารย์ผู้ประสานงาน)</p>
@@ -107,7 +107,7 @@
     <button type="submit" class="btn btn-success">บันทึก</button>
     <button type="button" class="btn btn-warning">ยกเลิก</button>
 </div>
-</form>
+</form><br><br><br><br>
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
 </body>
 </html>

@@ -8,9 +8,9 @@
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 
-<body><br><br>
+<body ><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
@@ -31,6 +31,11 @@
             <td align="center"> ${company.company_id}</td>
             <td> ${company.company_name}</td>
             <td align="center">${company.students.size()}</td>
+<%--            <td align="center">--%>
+<%--                <a href="${pageContext.request.contextPath}/company/${company.company_id}/view_company_detail">--%>
+<%--                    <i class="bi bi-postcard" style="font-size: 28px;"></i>--%>
+<%--                </a>--%>
+<%--            </td>--%>
             <td align="center">
                 <a href="${pageContext.request.contextPath}/company/${company.company_id}/view_company_detail">
                     <i class="bi bi-postcard" style="font-size: 28px;"></i>
@@ -54,6 +59,8 @@
 </table>
 
 
-</body>
-<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
+</body><br><br><br><br>
+
 </html>
+
+<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>

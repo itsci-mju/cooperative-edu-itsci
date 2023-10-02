@@ -31,7 +31,10 @@ public class Company {
     @Column(name = "average",nullable = false)
     private double average;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+//    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+//    private List<Student> students;
+
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Student> students;
 
 

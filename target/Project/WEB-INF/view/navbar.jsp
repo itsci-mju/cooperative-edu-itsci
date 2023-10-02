@@ -5,6 +5,25 @@
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
+<style>
+    .navbar .dropdown ul a {
+        padding: 10px 20px;
+        font-size: 15px;
+        text-transform: none;
+        font-weight: 600;
+        color: #070707;
+    }
+
+    .navbar .dropdown ul a i {
+        font-size: 12px;
+    }
+
+    .navbar .dropdown ul a:hover,
+    .navbar .dropdown ul .active:hover,
+    .navbar .dropdown ul li:hover>a {
+        color: #a1a0a0;
+    }
+</style>
 <body><br><br>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top header-transparent" style="background: #990D28">
@@ -16,12 +35,10 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="#hero" style="font-family: 'Kanit', sans-serif">หน้าแรก</a></li>
-                <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-                <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                <li class="dropdown"><a href="#"><span style="font-family: 'Kanit', sans-serif">เข้าสู่ระบบ</span> <i class="bi bi-chevron-down"></i></a>
+                <li><a class="nav-link scrollto active" href="#hero" style="font-family: 'Kanit', sans-serif; margin-left: 100px;">หน้าแรก</a></li>
+<%--                <li><a class="nav-link scrollto" href="#about">About Us</a></li>--%>
+<%--                <li><a class="nav-link scrollto" href="#team">Team</a></li>--%>
+                <li class="dropdown" style="margin-left: 1000px;"><a href="#"><span style="font-family: 'Kanit', sans-serif">เข้าสู่ระบบ</span> <i class="bi bi-chevron-down" ></i></a>
                     <ul >
                         <li ><a style="font-family: 'Kanit', sans-serif" href="${pageContext.request.contextPath}/loginTeacher">เข้าสู่ระบบอาจารย์</a></li>
                         <li ><a style="font-family: 'Kanit', sans-serif" href="${pageContext.request.contextPath}/loginMentor">เข้าสู่ระบบพนักงานพี่เลี้ยง</a></li>

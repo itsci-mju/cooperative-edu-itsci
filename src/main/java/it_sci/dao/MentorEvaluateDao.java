@@ -9,6 +9,8 @@ public interface MentorEvaluateDao {
     List<MentorEvaluate> getAllMentorEvaluates ();
     MentorEvaluate getMentorEvaluateById (long mEvaId);
     void saveMentorEvaluate(MentorEvaluate mentorEvaluate);
+
+    List<String> getAllListSemester();
     MentorEvaluate updateMentorEvaluate (MentorEvaluate mentorEvaluate);
     List<MentorEvaluate> getMentorEvaluateByMentorId (int mEvaId);
     void deleteMentorEvaluate (String mEvaId);

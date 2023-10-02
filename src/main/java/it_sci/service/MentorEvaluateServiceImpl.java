@@ -37,6 +37,13 @@ public class MentorEvaluateServiceImpl implements MentorEvaluateService {
 
     @Override
     @Transactional
+    public List<String> getAllListSemester()  {
+        return mentorEvaluateDao.getAllListSemester();
+
+    }
+
+    @Override
+    @Transactional
     public MentorEvaluate updateMentorEvaluate(MentorEvaluate mentorEvaluate) {
         mentorEvaluateDao.updateMentorEvaluate(mentorEvaluate);
         return mentorEvaluate;
@@ -57,4 +64,9 @@ public class MentorEvaluateServiceImpl implements MentorEvaluateService {
     public double getSumScoreMentor(String stu_id) {
         return mentorEvaluateDao.getSumScoreMentor(stu_id);
     }
+
+//    @Override
+//    public List<MentorEvaluate> getMentorEvaluateByCompany(int companyId) {
+//        return null;
+//    }
 }

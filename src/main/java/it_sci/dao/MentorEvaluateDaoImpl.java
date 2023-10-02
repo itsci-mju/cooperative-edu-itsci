@@ -56,6 +56,13 @@ public class MentorEvaluateDaoImpl implements MentorEvaluateDao {
     }
 
     @Override
+    public List<String> getAllListSemester() {
+        Session session = sessionFactory.getCurrentSession();
+        Query<String> query = session.createQuery("SELECT DISTINCT s.semester FROM Student s ORDER BY s.semester DESC", String.class);
+        return query.getResultList();
+    }
+
+    @Override
     public double getSumScoreMentor(String stu_id) {
         Session session = sessionFactory.getCurrentSession();
         Query<MentorEvaluate> query = session.createQuery("FROM MentorEvaluate m " +

@@ -1,10 +1,8 @@
 package it_sci.service;
 
 
-import it_sci.dao.MentorEvaluateDao;
 import it_sci.dao.StudentDao;
 import it_sci.dao.TeacherEvaluateDao;
-import it_sci.model.MentorEvaluate;
 import it_sci.model.Student;
 import it_sci.model.TeacherAnswer;
 import it_sci.model.TeacherEvaluate;
@@ -37,6 +35,13 @@ public class TeacherEvaluateServiceImpl implements TeacherEvaluateService {
 
     @Override
     @Transactional
+    public List<String> getAllListSemester()  {
+        return teacherEvaluateDao.getAllListSemester();
+
+    }
+
+    @Override
+    @Transactional
     public void saveTeacherEvaluate(TeacherEvaluate teacherEvaluate) {
         teacherEvaluateDao.saveTeacherEvaluate(teacherEvaluate);
     }
@@ -65,5 +70,8 @@ public class TeacherEvaluateServiceImpl implements TeacherEvaluateService {
     public List<TeacherEvaluate> getTeacherEvaluate() {
         return teacherEvaluateDao.getTeacherEvaluate();
     }
+
+
+
 
 }

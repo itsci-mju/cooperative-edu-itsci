@@ -17,10 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/teacher")
@@ -104,7 +101,7 @@ public class TeacherController {
         List<TeacherEvaluate> teacherEvaluate = teacherEvaluateService.getTeacherEvaluateByTeacherId(teacher_id,company_id);
         model.addAttribute("ListStudents", teacherEvaluate);
 
-        System.out.println(teacherEvaluate);
+//        System.out.println(teacherEvaluate);
 //        List<Student> students = mentorService.getMentorDoesNotHaveStudent(21);
 //        System.out.println(students.size());
 //        model.addAttribute("students",students);
@@ -181,6 +178,57 @@ public class TeacherController {
         return "coordinator/track_status";
     }
 
+//    @GetMapping("/list_status/{company_id}")
+//    public String getListStatus(@RequestParam(name = "company_id", required = false) Integer companyId, Model model) {
+//        // ดึงรายการบริษัทมาแสดงใน dropdown
+//        List<Company> companies = companyService.getAllCompanies();
+//
+//        // ถ้าผู้ใช้เลือกบริษัท
+//        if (companyId != null) {
+//            List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluateByCompany(companyId);
+//            List<MentorEvaluate> mentorEvaluates = mentorEvaluateService.getMentorEvaluateByCompany(companyId);
+//            model.addAttribute("list_mentor_status", mentorEvaluates);
+//            model.addAttribute("list_teacher_status", teacherEvaluates);
+//        }
+//
+//        model.addAttribute("list_companies", companies);
+//
+//        return "coordinator/track_status";
+//    }
+
+
+//    @GetMapping("/view_summary")
+//    public String gotoSummaryPage(Model model, @RequestParam(name = "semesterId", required = false) Long semesterId) {
+//        // ดึงรายการ semester มาแสดงใน dropdown
+//        List<Semester> semesters = semesterService.getAllSemesters();
+//
+//        // ดึงรายการนักศึกษาและการประเมินอาจารย์โดยใช้ semesterId ถ้ามีการเลือก semester
+//        List<Student> students;
+//        List<TeacherEvaluate> teacherEvaluates;
+//        if (semesterId != null) {
+//            students = studentService.getStudentsBySemester(semesterId);
+//            teacherEvaluates = teacherEvaluateService.getTeacherEvaluatesBySemester(semesterId);
+//        } else {
+//            // ถ้าไม่มีการเลือก semester ใช้รายการทั้งหมด
+//            students = studentService.getAllStudents();
+//            teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
+//        }
+//
+//        model.addAttribute("list_students", students);
+//        model.addAttribute("list_teacherEvaluates", teacherEvaluates);
+//        model.addAttribute("semester", semesters);
+//
+//        return "coordinator/view_summary";
+//    }
+
+    @GetMapping("/semester")
+    public  String semesterPage(Model model){
+        List<String> strings  = teacherEvaluateService.getAllListSemester();
+
+        model.addAttribute("list_semester", strings );
+        return "coordinator/view_summary";
+    }
+
     @GetMapping("/view_summary")
     public String gotoSummaryPage(Model model) {
         List<Student> students = studentService.getAllStudents();
@@ -205,6 +253,61 @@ public class TeacherController {
         model.addAttribute("list_teacherEvaluates",teacherEvaluates);
         return "coordinator/view_summary";
     }
+
+//        @GetMapping("/view_summary")
+//    public String gotoSummaryPage(Model model ) {
+//        List<String> strings = teacherEvaluateService.getAllListSemester();
+//        System.out.println();
+//        List<Student> students = studentService.getAllStudents();
+//        List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
+//        Session session = null;
+//        try  {
+//            session = sessionFactory.openSession();
+//            for (Student student : students) {
+//                // ดึงข้อมูล TeacherEvaluates และคำนวณคะแนนรวม
+//                Hibernate.initialize(student.getTeacherEvaluates());
+//            }
+//        }
+//        catch (Exception e) {
+//            // จัดการข้อผิดพลาด
+//        } finally {
+//            if (session != null && session.isOpen()) {
+//                session.close(); // ปิดเซสชัน
+//            }
+//        }
+////        model.addAttribute("list_semester", strings);
+//        model.addAttribute("list_students", students);
+//        model.addAttribute("list_teacherEvaluates",teacherEvaluates);
+//        return "coordinator/view_summary";
+//    }
+
+//    @GetMapping("/view_summary")
+//    public String gotoSummaryPage(@RequestParam(name = "selectedSemester", required = false) String selectedSemester, Model model) {
+//        // ดึงรายการนักศึกษา
+//        List<Student> students = studentService.getAllStudents();
+//
+//        // สร้าง List สำหรับเก็บ semester ที่คุณจะแสดงใน dropdown
+//        List<String> semesters = new ArrayList<>();
+//
+//        // วนลูปผ่านรายการนักศึกษาเพื่อเพิ่ม semester ลงใน List
+//        for (Student student : students) {
+//            String semester = student.getSemester();
+//            if (!semesters.contains(semester)) {
+//                semesters.add(semester);
+//            }
+//        }
+//
+//        // ส่งรายการนักศึกษาและรายการ semester ไปยังหน้า view ผ่าน model
+//        model.addAttribute("list_students", students);
+//        model.addAttribute("list_semesters", semesters);
+//
+//        // ส่ง semester ที่ผู้ใช้เลือกใน dropdown ไปยังหน้า view
+//        model.addAttribute("selectedSemester", selectedSemester);
+//
+//        return "coordinator/view_summary";
+//    }
+
+
 
 //    @RequestMapping(value = "/ViewExportSummaryReport" , method = RequestMethod.GET)
 //    public String ViewExportSummaryReport(HttpServletRequest  request ,HttpSession session) {
