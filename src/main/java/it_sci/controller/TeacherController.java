@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -222,15 +223,17 @@ public class TeacherController {
 //    }
 
     @GetMapping("/semester")
-    public  String semesterPage(Model model){
-        List<String> strings  = teacherEvaluateService.getAllListSemester();
+    public  String semesterPage(Model model, HttpSession session){
+//        List<String> strings  = teacherEvaluateService.getAllListSemester();
 
-        model.addAttribute("list_semester", strings );
+//        model.addAttribute("list_semester", s );
         return "coordinator/view_summary";
     }
 
-    @GetMapping("/view_summary")
-    public String gotoSummaryPage(Model model) {
+    @RequestMapping("/view_summary")
+    public String gotoSummaryPage (Model model) {
+        List<String> semesters  = teacherEvaluateService.getAllListSemester();
+        System.out.println("---------------------------------------------"+semesters);
         List<Student> students = studentService.getAllStudents();
         List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
         Session session = null;
@@ -248,7 +251,7 @@ public class TeacherController {
                 session.close(); // ปิดเซสชัน
             }
         }
-
+        model.addAttribute("list_semester", semesters);
         model.addAttribute("list_students", students);
         model.addAttribute("list_teacherEvaluates",teacherEvaluates);
         return "coordinator/view_summary";

@@ -46,7 +46,9 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
     public List<String> getAllListSemester() {
         Session session = sessionFactory.getCurrentSession();
         Query<String> query = session.createQuery("SELECT DISTINCT s.semester FROM Student s ORDER BY s.semester DESC", String.class);
-        return query.getResultList();
+        List<String> semesters = query.getResultList();
+        System.out.println("---------------------------------------------"+semesters);
+        return semesters;
     }
 
 

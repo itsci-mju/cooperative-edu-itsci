@@ -23,7 +23,7 @@
 
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <body ><br>
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
 
 <form action="${pageContext.request.contextPath}/teacher/submit_evaluate_by_teacher/${ass_id}" method="POST" >
 

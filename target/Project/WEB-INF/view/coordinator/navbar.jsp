@@ -51,7 +51,7 @@
                 <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/<%=teacher.getTeacher_id()%>/list_company_by_teacher" style="font-family: 'Prompt', sans-serif">ประเมินผลการฝึกสหกิจศึกษา</a></li>
                 <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_evaluate_by_teacher/<%=teacher.getTeacher_id()%>" style="font-family: 'Prompt', sans-serif">ผลการประเมินการฝึกสหกิจศึกษา</a></li>
                 <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_status/" style="font-family: 'Prompt', sans-serif">ตรวจสอบสถานะ</a></li>
-                <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/mentor/view_summary" style="font-family: 'Prompt', sans-serif">ดูผลสรุปคะแนน</a></li>
+                <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/view_summary" style="font-family: 'Prompt', sans-serif">ดูผลสรุปคะแนน</a></li>
             </ul>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/company/list_company/" style="font-family: 'Prompt', sans-serif">กำหนดอาจารย์นิเทศ</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/" style="font-family: 'Prompt', sans-serif">จัดการการเข้าสู่ระบบของพี่เลี้ยง</a></li>

@@ -15,14 +15,6 @@
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <%
     Teacher teacher = (Teacher) session.getAttribute("teacher");
-//    List<String> semesters = null;
-//    try {
-//        semesters = (List)request.getAttribute("list_semester");
-//
-//    } catch (Exception e) {
-//
-//    }
-////    String semester = (String)request.getAttribute("list_semester");
 %>
 <body><br><br>
 
@@ -36,9 +28,9 @@
 
 <div align="center">
     <p style="display: inline-block">ภาคการศึกษา</p>
-    <select>
-        <c:forEach items="${list_semester}" var="semester">
-            <option value="${semester}">${semester}</option>
+    <select >
+        <c:forEach items="${list_semester}" var="listsemester">
+            <option value="${listsemester}">${listsemester}</option>
         </c:forEach>
     </select>
 </div>
@@ -48,35 +40,10 @@
 
 
 
-<%--<select name="searchDate" id="searchDate" >--%>
-<%--    <%for(int i = 0; i < semesters.size(); i++){ %>--%>
-<%--&lt;%&ndash;    <%if(semesters.get(i).equals(getSemester)){ %>&ndash;%&gt;--%>
-<%--&lt;%&ndash;    <option selected value="<%=semesters.get(i)%>"><%=semesters.get(i)%></option>&ndash;%&gt;--%>
-<%--&lt;%&ndash;    <%}else{ %>&ndash;%&gt;--%>
-<%--    <option value="<%=semesters.get(i)%>"><%=semesters.get(i)%></option>--%>
-<%--    <%} %>--%>
-<%--&lt;%&ndash;    <%} %>&ndash;%&gt;--%>
-<%--</select>--%>
-
-<%--<form action="/view_summary" method="get">--%>
-<%--    <select name="selectedSemester">--%>
-<%--        <option value="">เลือก Semester</option>--%>
-<%--        <th:block th:each="semester : ${list_semesters}">--%>
-<%--            <option th:value="${semester}" th:text="${semester}" th:selected="${semester == selectedSemester}"></option>--%>
-<%--        </th:block>--%>
-<%--    </select>--%>
-<%--    <button type="submit">ค้นหา</button>--%>
-<%--</form>--%>
 
 
-<%--<div align="center" >--%>
-<%--    <p style="display: inline-block;">ภาคการศึกษา</p><select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">--%>
-<%--    <option value="ภาคเรียนที่1/2566" >ภาคเรียนที่1/2566</option>--%>
-<%--    <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>--%>
-<%--    <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>--%>
-<%--    <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>--%>
-<%--</select>--%>
-<%--</div>--%>
+
+
 
 <div style="margin-left: 1365px;">
     <a href="${pageContext.request.contextPath}/">
@@ -103,7 +70,7 @@
             <c:set var="startdate" value="${list.startdate}" />
             <c:set var="enddate" value="${list.enddate}"/>
             <tr>
-                <td align="center"> ${list.student_id}</td>
+                <td align="center"> ${list.student_name}</td>
                 <td align="center"> ${list.student_name} ${list.student_lastname}</td>
                 <td align="center">${list.workposition}</td>
                 <td align="center">

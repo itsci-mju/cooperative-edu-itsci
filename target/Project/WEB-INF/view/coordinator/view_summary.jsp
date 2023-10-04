@@ -15,14 +15,6 @@
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <%
     Teacher teacher = (Teacher) session.getAttribute("teacher");
-//    List<String> semesters = null;
-//    try {
-//        semesters = (List)request.getAttribute("list_semester");
-//
-//    } catch (Exception e) {
-//
-//    }
-////    String semester = (String)request.getAttribute("list_semester");
 %>
 <body><br><br>
 
@@ -36,9 +28,9 @@
 
 <div align="center">
     <p style="display: inline-block">ภาคการศึกษา</p>
-    <select>
-        <c:forEach items="${list_semester}" var="semester">
-            <option value="${semester}">${semester}</option>
+    <select >
+        <c:forEach items="${list_semester}" var="listsemester">
+            <option value="${listsemester}">${listsemester}</option>
         </c:forEach>
     </select>
 </div>
@@ -103,7 +95,7 @@
             <c:set var="startdate" value="${list.startdate}" />
             <c:set var="enddate" value="${list.enddate}"/>
             <tr>
-                <td align="center"> ${list.student_id}</td>
+                <td align="center"> ${list.student_name}</td>
                 <td align="center"> ${list.student_name} ${list.student_lastname}</td>
                 <td align="center">${list.workposition}</td>
                 <td align="center">
