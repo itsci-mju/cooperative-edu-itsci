@@ -16,7 +16,16 @@
         <p class="editpro_header1">ผลการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
         <p class="editpro_header2">รายชื่อนักศึกษา</p>
     </div>
-</div>
+</div><br><br>
+
+<div align="center">
+    <p style="display: inline-block">ภาคการศึกษา</p>
+    <select >
+        <c:forEach items="${list_semester}" var="listsemester">
+            <option value="${listsemester}">${listsemester}</option>
+        </c:forEach>
+    </select>
+</div><br><br>
     <table class="table table-hover" >
         <tr class="table-primary" id="font">
             <td  align="center">รหัสนักศึกษา</td>

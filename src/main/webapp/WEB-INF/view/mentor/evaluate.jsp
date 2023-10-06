@@ -50,7 +50,7 @@
             <td><p style="text-align: right;">&nbsp;&nbsp; วันที่ประเมิน &nbsp;&nbsp;</p></td>
             <td><input type="text"  disabled></td>
         </tr>
-    </table><br><br>
+    </table><br><br><br>
 
     <div id="form1" class="tabcontent">
 <p>ส่วนที่ 1 ให้คะแนนความประพฤติกรรมการปฏิบัติงานสหกิจศึกษาของนักศึกษาในแต่ละด้านและความพึงพอใจโดยรวม (คะแนนเต็ม 60 คะแนน) </p>

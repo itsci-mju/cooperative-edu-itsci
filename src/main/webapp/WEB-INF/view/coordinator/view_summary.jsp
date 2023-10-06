@@ -35,16 +35,6 @@
     </select>
 </div>
 
-
-
-
-
-
-
-
-
-
-
 <div style="margin-left: 1365px;">
     <a href="${pageContext.request.contextPath}/">
         <button type="submit" class="btn btn-success">Export Excel File</button>
@@ -53,7 +43,6 @@
 
 <div>
 
-<%--    <input type="text" value="${student.semester}" disabled>--%>
 </div>
 <table class="table table-hover"  >
     <tr class="table-primary" id="font">

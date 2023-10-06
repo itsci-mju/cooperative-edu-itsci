@@ -28,21 +28,16 @@
         <p class="editpro_header1">ระบบตรวจสอบสถานะการประเมิน (อาจารย์ผู้ประสานงาน)</p>
         <p class="editpro_header2">ตรวจสอบสถานะการประเมิน</p>
     </div>
-</div><br>
-<%--<div>--%>
-<%--    <input type="text" value="${student.semester}" disabled>--%>
-<%--</div>--%>
+</div><br><br>
 
-<br>
-
-<div align="center" >
-    <p style="display: inline-block;">ตรวจสอบสถานะการประเมิน</p><select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">
-    <option value="ภาคเรียนที่1/2566" >ภาคเรียนที่1/2566</option>
-    <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>
-    <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>
-    <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>
-</select>
-</div>
+<div align="center">
+    <p style="display: inline-block">ภาคการศึกษา</p>
+    <select >
+        <c:forEach items="${list_semester}" var="listsemester">
+            <option value="${listsemester}">${listsemester}</option>
+        </c:forEach>
+    </select>
+</div><br><br>
 
 <div align="center">
     <div class="hr_line"></div>

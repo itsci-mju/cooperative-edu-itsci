@@ -83,7 +83,13 @@
         <td style=" padding-left: 30px;">วันที่นิเทศ</td>
         <td style=" padding-left: 30px;"><input type="date" name="teachersupervisiondate" id="teachersupervisiondate"></td>
         <td style=" padding-left: 30px;">เวลานิเทศ</td>
-        <td style=" padding-left: 30px;"><input type="text" name="teachersupervisiontime" id="teachersupervisiontime" ></td>
+        <td style="padding-left: 30px;">
+            <select name="teachersupervisiontime" id="teachersupervisiontime">
+                <option value="09.00-12.00 น.">09.00-12.00 น.</option>
+                <option value="13.00-16.00 น.">13.00-16.00 น.</option>
+            </select>
+        </td>
+
     </tr>
     <tr>
         <td colspan="4" style="padding: 30px 0px 30px 150px; background-color: #bee5eb">เลือกอาจารย์</td>
@@ -110,4 +116,5 @@
 </form><br><br><br><br>
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
 </body>
+
 </html>

@@ -35,41 +35,6 @@
     </select>
 </div>
 
-
-
-
-
-
-<%--<select name="searchDate" id="searchDate" >--%>
-<%--    <%for(int i = 0; i < semesters.size(); i++){ %>--%>
-<%--&lt;%&ndash;    <%if(semesters.get(i).equals(getSemester)){ %>&ndash;%&gt;--%>
-<%--&lt;%&ndash;    <option selected value="<%=semesters.get(i)%>"><%=semesters.get(i)%></option>&ndash;%&gt;--%>
-<%--&lt;%&ndash;    <%}else{ %>&ndash;%&gt;--%>
-<%--    <option value="<%=semesters.get(i)%>"><%=semesters.get(i)%></option>--%>
-<%--    <%} %>--%>
-<%--&lt;%&ndash;    <%} %>&ndash;%&gt;--%>
-<%--</select>--%>
-
-<%--<form action="/view_summary" method="get">--%>
-<%--    <select name="selectedSemester">--%>
-<%--        <option value="">เลือก Semester</option>--%>
-<%--        <th:block th:each="semester : ${list_semesters}">--%>
-<%--            <option th:value="${semester}" th:text="${semester}" th:selected="${semester == selectedSemester}"></option>--%>
-<%--        </th:block>--%>
-<%--    </select>--%>
-<%--    <button type="submit">ค้นหา</button>--%>
-<%--</form>--%>
-
-
-<%--<div align="center" >--%>
-<%--    <p style="display: inline-block;">ภาคการศึกษา</p><select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">--%>
-<%--    <option value="ภาคเรียนที่1/2566" >ภาคเรียนที่1/2566</option>--%>
-<%--    <option value="ภาคเรียนที่3/2565">ภาคเรียนที่3/2565</option>--%>
-<%--    <option value="ภาคเรียนที่2/2565">ภาคเรียนที่2/2565</option>--%>
-<%--    <option value="ภาคเรียนที่2/2563">ภาคเรียนที่2/2563</option>--%>
-<%--</select>--%>
-<%--</div>--%>
-
 <div style="margin-left: 1365px;">
     <a href="${pageContext.request.contextPath}/">
         <button type="submit" class="btn btn-success">Export Excel File</button>
@@ -78,7 +43,6 @@
 
 <div>
 
-<%--    <input type="text" value="${student.semester}" disabled>--%>
 </div>
 <table class="table table-hover"  >
     <tr class="table-primary" id="font">

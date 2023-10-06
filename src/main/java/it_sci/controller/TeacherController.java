@@ -86,6 +86,7 @@ public class TeacherController {
     }
     @GetMapping("/{teacher_id}/list_company_by_teacher")
     public String listCompanyByTeacher (@PathVariable("teacher_id") int teacher_id, Model model) {
+        List<String> semesters  = teacherEvaluateService.getAllListSemester();
 //        List<Company> company = companyService.getAllCompanies();
 //        for (int i = 0 ; i < company.size() ; i++){
 //            System.out.println(company.get(i).getCompany_id());
@@ -93,6 +94,7 @@ public class TeacherController {
 //        }
         List<Company> company = teacherService.getCompanyToAssignByTeacher(teacher_id);
         model.addAttribute("companies",company);
+        model.addAttribute("list_semester", semesters);
         return "teacher/list_company";
     }
 
@@ -157,8 +159,10 @@ public class TeacherController {
 
     @GetMapping("/list_evaluate_by_teacher/{teacher_id}")
     public String getViewTeacherEvaluate(@PathVariable("teacher_id") int id, Model model) {
+        List<String> semesters  = teacherEvaluateService.getAllListSemester();
         List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getViewTeacherEvaluate(id);
         model.addAttribute("list_teacher_evaluate", teacherEvaluates);
+        model.addAttribute("list_semester", semesters);
         return "teacher/list_evaluate";
     }
 
@@ -174,8 +178,10 @@ public class TeacherController {
     public String getListStatus(Model model) {
         List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
         List<MentorEvaluate> mentorEvaluates = mentorEvaluateService.getAllMentorEvaluates();
+        List<String> semesters  = teacherEvaluateService.getAllListSemester();
         model.addAttribute("list_mentor_status", mentorEvaluates);
         model.addAttribute("list_teacher_status", teacherEvaluates);
+        model.addAttribute("list_semester", semesters);
         return "coordinator/track_status";
     }
 
@@ -222,13 +228,6 @@ public class TeacherController {
 //        return "coordinator/view_summary";
 //    }
 
-    @GetMapping("/semester")
-    public  String semesterPage(Model model, HttpSession session){
-//        List<String> strings  = teacherEvaluateService.getAllListSemester();
-
-//        model.addAttribute("list_semester", s );
-        return "coordinator/view_summary";
-    }
 
     @RequestMapping("/view_summary")
     public String gotoSummaryPage (Model model) {

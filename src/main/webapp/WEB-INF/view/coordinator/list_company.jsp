@@ -39,12 +39,41 @@
                     <button type="button" class="btn btn-primary">มอบหมายอาจารย์</button>
                 </a>
             </td>
+<%--            <td align="center">--%>
+<%--                <a href="${pageContext.request.contextPath}/teacher/${company.company_id}/assign_teacher">--%>
+<%--                    <button type="button" class="btn btn-primary" id="assignButton">มอบหมายอาจารย์</button>--%>
+<%--                </a>--%>
+<%--                <button type="button" class="btn btn-secondary" id="editButton" style="display: none;">แก้ไข</button>--%>
+<%--            </td>--%>
+
         </tr>
         </c:forEach>
     </table>
 
 
 </body><br><br><br><br>
+
+<%--<script>--%>
+<%--    // หาปุ่ม "มอบหมายอาจารย์" และปุ่ม "แก้ไข" โดยใช้ ID--%>
+<%--    const assignButton = document.getElementById("assignButton");--%>
+<%--    const editButton = document.getElementById("editButton");--%>
+
+<%--    // เพิ่มการทักท้วงเหตุการณ์คลิกปุ่ม "มอบหมายอาจารย์"--%>
+<%--    assignButton.addEventListener("click", function () {--%>
+<%--        // ดำเนินการที่คุณต้องการเมื่อคลิกปุ่ม "มอบหมายอาจารย์" อย่างเช่น--%>
+<%--        // ปิดปุ่ม "มอบหมายอาจารย์" และแสดงปุ่ม "แก้ไข"--%>
+<%--        assignButton.disabled = true;--%>
+<%--        editButton.style.display = "block";--%>
+<%--    });--%>
+
+<%--    // เพิ่มการทักท้วงเหตุการณ์คลิกปุ่ม "แก้ไข"--%>
+<%--    editButton.addEventListener("click", function () {--%>
+<%--        // ดำเนินการที่คุณต้องการเมื่อคลิกปุ่ม "แก้ไข"--%>
+<%--        // ในกรณีนี้คือการทำอะไรต่อหลังจากคลิกปุ่ม "แก้ไข"--%>
+<%--    });--%>
+
+<%--</script>--%>
+
 
 </html>
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
