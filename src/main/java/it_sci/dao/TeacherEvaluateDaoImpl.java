@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
@@ -35,21 +38,31 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
         return query.getResultList();
     }
 
-//    @Override
-//    public List<Student> getAllListSemester() {
-//        Session session = sessionFactory.getCurrentSession();
-//        Query<Student> query = session.createQuery("SELECT semester FROM Student GROUP BY semester ORDER BY semester DESC", Student.class);
-//        return query.getResultList();
-//    }
 
     @Override
     public List<String> getAllListSemester() {
         Session session = sessionFactory.getCurrentSession();
         Query<String> query = session.createQuery("SELECT DISTINCT s.semester FROM Student s ORDER BY s.semester DESC", String.class);
         List<String> semesters = query.getResultList();
-        System.out.println("---------------------------------------------"+semesters);
+//        System.out.println("---------------------------------------------"+semesters);
         return semesters;
     }
+
+//    @Override
+//    public List<String> getAllListSemester() {
+//        Session session = sessionFactory.getCurrentSession();
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//        CriteriaQuery<String> criteriaQuery = builder.createQuery(String.class);
+//        Root<Student> root = criteriaQuery.from(Student.class);
+//
+//        criteriaQuery.select(root.get("semester")).distinct(true).orderBy(builder.desc(root.get("semester")));
+//
+//        List<String> semesters = session.createQuery(criteriaQuery).getResultList();
+//
+//        // รีเทิร์นรายการภาคการศึกษาที่ได้มา
+//        return semesters;
+//    }
+
 
 
 

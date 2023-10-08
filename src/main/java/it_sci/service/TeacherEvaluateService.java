@@ -12,6 +12,10 @@ public interface TeacherEvaluateService {
     List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id);
 
     List<String> getAllListSemester() ;
+
+    @Transactional
+//    List<String> getAllListSemester(String semester);
+
     void saveTeacherEvaluate(TeacherEvaluate teacherEvaluate);
 
     TeacherEvaluate updateTeacherEvaluate (TeacherEvaluate teacherEvaluate);

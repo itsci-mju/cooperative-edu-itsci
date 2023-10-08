@@ -37,6 +37,11 @@ public class TeacherServiceImpl implements TeacherService{
         return teacherDao.getMentorsByStudentId(studentId);
     }
 
+    @Override
+    public List<Student> getSemester(String semester) {
+        return teacherDao.getSemester(semester);
+    }
+
 
     @Override
     @Transactional

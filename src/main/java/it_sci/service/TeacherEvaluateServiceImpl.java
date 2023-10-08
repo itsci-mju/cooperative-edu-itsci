@@ -3,7 +3,6 @@ package it_sci.service;
 
 import it_sci.dao.StudentDao;
 import it_sci.dao.TeacherEvaluateDao;
-import it_sci.model.Student;
 import it_sci.model.TeacherAnswer;
 import it_sci.model.TeacherEvaluate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,7 @@ public class TeacherEvaluateServiceImpl implements TeacherEvaluateService {
     public List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id) {
         return teacherEvaluateDao.getViewTeacherEvaluate(teacher_id);
     }
+
 
     @Override
     @Transactional

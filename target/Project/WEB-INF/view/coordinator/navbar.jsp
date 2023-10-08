@@ -54,7 +54,7 @@
                 <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/view_summary" style="font-family: 'Prompt', sans-serif">ดูผลสรุปคะแนน</a></li>
             </ul>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/company/list_company/" style="font-family: 'Prompt', sans-serif">กำหนดอาจารย์นิเทศ</a></li>
-        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/" style="font-family: 'Prompt', sans-serif">จัดการการเข้าสู่ระบบของพี่เลี้ยง</a></li>
+        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/manage_mentor_login/" style="font-family: 'Prompt', sans-serif">จัดการการเข้าสู่ระบบของพี่เลี้ยง</a></li>
         <li style="color: #fff; margin-left: 150px; font-family: 'Prompt', sans-serif"><%= "ผู้ใช้งานระบบ : " + teacher.getTeacher_name() + " " + teacher.getTeacher_lastname() %></li>
         <li class="nav-item">
             <a class="nav-link" style="color: #FFFFFF; font-family: 'Prompt', sans-serif" href="${pageContext.request.contextPath}/doLogout" >ออกจากระบบ</a>

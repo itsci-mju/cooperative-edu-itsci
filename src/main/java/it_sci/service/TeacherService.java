@@ -10,6 +10,8 @@ public interface TeacherService {
     Student getStudent(String student_id);
     List<Mentor> getMentorsByStudentId(String studentId);
 
+    List<Student> getSemester(String semester);
+
     void saveTeacherEvaluate (TeacherEvaluate teacherEvaluate);
     List<Company> getCompanyToAssignByTeacher(int teacher_id);
 }

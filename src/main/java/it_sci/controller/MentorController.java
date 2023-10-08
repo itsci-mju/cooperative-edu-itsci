@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -173,6 +174,24 @@ public class MentorController {
 
         return "redirect:/mentor/list_student_by_mentor/"+mentor_id;
     }
+
+
+//    @GetMapping("/edit_mentor_login/")
+//    public String EditMentorlogin(@PathVariable("mentor_id") int mentor_id, Model model) throws ParseException {
+//        // สร้างอ็อบเจกต์ Mentor ด้วย mentor_id
+//        Mentor mentor = new Mentor();
+//        mentor.setId(mentor_id); // ตั้งค่า ID ของ Mentor จาก mentor_id
+//
+//        mentorService.EditMentor(mentor); // ส่งอ็อบเจกต์ Mentor ไปให้เมทอด EditMentor ใน mentorService
+//        return "teacher/manage_mentor";
+//    }
+
+
+
+//    @PostMapping(path = "/save_mentor")
+//    public  String saveAddMentor(@RequestParam Map<Integer,Integer> allRedParams) throws ParseException{
+//
+//    }
 
 //    @GetMapping("/semester")
 //    public  String semesterPage(Model model){

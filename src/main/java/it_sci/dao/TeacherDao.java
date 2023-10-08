@@ -14,6 +14,8 @@ public interface TeacherDao {
 
     List<Teacher> getAllTeachers();
 
+    List<Student> getSemester(String semester);
+
     void saveTeacherEvaluate (TeacherEvaluate teacherEvaluate);
 
     List<Company>getCompanyToAssignByTeacher(int teacher_id);

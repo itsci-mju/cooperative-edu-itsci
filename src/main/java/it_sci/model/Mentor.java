@@ -143,4 +143,7 @@ public class Mentor {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
+
+    public void setId(int mentor_id) {
+    }
 }

@@ -10,7 +10,12 @@ public interface MentorDao {
     List<Mentor> getListStudentByMenterId(int mentor_id);
     Mentor getMentorProfile(int id);
 
+    List<Mentor> getManageLoginMentor();
+
+    void updateMentorPassword(Mentor mentor);
+
     Mentor updateMentor (Mentor mentor) ;
+
 //    List<Student> getMentorDoesNotHaveStudent(int id);
 
 }

@@ -51,6 +51,22 @@ public class TeacherDaoImpl implements TeacherDao{
         List<Teacher> teachers = query.getResultList();
         return teachers;
     }
+
+    @Override
+    public List<Student> getSemester(String semester) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Student> query = session.createQuery("FROM Student s WHERE s.semester =: sem", Student.class);
+        query.setParameter("sem", semester);
+        return query.getResultList();
+    }
+
+//    @Override
+//    public List<String> getStudentSemester(String semester) {
+//        Session session = sessionFactory.getCurrentSession();
+//        Query<Teacher> query = session.createQuery("SELECT * FROM student WHERE semester = 'ภาคเรียนที่2/2565' ");
+//        return semester;
+//    }
+
     @Override
     public void saveTeacherEvaluate(TeacherEvaluate teacherEvaluate) {
         Session session = sessionFactory.getCurrentSession();

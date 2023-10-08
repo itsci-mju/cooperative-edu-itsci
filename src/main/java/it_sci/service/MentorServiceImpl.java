@@ -35,6 +35,19 @@ public class MentorServiceImpl implements MentorService {
 
     @Override
     @Transactional
+    public List<Mentor> getManageLoginMentor() {
+        return mentorDao.getManageLoginMentor();
+    }
+
+    @Override
+    @Transactional
+    public void updateMentorPassword(Mentor mentor) {
+       mentorDao.updateMentorPassword(mentor);
+    }
+
+
+    @Override
+    @Transactional
     public void updateMentor(Mentor mentor) {
         mentorDao.updateMentor(mentor);
     }

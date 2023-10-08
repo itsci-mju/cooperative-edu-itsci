@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,9 @@ public class TeacherController {
 
     @Autowired
     private MentorEvaluateService mentorEvaluateService;
+
+    @Autowired
+    private MentorService mentorService;
 
 
     @RequestMapping("/{company_id}/assign_teacher")
@@ -174,6 +178,30 @@ public class TeacherController {
         return "teacher/student_detail";
     }
 
+
+    @GetMapping("/manage_mentor_login/")
+    public String getListManageMentorLogin(Model model) {
+        model.addAttribute("mentors", mentorService.getManageLoginMentor());
+        return "coordinator/manage_mentor";
+    }
+
+    @GetMapping("/manage_mentor_login/{mentor_id}")
+    public String getManageMentorLogin(@PathVariable("mentor_id") int id, Model model) {
+        model.addAttribute("mentors", mentorService.getMentorById(id));
+        return "coordinator/manage_mentor_login";
+    }
+
+    @PostMapping("/manage_mentor_login/{mentor_id}")
+    public String updateMentorPassword(@RequestParam Map<String, String> map, @PathVariable("mentor_id") int id) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        Mentor mentor = mentorService.getMentorById(id);
+        if (mentor != null) {
+            mentor.setPassword(bCryptPasswordEncoder.encode(map.get("password")));
+            mentorService.updateMentorPassword(mentor);
+        }
+        return "redirect:/teacher/manage_mentor_login/";
+    }
+
     @GetMapping("/list_status/")
     public String getListStatus(Model model) {
         List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
@@ -204,35 +232,20 @@ public class TeacherController {
 //    }
 
 
-//    @GetMapping("/view_summary")
-//    public String gotoSummaryPage(Model model, @RequestParam(name = "semesterId", required = false) Long semesterId) {
-//        // ดึงรายการ semester มาแสดงใน dropdown
-//        List<Semester> semesters = semesterService.getAllSemesters();
-//
-//        // ดึงรายการนักศึกษาและการประเมินอาจารย์โดยใช้ semesterId ถ้ามีการเลือก semester
-//        List<Student> students;
-//        List<TeacherEvaluate> teacherEvaluates;
-//        if (semesterId != null) {
-//            students = studentService.getStudentsBySemester(semesterId);
-//            teacherEvaluates = teacherEvaluateService.getTeacherEvaluatesBySemester(semesterId);
-//        } else {
-//            // ถ้าไม่มีการเลือก semester ใช้รายการทั้งหมด
-//            students = studentService.getAllStudents();
-//            teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
-//        }
-//
-//        model.addAttribute("list_students", students);
-//        model.addAttribute("list_teacherEvaluates", teacherEvaluates);
-//        model.addAttribute("semester", semesters);
-//
-//        return "coordinator/view_summary";
-//    }
+    @GetMapping("/selectSemester")
+    public String selectSemester(@RequestParam("semester") String selectedSemester, Model model) {
+        // ทำสิ่งที่คุณต้องการกับ selectedSemester ที่รับมา
+        // ยกตัวอย่างเช่น นำ selectedSemester ไปใช้ในการค้นหาข้อมูลนักศึกษาในภาคการศึกษานี้
 
+        // ส่งข้อมูลกลับไปยังหน้าเว็บ (View)
+        model.addAttribute("selectedSemester", selectedSemester);
+        return "coordinator/view_summary";
+    }
 
     @RequestMapping("/view_summary")
     public String gotoSummaryPage (Model model) {
         List<String> semesters  = teacherEvaluateService.getAllListSemester();
-        System.out.println("---------------------------------------------"+semesters);
+//        System.out.println("---------------------------------------------"+semesters);
         List<Student> students = studentService.getAllStudents();
         List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
         Session session = null;
@@ -256,58 +269,24 @@ public class TeacherController {
         return "coordinator/view_summary";
     }
 
-//        @GetMapping("/view_summary")
-//    public String gotoSummaryPage(Model model ) {
-//        List<String> strings = teacherEvaluateService.getAllListSemester();
-//        System.out.println();
+
+//    @RequestMapping("/view_summary")
+//    public String gotoSummaryPage(@RequestParam(name = "semester") String semester, Model model) {
+//        // ทำงานกับค่า semester ที่รับมา เช่น นำไปใช้ในการกรองข้อมูลหรือประมวลผลตามเทอม
+//        List<String> semesters = teacherEvaluateService.getAllListSemester(semester);
 //        List<Student> students = studentService.getAllStudents();
 //        List<TeacherEvaluate> teacherEvaluates = teacherEvaluateService.getTeacherEvaluate();
-//        Session session = null;
-//        try  {
-//            session = sessionFactory.openSession();
-//            for (Student student : students) {
-//                // ดึงข้อมูล TeacherEvaluates และคำนวณคะแนนรวม
-//                Hibernate.initialize(student.getTeacherEvaluates());
-//            }
-//        }
-//        catch (Exception e) {
-//            // จัดการข้อผิดพลาด
-//        } finally {
-//            if (session != null && session.isOpen()) {
-//                session.close(); // ปิดเซสชัน
-//            }
-//        }
-////        model.addAttribute("list_semester", strings);
+//        // รายละเอียดโค้ดอื่น ๆ ที่คุณต้องการ
+//        // ...
+//        model.addAttribute("list_semester", semesters);
 //        model.addAttribute("list_students", students);
-//        model.addAttribute("list_teacherEvaluates",teacherEvaluates);
+//        model.addAttribute("list_teacherEvaluates", teacherEvaluates);
 //        return "coordinator/view_summary";
 //    }
 
-//    @GetMapping("/view_summary")
-//    public String gotoSummaryPage(@RequestParam(name = "selectedSemester", required = false) String selectedSemester, Model model) {
-//        // ดึงรายการนักศึกษา
-//        List<Student> students = studentService.getAllStudents();
-//
-//        // สร้าง List สำหรับเก็บ semester ที่คุณจะแสดงใน dropdown
-//        List<String> semesters = new ArrayList<>();
-//
-//        // วนลูปผ่านรายการนักศึกษาเพื่อเพิ่ม semester ลงใน List
-//        for (Student student : students) {
-//            String semester = student.getSemester();
-//            if (!semesters.contains(semester)) {
-//                semesters.add(semester);
-//            }
-//        }
-//
-//        // ส่งรายการนักศึกษาและรายการ semester ไปยังหน้า view ผ่าน model
-//        model.addAttribute("list_students", students);
-//        model.addAttribute("list_semesters", semesters);
-//
-//        // ส่ง semester ที่ผู้ใช้เลือกใน dropdown ไปยังหน้า view
-//        model.addAttribute("selectedSemester", selectedSemester);
-//
-//        return "coordinator/view_summary";
-//    }
+
+
+
 
 
 
