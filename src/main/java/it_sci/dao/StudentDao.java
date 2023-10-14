@@ -12,4 +12,6 @@ public interface StudentDao {
     void updateStudent(Student student);
     void deleteStudent(String student_id);
 
+    List<Student> getStudentsBySemester (String semester);
+
 }

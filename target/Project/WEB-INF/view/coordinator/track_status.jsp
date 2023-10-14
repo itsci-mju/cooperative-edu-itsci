@@ -32,11 +32,18 @@
 
 <div align="center">
     <p style="display: inline-block">ภาคการศึกษา</p>
-    <select >
-        <c:forEach items="${list_semester}" var="listsemester">
-            <option value="${listsemester}">${listsemester}</option>
-        </c:forEach>
-    </select>
+        <form action="${pageContext.request.contextPath}/teacher/test_status">
+            <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
+                <c:forEach items="${list_semester}" var="listsemester">
+                    <c:if test="select_semester">
+
+                    </c:if>
+                    <option value="${listsemester}">${listsemester}</option>
+                </c:forEach>
+            </select>
+        </form>
+
+    <label id="selectedLabel"></label>
 </div><br><br>
 
 <div align="center">

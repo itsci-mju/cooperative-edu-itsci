@@ -12,6 +12,8 @@
     <title>Title</title>
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
+
+
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <%
@@ -27,48 +29,6 @@
     </div>
 </div><br><br>
 
-<%--<%--%>
-<%--    // ดึงข้อมูลจากฐานข้อมูล (เปลี่ยนเป็นการดึงข้อมูลจากฐานข้อมูลของคุณ)--%>
-<%--    List<String> semesterList = retrieveSemesterDataFromDatabase();--%>
-
-<%--    // วนลูปสร้างตัวเลือกภาคเรียน--%>
-<%--    for (String semester : semesterList) {--%>
-<%--%>--%>
-<%--<div>--%>
-<%--    <select id="semester" style="width: 50%" onchange="semester()">--%>
-<%--        <c:forEach items="${list_semester}" var="listsemester">--%>
-<%--            <option value="${listsemester}">${listsemester}</option>--%>
-<%--        </c:forEach>--%>
-<%--    </select>--%>
-<%--</div>--%>
-<%--<%--%>
-<%--    }--%>
-<%--%>--%>
-
-<%--<div align="center">--%>
-<%--    <p style="display: inline-block">ภาคการศึกษา</p>--%>
-<%--    <form action="/teacher/selectSemester" method="GET">--%>
-<%--        <select name="semester">--%>
-<%--            <c:forEach items="${list_semester}" var="listsemester">--%>
-<%--                <option value="${listsemester}">${listsemester}</option>--%>
-<%--            </c:forEach>--%>
-<%--        </select>--%>
-<%--        <input type="submit" value="เลือก">--%>
-<%--    </form>--%>
-<%--</div>--%>
-
-
-<%--<div align="center">--%>
-<%--    <p style="display: inline-block">ภาคการศึกษา</p>--%>
-<%--    <form action="/teacher/semester" method="GET">--%>
-<%--        <select name="semester">--%>
-<%--            <c:forEach items="${list_semester}" var="listsemester">--%>
-<%--                <option value="${listsemester}">${listsemester}</option>--%>
-<%--            </c:forEach>--%>
-<%--        </select>--%>
-<%--        <input type="submit" value="เลือก">--%>
-<%--    </form>--%>
-<%--</div>--%>
 
 <div align="center">
     <p style="display: inline-block">ภาคการศึกษา</p>
@@ -78,11 +38,33 @@
 <%--        </c:forEach>--%>
 <%--    </select>--%>
 
-    <select id="semesterSelect">
-        <c:forEach items="${list_semester}" var="listsemester">
-            <option value="${listsemester}">${listsemester}</option>
-        </c:forEach>
-    </select>
+<%--    <form action="${pageContext.request.contextPath}/teacher/testlist">--%>
+<%--        <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">--%>
+<%--            <c:forEach items="${list_semester}" var="listsemester">--%>
+<%--                <c:if test="select_semester">--%>
+
+<%--                </c:if>--%>
+<%--                <option value="${listsemester}">${listsemester}</option>--%>
+<%--            </c:forEach>--%>
+<%--        </select>--%>
+<%--    </form>--%>
+
+    <form action="${pageContext.request.contextPath}/teacher/testlist">
+        <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
+            <c:forEach items="${list_semester}" var="listsemester">
+                <c:choose>
+                    <c:when test="${listsemester eq select_semester}">
+                        <option value="${listsemester}" selected>${listsemester}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${listsemester}">${listsemester}</option>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </select>
+    </form>
+
+
 
     <label id="selectedLabel"></label>
 
@@ -93,14 +75,6 @@
 <%--<div align="center">--%>
 <%--    <p style="display: inline-block">ภาคการศึกษา</p>--%>
 <%--    <select >--%>
-<%--        <c:forEach items="${list_semester}" var="listsemester">--%>
-<%--            <option value="${listsemester}">${listsemester}</option>--%>
-<%--        </c:forEach>--%>
-<%--    </select>--%>
-<%--</div>--%>
-
-<%--<div>--%>
-<%--    <select id="semester" style="width: 50%" onchange="semester()">--%>
 <%--        <c:forEach items="${list_semester}" var="listsemester">--%>
 <%--            <option value="${listsemester}">${listsemester}</option>--%>
 <%--        </c:forEach>--%>
@@ -147,31 +121,12 @@
 </body><br><br><br><br>
 
 
-<script>
-    document.getElementById("semesterSelect").addEventListener("change", function() {
-        var selectedSemester = this.value;
-        // สร้าง URL ที่คุณต้องการแสดงผลลัพธ์
-        var url = "/result?semester=" + selectedSemester;
-        // เปลี่ยนหน้าเว็บไปยัง URL ใหม่
-        window.location.href = url;
-    });
-</script>
 
 <script>
-    var labelElement = document.getElementById("selectedLabel");
-    var selectElement = document.getElementById("semesterSelect");
 
-    // เพิ่ม Event Listener เมื่อมีการเลือก Option ใน Select
-    selectElement.addEventListener("change", function() {
-        // ดึงค่าที่ถูกเลือก
-        var selectedOption = selectElement.options[selectElement.selectedIndex];
-
-        // กำหนดข้อความใน Label ให้เป็นค่าที่ถูกเลือก
-        labelElement.textContent = selectedOption.textContent;
-
-        // เรียกฟังก์ชันสำหรับการแสดงข้อมูลในตาราง
-
-    });
+    function submitForm () {
+        document.forms[0].submit();
+    }
 
 </script>
 

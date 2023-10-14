@@ -65,4 +65,12 @@ public class StudentDaoImpl implements StudentDao {
         Student student = query.getSingleResult();
         session.remove(student);
     }
+
+    @Override
+    public List<Student> getStudentsBySemester(String semester) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Student> query = session.createQuery("FROM Student s LEFT JOIN FETCH s.teacherEvaluateslist WHERE s.semester =: sem ", Student.class);
+        query.setParameter("sem", semester);
+        return query.getResultList();
+    }
 }

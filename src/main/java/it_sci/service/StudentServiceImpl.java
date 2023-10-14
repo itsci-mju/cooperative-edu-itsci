@@ -50,6 +50,12 @@ public class StudentServiceImpl implements StudentService {
         studentDao.deleteStudent(student_id);
     }
 
+    @Override
+    @Transactional
+    public List<Student> getStudentsBySemester(String semester) {
+        return studentDao.getStudentsBySemester(semester);
+    }
+
     @Transactional
     public Student getStudentWithEvaluates(String studentId) {
         Student student = null;

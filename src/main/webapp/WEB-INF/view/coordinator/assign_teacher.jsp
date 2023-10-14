@@ -64,7 +64,7 @@
 <h3 style="font-family: 'Prompt', sans-serif; margin-left: 50px; color: #990D28">กำหนดอาจารย์นิเทศในบริษัท  ${companies.company_name}</h3>
 <hr style="height: 3px; width: 800px; background-color: #990D28; margin: -5px 0px 0px 50px; border: none; box-shadow: 0 4px 6px #990D28;"><br><br>
 
-<form action="${pageContext.request.contextPath}/teacher/${companies.company_id}/submit_evaluate" method="POST" >
+<form action="${pageContext.request.contextPath}/teacher/${companies.company_id}/submit_evaluate" method="POST" id="evaluationForm" onsubmit="return disableSubmitButton();">
 <table align="center" id="myTable" >
     <tr>
             <td colspan="4" style="padding-left: 40%;">ภาคการศึกษา<select name="semester" id="semester" style="display: inline-block; margin-left: 20px;">
@@ -99,13 +99,6 @@
             <c:forEach var="teacher" items="${teachers}">
                 <input type="radio" name="teacher" value="${teacher.teacher_id}" style="margin-top: 30px;">${teacher.teacher_name} ${teacher.teacher_lastname}<br>
             </c:forEach>
-<%--            <input type="radio" name="teacher" value="${teachers}" >ผศ.ดร.สายัณห์ อุ่นนันกาศ<br>--%>
-<%--            <input type="radio" name="teacher" value="อ.ดร.จักรกฤช เตโช" >อ.ดร.จักรกฤช เตโช<br>--%>
-<%--            <input type="radio" name="teacher" value="อ.ดร.ภรต รัตนปิณฑะ" >อ.ดร.ภรต รัตนปิณฑะ<br>--%>
-<%--            <input type="radio" name="teacher" value="อ.ดร.วัชรินทร์ สาระไชย" >อ.ดร.วัชรินทร์ สาระไชย<br>--%>
-<%--            <input type="radio" name="teacher" value="อ.พิชชยานิดา คำวิชัย" >อ.พิชชยานิดา คำวิชัย<br>--%>
-<%--            <input type="radio" name="teacher" value="อ.จิราวรรณ รอนราญ" >อ.จิราวรรณ รอนราญ<br>--%>
-<%--            <input type="radio" name="teacher" value="อ.ดร.วรรณวิมล นาดี" >อ.ดร.วรรณวิมล นาดี<br>--%>
         </td>
     </tr>
 </table>
@@ -116,5 +109,22 @@
 </form><br><br><br><br>
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
 </body>
+
+<script>
+    function disableSubmitButton() {
+        var evaluationForm = document.getElementById("evaluationForm");
+        var teachersupervisiondate = document.getElementById("teachersupervisiondate").value;
+
+        var currentDate = new Date().toISOString().split('T')[0]; // รับวันที่ปัจจุบัน (ISO 8601 format)
+
+        if (teachersupervisiondate < currentDate) {
+            alert("กรุณาเลือกวันที่ในอนาคตเท่านั้น");
+            return false; // ยกเลิกการส่งแบบฟอร์ม
+        }
+
+        return true; // อนุญาตให้ส่งแบบฟอร์ม
+    }
+</script>
+
 
 </html>
