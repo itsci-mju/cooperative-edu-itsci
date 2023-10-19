@@ -87,6 +87,13 @@ public class MentorDaoImpl implements MentorDao {
     }
 
     @Override
+    public List<Mentor> getMentorPasswordNotNull() {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Mentor> query = session.createQuery("FROM Mentor m where m.password != '' ", Mentor.class);
+        return query.getResultList();
+    }
+
+    @Override
     public void updateMentorPassword(Mentor mentor) {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(mentor);

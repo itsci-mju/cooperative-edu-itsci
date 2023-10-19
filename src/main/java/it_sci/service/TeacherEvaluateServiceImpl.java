@@ -20,16 +20,35 @@ public class TeacherEvaluateServiceImpl implements TeacherEvaluateService {
     @Autowired
     private StudentDao studentDao;
 
+
     @Override
     @Transactional
-    public List<TeacherEvaluate> getTeacherEvaluateByTeacherId(int tEvaId, int companyId) {
-            return teacherEvaluateDao.getTeacherEvaluateByTeacherId(tEvaId,companyId);
+    public List<TeacherEvaluate> getTeacherEvaluateByTeacherId(int tEvaId, int companyId,String semester) {
+        return teacherEvaluateDao.getTeacherEvaluateByTeacherId(tEvaId,companyId,semester);
     }
+
+    @Override
+    @Transactional
+    public List<TeacherEvaluate> getViewTeacherEvaluateByStudentSemester(String semester, int teacher_id) {
+        return teacherEvaluateDao.getViewTeacherEvaluateByStudentSemester(semester,teacher_id);
+    }
+
+//    @Override
+//    @Transactional
+//    public List<TeacherEvaluate> getTeacherEvaluateByTeacherId(int tEvaId, int companyId,String semester) {
+//            return teacherEvaluateDao.getTeacherEvaluateByTeacherId(tEvaId,companyId,semester);
+//    }
 
     @Override
     @Transactional
     public List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id) {
         return teacherEvaluateDao.getViewTeacherEvaluate(teacher_id);
+    }
+
+    @Override
+    @Transactional
+    public List<TeacherEvaluate> getStatusByStudentSemester(String semester) {
+        return teacherEvaluateDao.getStatusByStudentSemester(semester);
     }
 
 

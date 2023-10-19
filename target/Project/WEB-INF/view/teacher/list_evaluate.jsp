@@ -6,6 +6,12 @@
     <title>Title</title>
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
+
+    <script>
+        function submitForm () {
+            document.forms[0].submit();
+        }
+    </script>
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <body ><br><br>
@@ -19,12 +25,20 @@
 </div><br><br>
 
 <div align="center">
-    <p style="display: inline-block">ภาคการศึกษา</p>
-    <select >
-        <c:forEach items="${list_semester}" var="listsemester">
-            <option value="${listsemester}">${listsemester}</option>
-        </c:forEach>
-    </select>
+    <div align="center">
+        <p style="display: inline-block">ภาคการศึกษา</p>
+        <form action="${pageContext.request.contextPath}/teacher/testgetlistevaluate/${teacher_id}">
+            <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
+                <option >กรุณาเลือกเทอม</option>
+                <c:forEach items="${list_semester}" var="listsemester">
+
+                    <option value="${listsemester}">${listsemester}</option>
+                </c:forEach>
+            </select>
+        </form>
+
+        <label id="selectedLabel"></label>
+        </div>
 </div><br><br>
     <table class="table table-hover" >
         <tr class="table-primary" id="font">

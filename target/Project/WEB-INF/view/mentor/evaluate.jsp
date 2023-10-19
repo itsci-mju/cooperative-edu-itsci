@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     Mentor mentor = (Mentor) session.getAttribute("mentor");
 %>
@@ -24,8 +25,8 @@
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
 
-<form action="${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>" method="POST" >
-    <div class="navbar2"><br>
+<form action="${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/${mentor_id}" method="POST" >
+    <div class="navbar2">
         <div style="margin-left: 160px">
             <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
             <p class="editpro_header2">รายชื่อนักศึกษา/ประเมินการฝึกสหกิจศึกษา</p>
@@ -47,9 +48,14 @@
         <tr >
             <td><p>ตำแหน่งงานที่ฝึกปฎิบัติ</p></td>
             <td><input type="text"  value="${student.workposition}" disabled></td>
-            <td><p style="text-align: right;">&nbsp;&nbsp; วันที่ประเมิน &nbsp;&nbsp;</p></td>
-            <td><input type="text"  disabled></td>
+            <td><p style="text-align: right;">&nbsp;&nbsp; ระยะเวลาฝึกสหกิจ &nbsp;&nbsp</p></td>
+            <td>
+                <fmt:formatDate pattern="dd/MM/yyyy" var="startDate" value="${student.startdate}" />
+                <fmt:formatDate pattern="dd/MM/yyyy" var="endDate" value="${student.enddate}" />
+                <input type="text"  value="${startDate}-${endDate}" disabled>
+            </td>
         </tr>
+
     </table><br><br><br>
 
     <div id="form1" class="tabcontent">
@@ -233,17 +239,6 @@
 
                </tr>
            </table>
-<%--            <input type="radio" name="score11" value="10" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">10--%>
-<%--            <input type="radio" name="score11" value="9" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">9--%>
-<%--            <input type="radio" name="score11" value="8" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">8--%>
-<%--            <input type="radio" name="score11" value="7" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">7--%>
-<%--            <input type="radio" name="score11" value="6" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">6--%>
-<%--            <input type="radio" name="score11" value="5" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">5--%>
-<%--            <input type="radio" name="score11" value="4" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">4--%>
-<%--            <input type="radio" name="score11" value="3" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">3--%>
-<%--            <input type="radio" name="score11" value="2" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">2--%>
-<%--            <input type="radio" name="score11" value="1" onclick="getSumAndSet()" style="margin-right: 25px; width: 15px; height: 15px;">1--%>
-        </td>
     </tr>
 </table><br><br>
 
@@ -307,34 +302,6 @@
             </div>
         </td>
     </tr>
-<%--    <tr >--%>
-<%--        <td align="center">1</td>--%>
-<%--        <td style="padding-left: 100px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้  มีจุดเด่นในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>--%>
-<%--        <td align="center"><input name="answerText1" style="width: 200px; height: 25px"/></td>--%>
-<%--    </tr>--%>
-<%--    <tr >--%>
-<%--        <td align="center">2</td>--%>
-<%--        <td style="padding-left: 100px;">ท่านคิดว่านักศึกษาที่เข้ารับการฝึกปฏิบัติสหกิจศึกษาครั้งนี้ มีจุดด้อยในการปฏิบัติงานสหกิจศึกษาอะไรบ้าง</td>--%>
-<%--        <td align="center"><input name="answerText2" style="width: 200px; height: 25px"/></td>--%>
-
-<%--    </tr>--%>
-<%--    <tr >--%>
-<%--        <td align="center">3</td>--%>
-<%--        <td style="padding-left: 100px;">จากข้อก่อนหน้า นักศึกษาควรได้รับการพัฒนาปรับปรุงทักษะใดเพิ่มเติม เพื่อให้มีความพร้อมสำหรับการทำงานสายไอทีและเป็นไปตามที่บริษัทต้องการ</td>--%>
-<%--        <td align="center"><input name="answerText3" style="width: 200px; height: 25px"/></td>--%>
-
-<%--    </tr>--%>
-<%--    <tr >--%>
-<%--        <td align="center">4</td>--%>
-<%--        <td style="padding-left: 100px;">ในปีการศึกษาถัดไป บริษัทมีความต้องการรับนักศึกษาสาขาวิชาเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่โจ้ เข้าฝึกปฏิบัติสหกิจศึกษาอีกหรือไม่?</td>--%>
-<%--        <td align="center"><input name="answerText4" style="width: 200px; height: 25px"/></td>--%>
-
-<%--    </tr>--%>
-<%--    <tr >--%>
-<%--        <td align="center">5</td>--%>
-<%--        <td style="padding-left: 100px;">ความคิดเห็นอื่นๆ (ถ้ามี)</td>--%>
-<%--        <td align="center"><input name="answerText5" style="width: 200px; height: 25px"/></td>--%>
-<%--    </tr>--%>
 </table>
         <div align="center" style="display: inline-block; width: 100%; margin-top: 20px;">
             <div style="display: inline-block;"><button type="button" onclick="openForm1()" id="back" class="btn btn-warning" >ย้อนกลับ</button></div>
@@ -342,19 +309,7 @@
         </div>
     </div>
 </form>
-<%--<div class="list_course_detail" align="center">--%>
-<%--    <div class="hr_line"></div>--%>
-<%--    <button id="FClick" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>--%>
-<%--    <button class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>--%>
-<%--</div>--%>
-<%--<div class="list_course_detail" align="center">--%>
-<%--    <div class="hr_line"></div>--%>
-<%--&lt;%&ndash;    <button id="backButton" class="tablinks" onclick="openList(event, 'form1')">ย้อนกลับ</button>&ndash;%&gt;--%>
-<%--&lt;%&ndash;    <button id="nextButton" class="tablinks" onclick="openList(event, 'form2')">ต่อไป</button>&ndash;%&gt;--%>
-<%--    <button onclick="openForm2()" id="next" class="btn btn-success" style="margin-bottom: 30px">ต่อไป</button>--%>
-<%--    <button onclick="openForm1()" id="back" class="btn btn-primary" style="margin-bottom: 30px">ย้อนกลับ</button>--%>
-<%--</div>--%>
-
+</body>
 <script>
     function getSumAndSet () {
         var sumScore = 0;
@@ -374,48 +329,8 @@
 
 </script>
 
-</body>
 
 <script>
-    <%--window.addEventListener('DOMContentLoaded', (event) => {--%>
-    <%--    var backButton = document.getElementById('backButton');--%>
-    <%--    var nextButton = document.getElementById('nextButton');--%>
-    <%--    var evaluationForm = document.getElementById('evaluationForm');--%>
-
-    <%--    backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับตอนเริ่มต้น--%>
-
-    <%--    // เมื่อคลิกปุ่ม "ต่อไป"--%>
-    <%--    nextButton.addEventListener('click', function () {--%>
-    <%--        backButton.style.display = "inline-block"; // แสดงปุ่มย้อนกลับ--%>
-    <%--        nextButton.style.display = "none"; // ซ่อนปุ่มต่อไป--%>
-    <%--        evaluationForm.action = "${pageContext.request.contextPath}/mentor/submit_evaluate_by_mentor/<%=mentor.getMentor_id()%>";--%>
-    <%--    });--%>
-
-    <%--    // เมื่อคลิกปุ่ม "ย้อนกลับ"--%>
-    <%--    backButton.addEventListener('click', function () {--%>
-    <%--        backButton.style.display = "none"; // ซ่อนปุ่มย้อนกลับ--%>
-    <%--        nextButton.style.display = "inline-block"; // แสดงปุ่มต่อไป--%>
-    <%--        evaluationForm.action = "${pageContext.request.contextPath}/mentor/back_to_form1";--%>
-    <%--    });--%>
-    <%--});--%>
-    <%--// window.addEventListener('DOMContentLoaded', (event) => {--%>
-    <%--//     var button = document.getElementById('FClick');--%>
-    <%--//     button.click()--%>
-    <%--// });--%>
-    <%--function openList(evt, list_name) {--%>
-    <%--    var i, tabcontent, tablinks;--%>
-    <%--    tabcontent = document.getElementsByClassName("tabcontent");--%>
-    <%--    for (i = 0; i < tabcontent.length; i++) {--%>
-    <%--        tabcontent[i].style.display = "none";--%>
-    <%--    }--%>
-    <%--    tablinks = document.getElementsByClassName("tablinks");--%>
-    <%--    for (i = 0; i < tablinks.length; i++) {--%>
-    <%--        tablinks[i].className = tablinks[i].className.replace(" active", "");--%>
-    <%--        // tablinks[i].style.display = "none";--%>
-    <%--    }--%>
-    <%--    document.getElementById(list_name).style.display = "block";--%>
-    <%--    evt.currentTarget.className += " active";--%>
-    <%--}--%>
     function openList(evt, list_name) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -452,6 +367,6 @@
 
         document.getElementById("next").style.display = "none"
     }
-</script>
+</script><br><br><br><br>
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
 </html>

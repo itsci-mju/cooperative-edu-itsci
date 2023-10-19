@@ -8,6 +8,7 @@ import it_sci.utils.ImgPath;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -81,8 +82,8 @@ public class MentorController {
     @PostMapping (path="/{id}/update_mentor_profile")
     public String updateMentor(@PathVariable("id") int mentor_id,
                                @RequestParam ("profile") MultipartFile img,
-                               @RequestParam (value = "original_img", required = false) String original_img,
-                               @RequestParam Map<String, String> allReqParams) throws ParseException {
+                               @RequestParam (value = "original_file", required = false) String original_file,
+                               @RequestParam Map<String, String> allReqParams) throws ParseException, IOException {
         Mentor mentor = mentorService.getMentorById(mentor_id);
         if (mentor != null) {
             mentor.setMentor_name(allReqParams.get("mentor_name"));
@@ -93,28 +94,43 @@ public class MentorController {
             mentor.setMentor_line(allReqParams.get("mentor_line"));
             mentor.setMentor_email(allReqParams.get("mentor_email"));
             mentor.setPassword(allReqParams.get("password"));
-            try {
-                String ImgPath = it_sci.utils.ImgPath.pathImg + "/mentor_profile/";
+//
 
-                Path path = Paths.get(ImgPath,original_img);
+            String ImgPath = it_sci.utils.ImgPath.pathUploads + "/mentor_profile/";
 
-                if (!img.isEmpty()) {
-                    if (original_img != null) {
-                        if (Files.exists(path)){
-                            Files.delete(path);
-                        }
-                    }
-                    Files.write(path,img.getBytes());
-                    mentor.setMentor_image(original_img);
-
-                    mentorService.updateMentor(mentor);
+            Path path1 = Paths.get(ImgPath,original_file);
+            if (original_file != null){
+                if (Files.exists(path1)){
+                    Files.delete(path1);
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
+
+            Path directoryPathIMG = Paths.get(ImgPath);
+            Files.createDirectories(directoryPathIMG);
+
+            String originalFileName = img.getOriginalFilename();
+            String fileExtension = getFileExtension(originalFileName);
+
+            String newFileName = String.format("MentorProfile_%04d%s", mentor_id, fileExtension);
+
+            Path imgFilePath = Paths.get(ImgPath, newFileName);
+            Files.write(imgFilePath, img.getBytes());
+
+            mentor.setMentor_image(newFileName);
+
+            mentorService.updateMentor(mentor);
+
 
         }
         return "redirect:/";
+    }
+
+    private String getFileExtension(String fileName) {
+        int dotIndex = fileName.lastIndexOf('.');
+        if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
+            return fileName.substring(dotIndex);
+        }
+        return "";
     }
 
     @Transactional
@@ -175,35 +191,24 @@ public class MentorController {
         return "redirect:/mentor/list_student_by_mentor/"+mentor_id;
     }
 
+    @GetMapping("edit_password/{mentor_id}")
+    public String EditMentorPassword(@PathVariable("mentor_id") int id, Model model) {
+        model.addAttribute("mentor", mentorService.getMentorById(id));
 
-//    @GetMapping("/edit_mentor_login/")
-//    public String EditMentorlogin(@PathVariable("mentor_id") int mentor_id, Model model) throws ParseException {
-//        // สร้างอ็อบเจกต์ Mentor ด้วย mentor_id
-//        Mentor mentor = new Mentor();
-//        mentor.setId(mentor_id); // ตั้งค่า ID ของ Mentor จาก mentor_id
-//
-//        mentorService.EditMentor(mentor); // ส่งอ็อบเจกต์ Mentor ไปให้เมทอด EditMentor ใน mentorService
-//        return "teacher/manage_mentor";
-//    }
+        return "mentor/edit_password";
+    }
+
+    @PostMapping("/save_mentor_password/{mentor_id}")
+    public String updateMentorPassword(@RequestParam Map<String, String> map, @PathVariable("mentor_id") int id) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        Mentor mentor = mentorService.getMentorById(id);
+        if (mentor != null) {
+            mentor.setPassword(bCryptPasswordEncoder.encode(map.get("password")));
+            mentorService.updateMentorPassword(mentor);
+        }
+        return "redirect:/mentor/"+id+"/edit_profile";
+    }
 
 
 
-//    @PostMapping(path = "/save_mentor")
-//    public  String saveAddMentor(@RequestParam Map<Integer,Integer> allRedParams) throws ParseException{
-//
-//    }
-
-//    @GetMapping("/semester")
-//    public  String semesterPage(Model model){
-//        List<String> strings  = mentorEvaluateService.getAllListSemester();
-//
-//        model.addAttribute("list_semester", strings );
-//        return "coordinator/view_summary";
-//    }
-//    @RequestMapping("/view_summary")
-//    public String gotoSummaryPage (Model model) {
-//        List<Student> students = studentService.getAllStudents();
-//        model.addAttribute("list_students", students);
-//        return "coordinator/view_summary";
-//    }
 }

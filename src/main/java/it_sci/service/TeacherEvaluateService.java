@@ -7,9 +7,13 @@ import java.util.List;
 
 public interface TeacherEvaluateService {
 
-    List<TeacherEvaluate> getTeacherEvaluateByTeacherId (int tEvaId, int companyId);
+    List<TeacherEvaluate> getTeacherEvaluateByTeacherId (int tEvaId, int companyId,String semester);
+
+    List<TeacherEvaluate> getViewTeacherEvaluateByStudentSemester(String semester,int teacher_id);
 
     List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id);
+
+    List<TeacherEvaluate> getStatusByStudentSemester(String semester);
 
     List<String> getAllListSemester() ;
 

@@ -1,9 +1,6 @@
 package it_sci.dao;
 
-import it_sci.model.Company;
-import it_sci.model.Mentor;
-import it_sci.model.MentorEvaluate;
-import it_sci.model.Student;
+import it_sci.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -38,6 +35,15 @@ public class MentorEvaluateDaoImpl implements MentorEvaluateDao {
     public void saveMentorEvaluate(MentorEvaluate mentorEvaluate) {
         Session session = sessionFactory.getCurrentSession();
         session.save(mentorEvaluate);
+    }
+
+    @Override
+    public List<MentorEvaluate> getStatusMentorByStudentSemester(String semester) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<MentorEvaluate> query = session.createQuery("SELECT me " + "FROM  MentorEvaluate me JOIN Student s ON s.student_id = me.student.student_id WHERE s.semester =: sem" ,MentorEvaluate.class);
+        query.setParameter("sem", semester);
+
+        return query.getResultList();
     }
 
     @Override

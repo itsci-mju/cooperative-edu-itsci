@@ -1,10 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
+
+    <script>
+        function submitForm () {
+            document.forms[0].submit();
+        }
+
+        document.getElementById("term").value = " "
+    </script>
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 
@@ -17,14 +26,19 @@
         <p class="editpro_header2">รายชื่อบริษัท</p>
     </div>
 </div><br><br>
+    <div align="center">
+        <p style="display: inline-block">ภาคการศึกษา</p>
+        <form action="${pageContext.request.contextPath}/teacher/testgetlist/${teacher_id}">
+            <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
+                <option >กรุณาเลือกเทอม</option>
+                <c:forEach items="${list_semester}" var="listsemester">
 
-<div align="center">
-    <p style="display: inline-block">ภาคการศึกษา</p>
-    <select >
-        <c:forEach items="${list_semester}" var="listsemester">
-            <option value="${listsemester}">${listsemester}</option>
-        </c:forEach>
-    </select>
+                    <option value="${listsemester}">${listsemester}</option>
+                </c:forEach>
+            </select>
+        </form>
+
+        <label id="selectedLabel"></label>
 </div><br><br>
 
 <table class="table table-hover"  >
@@ -41,31 +55,26 @@
             <td align="center"> ${company.company_id}</td>
             <td> ${company.company_name}</td>
             <td align="center">${company.students.size()}</td>
-<%--            <td align="center">--%>
-<%--                <a href="${pageContext.request.contextPath}/company/${company.company_id}/view_company_detail">--%>
-<%--                    <i class="bi bi-postcard" style="font-size: 28px;"></i>--%>
-<%--                </a>--%>
-<%--            </td>--%>
             <td align="center">
                 <a href="${pageContext.request.contextPath}/company/${company.company_id}/view_company_detail">
                     <i class="bi bi-postcard" style="font-size: 28px;"></i>
                 </a>
             </td>
             <td align="center">
-                <a href="${pageContext.request.contextPath}/teacher/${teacher_id}/list_student_by_teacher/${company.company_id}">
-                    <i class="bi bi-file-person" style="font-size: 28px;"></i>
-                </a>
+                <c:set var="t" value="${semesterSelect}"/>
+                <c:set var="term" value="${fn:replace(t,'/','_')}"/>
+                <form action="${pageContext.request.contextPath}/teacher/${teacher_id}/list_student_by_teacher/${company.company_id}/${term}">
+                    <input type="submit"  class="btn btn-success" value="ประเมิน">
+                        <%--                    <i class="bi bi-file-person" style="font-size: 28px;"></i>--%>
+                </form>
+<%--                <form action="${pageContext.request.contextPath}/teacher/${teacher_id}/list_student_by_teacher/${company.company_id}">--%>
+<%--                    <input type="hidden" value="${semesterSelect}" id="term" name="term">--%>
+<%--                    <input type="submit" value="ประเมิน">--%>
+<%--&lt;%&ndash;                    <i class="bi bi-file-person" style="font-size: 28px;"></i>&ndash;%&gt;--%>
+<%--                </form>--%>
             </td>
         </tr>
     </c:forEach>
-<%--    <c:forEach var="company" items="${companies}">--%>
-<%--        <c:forEach var="stu" items="${company.students}">--%>
-<%--            <tr>--%>
-<%--                <td> ${stu.company.company_name}</td>--%>
-<%--                <td> ${stu.student_name}</td>--%>
-<%--            </tr>--%>
-<%--        </c:forEach>--%>
-<%--    </c:forEach>--%>
 </table>
 
 

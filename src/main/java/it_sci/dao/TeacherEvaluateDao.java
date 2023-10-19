@@ -7,7 +7,12 @@ import java.util.List;
 public interface TeacherEvaluateDao {
 
 
-    List<TeacherEvaluate> getTeacherEvaluateByTeacherId (int tEvaId,int companyId);
+    List<TeacherEvaluate> getTeacherEvaluateByTeacherId (int tEvaId,int companyId,String semester);
+
+    List<TeacherEvaluate> getViewTeacherEvaluateByStudentSemester(String semester,int teacher_id);
+
+    List<TeacherEvaluate> getStatusByStudentSemester(String semester);
+
     List<TeacherEvaluate> getViewTeacherEvaluate (int teacher_id);
     List<TeacherEvaluate> getTeacherEvaluate();
 

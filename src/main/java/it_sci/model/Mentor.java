@@ -23,7 +23,7 @@ public class Mentor {
     private String mentor_position;
     @Column(name = "metoremail", length = 50, nullable = false)
     private String mentor_email;
-    @Column(name = "password", length = 10, nullable = false)
+    @Column(name = "password", length = 10)
     private String password;
     @Column(name = "mentorline", length = 100, nullable = false)
     private String mentor_line;

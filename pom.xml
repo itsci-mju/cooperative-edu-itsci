@@ -91,6 +91,16 @@
       <version>${jstl.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.0.0</version> <!-- เวอร์ชันล่าสุด -->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.0.0</version> <!-- เวอร์ชันล่าสุด -->
+    </dependency>
+    <dependency>
       <groupId>taglibs</groupId>
       <artifactId>standard</artifactId>
       <version>${tld.version}</version>

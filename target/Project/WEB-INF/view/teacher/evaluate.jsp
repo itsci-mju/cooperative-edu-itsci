@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
 <head>
@@ -51,7 +52,10 @@
             <td><p>ตำแหน่งงานที่ฝึกปฎิบัติ</p></td>
             <td><input type="text"  value="${student.workposition}" disabled></td>
             <td><p style="text-align: right;">&nbsp;&nbsp; วันที่ประเมิน &nbsp;&nbsp;</p></td>
-            <td><input type="text"  disabled></td>
+            <td> <fmt:formatDate pattern="dd/MM/yyyy" var="startDate" value="${student.startdate}" />
+                 <fmt:formatDate pattern="dd/MM/yyyy" var="endDate" value="${student.enddate}" />
+                <input type="text"  value="${startDate}-${endDate}" disabled>
+            </td>
         </tr>
     </table><br><br>
 

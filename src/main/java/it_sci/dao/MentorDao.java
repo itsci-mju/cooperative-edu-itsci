@@ -12,6 +12,8 @@ public interface MentorDao {
 
     List<Mentor> getManageLoginMentor();
 
+    List<Mentor> getMentorPasswordNotNull();
+
     void updateMentorPassword(Mentor mentor);
 
     Mentor updateMentor (Mentor mentor) ;

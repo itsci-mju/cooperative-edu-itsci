@@ -2,6 +2,7 @@ package it_sci.service;
 
 import it_sci.dao.CompanyDao;
 import it_sci.model.Company;
+import it_sci.model.TeacherEvaluate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +31,18 @@ public class CompanyServiceImpl implements CompanyService {
     @Transactional
     public Company getCompany(int company_id) {
         return companyDao.getCompany(company_id);
+    }
+
+    @Override
+    @Transactional
+    public List<Company> getCompaniesByStudentSemester(String semester, int teacher_id) {
+        return companyDao.getCompaniesByStudentSemester(semester,teacher_id);
+    }
+
+    @Override
+    @Transactional
+    public List<TeacherEvaluate> getListTeacherEvaluate() {
+        return companyDao.getListTeacherEvaluate();
     }
 
     @Override

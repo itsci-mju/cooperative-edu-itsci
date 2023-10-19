@@ -1,6 +1,7 @@
 package it_sci.service;
 
 import it_sci.model.Mentor;
+import it_sci.model.MentorEvaluate;
 import it_sci.model.Student;
 
 import java.util.List;
@@ -11,6 +12,8 @@ public interface MentorService {
     Mentor getMentorProfile(int id);
 
     List<Mentor> getManageLoginMentor();
+
+    List<Mentor> getMentorPasswordNotNull();
 
     void updateMentorPassword(Mentor mentor);
     void updateMentor(Mentor mentor);

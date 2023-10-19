@@ -13,8 +13,6 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserDao userDao;
-
-
     BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
     @Override
     @Transactional

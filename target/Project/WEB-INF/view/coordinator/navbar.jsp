@@ -45,16 +45,23 @@
 <%--        </div>--%>
 <nav id="navbar" class="navbar">
     <ul>
-        <li style="margin-left: 150px"><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/" style="font-family: 'Prompt', sans-serif">หน้าแรก</a></li>
+        <li ><a class="nav-link scrollto active" href="${pageContext.request.contextPath}/" style="font-family: 'Prompt', sans-serif">หน้าแรก</a></li>
         <li class="dropdown"><a><span style="font-family: 'Prompt', sans-serif; color: #FFFFFF">จัดการข้อมูลการประเมินสหกิจศึกษา</span> <i class="bi bi-chevron-down text-white"></i></a>
             <ul >
                 <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/<%=teacher.getTeacher_id()%>/list_company_by_teacher" style="font-family: 'Prompt', sans-serif">ประเมินผลการฝึกสหกิจศึกษา</a></li>
                 <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_evaluate_by_teacher/<%=teacher.getTeacher_id()%>" style="font-family: 'Prompt', sans-serif">ผลการประเมินการฝึกสหกิจศึกษา</a></li>
-                <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_status/" style="font-family: 'Prompt', sans-serif">ตรวจสอบสถานะ</a></li>
                 <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/view_summary" style="font-family: 'Prompt', sans-serif">ดูผลสรุปคะแนน</a></li>
             </ul>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/company/list_company/" style="font-family: 'Prompt', sans-serif">กำหนดอาจารย์นิเทศ</a></li>
         <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/manage_mentor_login/" style="font-family: 'Prompt', sans-serif">จัดการการเข้าสู่ระบบของพี่เลี้ยง</a></li>
+<%--        <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_status/" style="font-family: 'Prompt', sans-serif">ตรวจสอบสถานะ</a></li>--%>
+        <li class="dropdown"><a><span style="font-family: 'Prompt', sans-serif; color: #FFFFFF">ตรวจสอบสถานะ</span> <i class="bi bi-chevron-down text-white"></i></a>
+            <ul >
+                <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_status_teacher" style="font-family: 'Prompt', sans-serif">อาจารย์</a></li>
+                <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/list_status_mentor" style="font-family: 'Prompt', sans-serif">พนักงานพี่เลี้ยง</a></li>
+            </ul>
+<%--            <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/test_status_teacher" style="font-family: 'Prompt', sans-serif">อาจารย์</a></li>--%>
+<%--            <li><a class="nav-link scrollto" href="${pageContext.request.contextPath}/teacher/view_summary" style="font-family: 'Prompt', sans-serif">พนักงานพี่เลี้ยง</a></li>--%>
         <li style="color: #fff; margin-left: 150px; font-family: 'Prompt', sans-serif"><%= "ผู้ใช้งานระบบ : " + teacher.getTeacher_name() + " " + teacher.getTeacher_lastname() %></li>
         <li class="nav-item">
             <a class="nav-link" style="color: #FFFFFF; font-family: 'Prompt', sans-serif" href="${pageContext.request.contextPath}/doLogout" >ออกจากระบบ</a>

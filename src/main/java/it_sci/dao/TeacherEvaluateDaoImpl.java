@@ -19,24 +19,101 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+
+
     @Override
-    public List<TeacherEvaluate> getTeacherEvaluateByTeacherId (int tEvaId,int companyId){
+    public List<TeacherEvaluate> getTeacherEvaluateByTeacherId (int tEvaId,int companyId,String semester){
         Session session = sessionFactory.getCurrentSession();
         Query<TeacherEvaluate> query = session.createQuery(
                 "SELECT te " +
                         "FROM  TeacherEvaluate te " +
                         "JOIN Student s ON te.student.student_id = s.student_id " +
                         "JOIN Company c ON s.company.company_id = c.company_id "+
-                        "WHERE te.teacher.id = :teacherId and te.student.company.company_id =: companyId ", TeacherEvaluate.class
+                        "WHERE te.teacher.id = :teacherId and te.student.company.company_id =: companyId and s.semester = :sem ", TeacherEvaluate.class
         );
         query.setParameter("teacherId", tEvaId);
         query.setParameter("companyId", companyId);
-//        System.out.println(query.getSingleResult());
-//        System.out.println(mentor_id);
-//        System.out.println(query.getSingleResult().getStudents().size());
+        query.setParameter("sem", semester);
+
         System.out.println(query.getResultList().size());
         return query.getResultList();
     }
+
+    @Override
+    public List<TeacherEvaluate> getViewTeacherEvaluateByStudentSemester(String semester, int teacher_id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<TeacherEvaluate> query = session.createQuery(
+                "SELECT te " +
+                        "FROM TeacherEvaluate te " +
+                        "JOIN te.student s " +
+                        "WHERE te.teacher.teacher_id = :teacherId " +
+                        "AND s.semester = :sem ",
+                TeacherEvaluate.class
+        );
+
+        query.setParameter("teacherId", teacher_id);
+        query.setParameter("sem", semester);
+
+        return query.getResultList();
+    }
+
+
+    @Override
+    public List<TeacherEvaluate> getStatusByStudentSemester(String semester) {
+        Session session = sessionFactory.getCurrentSession();
+        //        Query<TeacherEvaluate> query = session.createQuery(
+//                "SELECT te " +
+//                        "FROM  TeacherEvaluate te " +
+//                        "JOIN Student s ON te.student.student_id = s.student_id " +
+//                        "JOIN MentorEvaluate me ON s.mentorEvaluateList = c.company_id "+
+//                        "WHERE s.semester = :sem ",
+//                TeacherEvaluate.class
+//        );
+        Query<TeacherEvaluate> query = session.createQuery("SELECT te " + "FROM  TeacherEvaluate te JOIN Student s ON s.student_id = te.student.student_id WHERE s.semester =: sem" ,TeacherEvaluate.class);
+        query.setParameter("sem", semester);
+
+        return query.getResultList();
+    }
+
+
+
+//    public List<TeacherEvaluate> getViewTeacherEvaluateByStudentSemester(String semester, int teacher_id) {
+//        Session session = sessionFactory.getCurrentSession();
+//        Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate te " +
+//                "JOIN Student s ON  s.student_id = te.student.student_id " +
+//               " WHERE te.teacher.teacher_id =: teacherId AND s.semester =: sem ", TeacherEvaluate.class);
+//
+//        query.setParameter("sem", semester);
+//        query.setParameter("teacherId", teacher_id);
+//        List<TeacherEvaluate> teacherEvaluates =  query.getResultList();
+//        System.out.println(teacherEvaluates.size());
+//        return teacherEvaluates;
+//    }
+
+    @Override
+    public List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate te WHERE te.teacher.teacher_id =: tId", TeacherEvaluate.class);
+        query.setParameter("tId", teacher_id);
+        return query.getResultList();
+    }
+//    @Override
+//    public List<TeacherEvaluate> getTeacherEvaluateByTeacherId (int tEvaId,int companyId,String semester){
+//        Session session = sessionFactory.getCurrentSession();
+//        Query<TeacherEvaluate> query = session.createQuery(
+//                "SELECT te " +
+//                        "FROM  TeacherEvaluate te " +
+//                        "JOIN Student s ON te.student.student_id = s.student_id " +
+//                        "JOIN Company c ON s.company.company_id = c.company_id "+
+//                        "WHERE te.teacher.id = :teacherId and te.student.company.company_id =: companyId and s.semester = :sem", TeacherEvaluate.class
+//        );
+//        query.setParameter("teacherId", tEvaId);
+//        query.setParameter("companyId", companyId);
+//        query.setParameter("sem", semester);
+//
+//        System.out.println(query.getResultList().size());
+//        return query.getResultList();
+//    }
 
 
     @Override
@@ -65,25 +142,12 @@ public class TeacherEvaluateDaoImpl implements TeacherEvaluateDao {
 
 
 
-
-
-
-
-    @Override
-    public List<TeacherEvaluate> getViewTeacherEvaluate(int teacher_id) {
-        Session session = sessionFactory.getCurrentSession();
-        Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate te WHERE te.teacher.teacher_id =: tId", TeacherEvaluate.class);
-        query.setParameter("tId", teacher_id);
-        return query.getResultList();
-    }
-
     @Override
     public List<TeacherEvaluate> getTeacherEvaluate() {
         Session session = sessionFactory.getCurrentSession();
         Query<TeacherEvaluate> query = session.createQuery("FROM TeacherEvaluate t ", TeacherEvaluate.class);
         return query.getResultList();
     }
-
 
 
     @Override

@@ -37,6 +37,12 @@ public class MentorEvaluateServiceImpl implements MentorEvaluateService {
 
     @Override
     @Transactional
+    public List<MentorEvaluate> getStatusMentorByStudentSemester(String semester) {
+        return mentorEvaluateDao.getStatusMentorByStudentSemester(semester);
+    }
+
+    @Override
+    @Transactional
     public List<String> getAllListSemester()  {
         return mentorEvaluateDao.getAllListSemester();
 

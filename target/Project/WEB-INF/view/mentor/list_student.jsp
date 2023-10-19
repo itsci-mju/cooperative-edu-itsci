@@ -13,9 +13,9 @@
 <%
     Mentor mentor = (Mentor) session.getAttribute("mentor");
 %>
-<body><br><br>
+<body><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (พนักงานพี่เลี้ยง)</p>
@@ -51,9 +51,13 @@
                         <td align="center">
                             <fmt:formatDate pattern="dd/MM/yyyy" value="${startdate}" /> -  <fmt:formatDate pattern="dd/MM/yyyy" value="${enddate}" />
                         </td>
+<%--                        <td align="center">--%>
+<%--                            <a href="${pageContext.request.contextPath}/mentor/${student.student_id}/evaluate/<%=mentor.getMentor_id()%>">--%>
+<%--                                <button type="submit" class="btn btn-success">ประเมินนักศึกษา</button>--%>
+<%--                            </a>--%>
+<%--                        </td>--%>
                         <td align="center">
                             <a href="${pageContext.request.contextPath}/mentor/${student.student_id}/evaluate/<%=mentor.getMentor_id()%>">
-                                    <%--                    <input type="submit" value="ประเมิน" class="sub_editprofile">--%>
                                 <button type="submit" class="btn btn-success">ประเมิน</button>
                             </a>
                         </td>
@@ -64,6 +68,7 @@
     </table>
 
 
-</body>
-<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
+</body><br><br><br><br>
+
 </html>
+<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>

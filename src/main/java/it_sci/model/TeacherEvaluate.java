@@ -39,6 +39,11 @@ public class TeacherEvaluate {
     @JoinColumn(name = "student_studentid")
     private Student student;
 
+//    @OneToOne
+//    @JoinColumn(name = "company_id")
+//    private Company company;
+
+
     public TeacherEvaluate(int score, String semester, Date assessment_startdate, Date assessment_enddate, String assessment_status, Date teacher_super_vision_date, String teacher_super_vision_time, Teacher teacher, Student student) {
         this.score = score;
         this.semester = semester;

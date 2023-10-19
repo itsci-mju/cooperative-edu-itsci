@@ -6,35 +6,85 @@
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 
+    <script>
+        function previewImage(input) {
+            var preview = document.getElementById('preview');
+            var fileInput = document.getElementById('fileInput');
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        }
+    </script>
+
+    <script>
+        const newPasswordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirm");
+        const passwordMatchMessage = document.getElementById("passwordMatch");
+
+        function checkPasswordMatch() {
+            const newPassword = newPasswordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            if (newPassword === confirmPassword) {
+                passwordMatchMessage.textContent = "Passwords match.";
+                passwordMatchMessage.style.color = "green";
+            } else {
+                passwordMatchMessage.textContent = "Passwords do not match.";
+                passwordMatchMessage.style.color = "red";
+
+            }
+        }
+    </script>
+
+    <style>
+        .img{
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0px 0px 13px 2px #454545;
+        }
+    </style>
 </head>
-<style>
-    .profile {
-        width: 200px;
-        height: 200px;
-        margin-left: 260px;
-        margin-top: 50px;
-    }
-</style>
+
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <body><br><br>
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br>
+
 <form action="${pageContext.request.contextPath}/mentor/${mentor_profile.mentor_id}/update_mentor_profile" method="POST" enctype="multipart/form-data">
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
             <p class="editpro_header1">ระบบการแก้ไขข้อมูลส่วนตัว (พนักงานพี่เลี้ยง)</p>
             <p class="editpro_header2">แก้ไขข้อมูลส่วนตัว</p>
         </div>
-    </div>
+    </div><br>
+    <center>
+        <img src="${pageContext.request.contextPath}/uploads/mentor_profile/${mentor_profile.mentor_image}" class="img"/>
+    </center>
 
     <div align="center">
         <label for="profile-image" class="profile-image-label">
-            <img class="profile" src="${pageContext.request.contextPath}/assets/img/mentor_profile/${mentor_profile.mentor_image}">
-            <i class="bi bi-pencil-square"></i>
-        </label>
-        <input name="profile" type="file" id="profile-image" class="profile-image-input">
+<%--            <img class="profile" src="${pageContext.request.contextPath}/assets/img/mentor_profile/${mentor_profile.mentor_image}">--%>
+            <img id="preview"  src="${pageContext.request.contextPath}/uploads/mentor_profile/${mentor_profile.mentor_image}" style="display: none">
+<%--            <i class="bi bi-pencil-square"></i>--%>
+        </label><br>
+        <input type="hidden" name="original_file" value="${mentor_profile.mentor_image}" >
+        <input type="file" id="profile-image" accept="image/*" name="profile" class="profile-image-input" onchange="previewImage(this)" style="margin-left: 500px">
         <c:if test="${not empty mentor_profile.mentor_image}">
             <input type="hidden" name="original_img" value="${mentor_profile.mentor_image}">
+
         </c:if>
     </div><br><br>
     <h5 style="margin-left: 200px; font-family: 'Kanit', sans-serif; font-weight: bold;">ข้อมูลพนักงานพี่เลี้ยง</h5>
@@ -81,19 +131,31 @@
         <td><p>Email</p></td>
         <td><input type="text" id="mentor_email" name="mentor_email" value="${mentor_profile.mentor_email}"></td>
 
-        <td><p >&nbsp;&nbsp; รหัสผ่าน &nbsp;&nbsp;</p></td>
-        <td><input type="text" id="password" name="password" value="${mentor_profile.password}"></td>
+<%--        <td><p >&nbsp;&nbsp; รหัสผ่าน &nbsp;&nbsp;</p></td>--%>
+<%--        <td><input type="text" id="password" name="password" value="${mentor_profile.password}"></td>--%>
     </tr>
+
+<%--    <tr>--%>
+<%--        <td>--%>
+<%--            <label for="password" style="padding: 0px 30px 30px 0px;">รหัสผ่าน</label>--%>
+<%--            <input type="password" id="password" name="password" ><br>--%>
+<%--            <input type="password" id="confirm" name="confirm" onkeyup="checkPasswordMatch()" style="margin-left: 91px;"><br>--%>
+<%--            <label id="passwordMatch" style="margin: 20px 20px 10px 90px;">กรุณากรอกรหัสผ่านให้ตรงกัน</label>--%>
+<%--        </td>--%>
+<%--    </tr>--%>
 
 </table>
 
 <div style="margin: 35px 0px 50px 690px;">
 
-    <button type="submit" class="btn btn-success">บันทึกการแก้ไข</button>
-    <button type="button" class="btn btn-warning">ยกเลิก</button>
+    <button type="submit" class="btn btn-success">บันทึก</button>
+    <a href="${pageContext.request.contextPath}/mentor/edit_password/${mentor_profile.mentor_id}">
+        <button type="button" class="btn btn-warning">แก้ไขรหัสผ่าน</button>
+    </a>
+
 </div>
 </form>
-</body>
+</body><br><br><br><br>
 
 <jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
 </html>

@@ -29,12 +29,21 @@
     <%--        ${students}--%>
     <c:forEach var="list" items="${mentors}">
             <tr>
-                <td align="center"> ${list.mentor_name} ${list.mentor_lastname}</td>
+                <td align="center">${list.mentor_name} ${list.mentor_lastname}</td>
                 <td align="center">${list.mentor_position}</td>
                 <td align="center">
-                    <a href="${pageContext.request.contextPath}/teacher/manage_mentor_login/${list.mentor_id}">
-                        <button type="submit" class="btn btn-primary">จัดการเข้าสู่ระบบพี่เลี้ยง</button>
-                    </a>
+                <c:set var="showed" value="false" />
+                <c:forEach var="nn" items="${list_pass_nn}">
+                    <c:choose>
+                        <c:when test="${list.mentor_id == nn.mentor_id}">
+                            <button type="submit" class="btn btn-secondary" style="width: 180px;" disabled>เสร็จสิ้น</button>
+                            <c:set var="showed" value="true" />
+                        </c:when>
+                    </c:choose>
+                </c:forEach>
+                    <c:if test="${!showed}" >
+                        <a href="${pageContext.request.contextPath}/teacher/manage_mentor_login/${list.mentor_id}"><button type="submit" class="btn btn-primary">จัดการเข้าสู่ระบบพี่เลี้ยง</button></a>
+                    </c:if>
                 </td>
             </tr>
     </c:forEach>

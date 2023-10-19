@@ -28,12 +28,11 @@
 <%--        ${students}--%>
         <c:forEach var="mentorevaluates" items="${mentorevaluate}">
             <c:set var="assessmentdate" value="${mentorevaluates.assessment_date}" />
-
             <c:if test="${mentorevaluates.assessment_status == 'ประเมินแล้ว'}">
                 <tr>
-                    <td  align="center"> ${mentorevaluates.student.student_id}</td>
-                    <td  align="center"> ${mentorevaluates.student.student_name} ${mentorevaluates.student.student_lastname}</td>
-                    <td  align="center">${mentorevaluates.student.workposition}</td>
+                    <td align="center">${mentorevaluates.student.student_id}</td>
+                    <td align="center">${mentorevaluates.student.student_name} ${mentorevaluates.student.student_lastname}</td>
+                    <td align="center">${mentorevaluates.student.workposition}</td>
                     <td align="center">
                         <fmt:formatDate pattern="dd/MM/yyyy" value="${assessmentdate}"/>
                     </td>
@@ -44,6 +43,7 @@
     </table>
 
 
-</body>
-<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
+</body><br><br><br><br>
+
 </html>
+<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>

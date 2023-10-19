@@ -10,6 +10,7 @@ public interface MentorEvaluateService {
     List<MentorEvaluate> getAllMentorEvaluates ();
     MentorEvaluate getMentorEvaluateById (long mEvaId);
     void saveMentorEvaluate(MentorEvaluate mentorEvaluate);
+    List<MentorEvaluate> getStatusMentorByStudentSemester(String semester);
 
     List<String> getAllListSemester() ;
     MentorEvaluate updateMentorEvaluate (MentorEvaluate mentorEvaluate);

@@ -35,10 +35,8 @@
                 <i class="bi bi-postcard" style="font-size: 28px;"></i>
             </a>
             <td align="center">
-                <a href="${pageContext.request.contextPath}/teacher/${company.company_id}/assign_teacher">
-                    <button type="button" class="btn btn-primary">มอบหมายอาจารย์</button>
-                </a>
-            </td>
+            <a href="${pageContext.request.contextPath}/teacher/${company.company_id}/assign_teacher"><button type="button" class="btn btn-primary">มอบหมายอาจารย์</button></a>
+        </td>
 <%--            <td align="center">--%>
 <%--                <a href="${pageContext.request.contextPath}/teacher/${company.company_id}/assign_teacher">--%>
 <%--                    <button type="button" class="btn btn-primary" id="assignButton">มอบหมายอาจารย์</button>--%>

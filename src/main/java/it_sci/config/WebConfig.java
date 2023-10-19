@@ -24,6 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
+        registry.addResourceHandler("/uploads/**").addResourceLocations("file:/C:/uploads/");
     }
 
     @Bean

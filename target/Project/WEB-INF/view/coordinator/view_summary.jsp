@@ -6,6 +6,7 @@
 <%@ page import="java.util.Arrays" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,6 +14,11 @@
     <link href="${pageContext.request.contextPath}/assets/css/navbar.css" rel="stylesheet">
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 
+    <script>
+        function submitForm () {
+            document.forms[0].submit();
+        }
+    </script>
 
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
@@ -21,55 +27,60 @@
 %>
 <body><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/>
+<br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ระบบตรวจสอบสถานะการประเมิน (อาจารย์ผู้ประสานงาน)</p>
         <p class="editpro_header2">ตรวจสอบสถานะการประเมิน</p>
     </div>
-</div><br><br>
+</div>
+<br><br>
 
 
 <div align="center">
     <p style="display: inline-block">ภาคการศึกษา</p>
-<%--    <select id="semesterSelect">--%>
-<%--        <c:forEach items="${list_semester}" var="listsemester">--%>
-<%--            <option value="${listsemester}">${listsemester}</option>--%>
-<%--        </c:forEach>--%>
-<%--    </select>--%>
+        <form action="${pageContext.request.contextPath}/teacher/testlist">
+            <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
+                <option >กรุณาเลือกเทอม</option>
+                <c:forEach items="${list_semester}" var="listsemester">
 
-<%--    <form action="${pageContext.request.contextPath}/teacher/testlist">--%>
-<%--        <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">--%>
-<%--            <c:forEach items="${list_semester}" var="listsemester">--%>
-<%--                <c:if test="select_semester">--%>
+                    <option value="${listsemester}">${listsemester}</option>
+<%--                    <c:choose>--%>
+<%--                        <c:when test="${listsemester eq select_semester}">--%>
+<%--                            <option value="${listsemester}">${listsemester}</option>--%>
+<%--                        </c:when>--%>
+<%--                        <c:otherwise>--%>
+<%--                            <option value="${listsemester}">${listsemester}</option>--%>
+<%--                        </c:otherwise>--%>
+<%--                    </c:choose>--%>
+                </c:forEach>
+            </select>
+        </form>
 
-<%--                </c:if>--%>
-<%--                <option value="${listsemester}">${listsemester}</option>--%>
+        <label id="selectedLabel"></label>
+<%--    ---------    BackUp --------------%>
+
+<%--        <select id="semesterSelect" name="semesterSelect">--%>
+<%--            <c:forEach var="semester" items="${list_semester}">--%>
+<%--                <option value="${semester}">${semester}</option>--%>
 <%--            </c:forEach>--%>
 <%--        </select>--%>
-<%--    </form>--%>
 
-    <form action="${pageContext.request.contextPath}/teacher/testlist">
-        <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
-            <c:forEach items="${list_semester}" var="listsemester">
-                <c:choose>
-                    <c:when test="${listsemester eq select_semester}">
-                        <option value="${listsemester}" selected>${listsemester}</option>
-                    </c:when>
-                    <c:otherwise>
-                        <option value="${listsemester}">${listsemester}</option>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </select>
-    </form>
+<%--    <select id="semesterSelect" name="semesterSelect" onchange="showSelectedData()">--%>
+<%--        <c:forEach var="semester" items="${list_semester}">--%>
+<%--            <option value="${semester}">${semester}</option>--%>
+<%--        </c:forEach>--%>
+<%--    </select>--%>
+<%--    <label id="selected"></label>--%>
 
+<%--    <div id="tableContainer">--%>
+<%--        <!-- ตารางจะถูกสร้างและแอปเนิคที่นี่ -->--%>
+<%--    </div>--%>
 
-
-    <label id="selectedLabel"></label>
-
-
-
+    <%--    <c:forEach var="semester" items="${list_semester}">--%>
+    <%--        <div id="data${semester}" class="semesterData" style="display: none"></div>--%>
+    <%--    </c:forEach>--%>
 </div>
 
 <%--<div align="center">--%>
@@ -82,26 +93,25 @@
 <%--</div>--%>
 
 
-<div style="margin-left: 1365px;">
-    <a href="${pageContext.request.contextPath}/">
-        <button type="submit" class="btn btn-success">Export Excel File</button>
-    </a>
+<div style="margin-left: 1350px;>">
+    <c:set var="t" value="${term}"/>
+    <c:set var="termFormat" value="${fn:replace(t,'/','_')}"/>
+    <input type="button" value="Export Excel File"
+           onclick="window.location.href='${pageContext.request.contextPath}/teacher/${termFormat}/downloadExcel'; return false;"
+           class="btn btn-success" style="width: 170px;"/>
 </div>
 
-<div>
-
-</div>
 <table class="table table-hover"  >
     <tr class="table-primary" id="font">
         <td align="center">รหัสนักศึกษา</td>
         <td align="center">ชื่อนักศึกษา</td>
         <td align="center">ตำแหน่ง</td>
         <td align="center">ระยะเวลาการฝึกสหกิจศึกษา</td>
-        <td align="center">คะแนนพี่เลี้ยงเฉลี่ย</td>
-        <td align="center">คะแนนอาจารย์เฉลี่ย</td>
+        <td align="center">คะแนนพี่เลี้ยงเฉลี่ย(60)</td>
+        <td align="center">คะแนนอาจารย์เฉลี่ย(20)</td>
     </tr>
-    <%--        ${students}--%>
 
+<%-----------    BackUp --------------%>
     <c:forEach var="list" items="${list_students}">
             <c:set var="startdate" value="${list.startdate}" />
             <c:set var="enddate" value="${list.enddate}"/>
@@ -116,21 +126,13 @@
                 <td align="center">${list.sumScoreTeacher}</td>
             </tr>
     </c:forEach>
+<%-----------    BackUp --------------%>
 </table>
 
-</body><br><br><br><br>
-
-
-
-<script>
-
-    function submitForm () {
-        document.forms[0].submit();
-    }
-
-</script>
+</body>
+<br><br><br><br>
 
 
 </html>
 
-<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>
+<%--<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>--%>

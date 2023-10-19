@@ -22,6 +22,7 @@ public class CompanyController {
     public String gotoTest (Model model) {
         List<Company> company = companyService.getAllCompanies();
         model.addAttribute("companies", company);
+        model.addAttribute("list_evaluate" ,companyService.getListTeacherEvaluate());
         return "coordinator/list_company";
     }
 

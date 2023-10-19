@@ -37,6 +37,8 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Student> students;
 
+//    @OneToOne(mappedBy = "company", cascade = CascadeType.ALL)
+//    private TeacherEvaluate teacherEvaluate;
 
     public Company() {
     }

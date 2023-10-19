@@ -90,7 +90,7 @@ public class Student {
         } catch (Exception e) {
             System.out.println("fail");
         }
-        return sum;
+        return sum/3;
     }
 
     public double calculateSumScoreTeacher() {
@@ -100,9 +100,6 @@ public class Student {
         }
         return sum;
     }
-
-
-
 
     public Student() {
     }
