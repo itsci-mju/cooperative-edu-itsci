@@ -3,6 +3,7 @@ package it_sci.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "teacher")
@@ -32,6 +33,8 @@ public class Teacher {
     @Column(name = "status", length = 15, nullable = false)
     private String status;
 
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<TeacherEvaluate> teacherEvaluates;
 
     public Teacher() {
     }
@@ -118,5 +121,13 @@ public class Teacher {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<TeacherEvaluate> getTeacherEvaluates() {
+        return teacherEvaluates;
+    }
+
+    public void setTeacherEvaluates(List<TeacherEvaluate> teacherEvaluates) {
+        this.teacherEvaluates = teacherEvaluates;
     }
 }

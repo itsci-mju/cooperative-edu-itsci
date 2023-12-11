@@ -28,8 +28,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public List<Student> getStudentByCompanyId(int company_id) {
-        return studentDao.getStudentByCompanyId(company_id);
+    public List<Student> getStudentByCompanyId(int company_id,String Fterm) {
+        return studentDao.getStudentByCompanyId(company_id,Fterm);
     }
 
     @Override
@@ -54,6 +54,24 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public List<Student> getStudentsBySemester(String semester) {
         return studentDao.getStudentsBySemester(semester);
+    }
+
+    @Override
+    @Transactional
+    public List<Student> getListStudentsBySemester(String semester) {
+        return studentDao.getListStudentsBySemester(semester);
+    }
+
+    @Override
+    @Transactional
+    public List<Student> getListStudents() {
+        return studentDao.getListStudents();
+    }
+
+    @Override
+    @Transactional
+    public List<Student> getListStudentsByTerm(String semester) {
+        return studentDao.getListStudentsByTerm(semester);
     }
 
     @Transactional

@@ -3,6 +3,7 @@ package it_sci.service;
 import it_sci.model.Company;
 import it_sci.model.TeacherEvaluate;
 
+import java.util.Date;
 import java.util.List;
 
 public interface CompanyService {
@@ -12,6 +13,9 @@ public interface CompanyService {
     Company getCompany(int company_id);
     List<Company> getCompaniesByStudentSemester(String semester,int teacher_id);
     List<TeacherEvaluate> getListTeacherEvaluate();
+    TeacherEvaluate getUpdateAssignTeacher(int company_id);
+    List<Company> getListCompanyBySemester(String semester);
+
     void saveCompany(Company company);
     void updateCompany(Company company);
     void deleteCompany(int company_id);

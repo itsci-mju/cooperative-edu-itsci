@@ -15,8 +15,16 @@
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 
     <script>
-        function submitForm () {
-            document.forms[0].submit();
+
+    var term = document.getElementById("semesterSelect").value = 0;
+
+        function checkScript(frm){
+            if (frm.semesterSelect.value === "กรุณาเลือกเทอม"){
+                alert("กรุณาเลือกภาคการศึกษา")
+                return false
+            }else {
+                term = 1
+            }
         }
     </script>
 
@@ -28,7 +36,7 @@
 <body><br><br>
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/>
-<br><br>
+<br><br><br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ระบบตรวจสอบสถานะการประเมิน (อาจารย์ผู้ประสานงาน)</p>
@@ -39,69 +47,50 @@
 
 
 <div align="center">
-    <p style="display: inline-block">ภาคการศึกษา</p>
-        <form action="${pageContext.request.contextPath}/teacher/testlist">
-            <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
-                <option >กรุณาเลือกเทอม</option>
-                <c:forEach items="${list_semester}" var="listsemester">
+    <form action="${pageContext.request.contextPath}/teacher/select_semester_summary" name="frm">
+        <p style="display: inline-block">ภาคการศึกษา</p>
+        <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
+<%--            <option>กรุณาเลือกเทอม</option>--%>
+            <c:forEach items="${list_semester}" var="listsemester">
+                <c:choose>
+                    <c:when test="${listsemester.equals(term)}">
+                        <option value="${listsemester}" selected>${listsemester}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <c:if test="${listsemester ne ''}">
+                            <option value="${listsemester}">${listsemester}</option>
+                        </c:if>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </select>
+        <input type="submit" value="ค้นหา" onclick="return checkScript(frm)" />
+    </form>
+    <label id="selectedLabel"></label>
 
-                    <option value="${listsemester}">${listsemester}</option>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${listsemester eq select_semester}">--%>
-<%--                            <option value="${listsemester}">${listsemester}</option>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <option value="${listsemester}">${listsemester}</option>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-                </c:forEach>
-            </select>
-        </form>
-
-        <label id="selectedLabel"></label>
-<%--    ---------    BackUp --------------%>
-
-<%--        <select id="semesterSelect" name="semesterSelect">--%>
-<%--            <c:forEach var="semester" items="${list_semester}">--%>
-<%--                <option value="${semester}">${semester}</option>--%>
-<%--            </c:forEach>--%>
-<%--        </select>--%>
-
-<%--    <select id="semesterSelect" name="semesterSelect" onchange="showSelectedData()">--%>
-<%--        <c:forEach var="semester" items="${list_semester}">--%>
-<%--            <option value="${semester}">${semester}</option>--%>
-<%--        </c:forEach>--%>
-<%--    </select>--%>
-<%--    <label id="selected"></label>--%>
-
-<%--    <div id="tableContainer">--%>
-<%--        <!-- ตารางจะถูกสร้างและแอปเนิคที่นี่ -->--%>
-<%--    </div>--%>
-
-    <%--    <c:forEach var="semester" items="${list_semester}">--%>
-    <%--        <div id="data${semester}" class="semesterData" style="display: none"></div>--%>
-    <%--    </c:forEach>--%>
 </div>
 
-<%--<div align="center">--%>
-<%--    <p style="display: inline-block">ภาคการศึกษา</p>--%>
-<%--    <select >--%>
-<%--        <c:forEach items="${list_semester}" var="listsemester">--%>
-<%--            <option value="${listsemester}">${listsemester}</option>--%>
-<%--        </c:forEach>--%>
-<%--    </select>--%>
-<%--</div>--%>
+<table style="width: 100%; text-align: right;">
+    <tr>
+        <td style="width: 0">
+                <c:set var="t" value="${term}"/>
+                <c:set var="termFormat" value="${fn:replace(t,'/','_')}"/>
+                <input type="button" value="ส่งออก คำตอบอาจารย์นิเทศ"
+                       onclick="return exportTeacherAnswer()"
+                       class="btn btn-success" style="width: 210px;"/>
 
+            <input type="button" value="ส่งออก คำตอบพี่เลี้ยง"
+                   onclick="return exportMentorAnswer()"
+                   class="btn btn-success" style="width: 170px;"/>
 
-<div style="margin-left: 1350px;>">
-    <c:set var="t" value="${term}"/>
-    <c:set var="termFormat" value="${fn:replace(t,'/','_')}"/>
-    <input type="button" value="Export Excel File"
-           onclick="window.location.href='${pageContext.request.contextPath}/teacher/${termFormat}/downloadExcel'; return false;"
-           class="btn btn-success" style="width: 170px;"/>
-</div>
+            <input type="button" value="ส่งออก ผลคะแนนทั้งหมด"
+                   onclick="return exportSummary()"
+                   class="btn btn-success" style="width: 200px;"/>
+        </td>
+    </tr>
+</table>
 
-<table class="table table-hover"  >
+<table class="table table-hover">
     <tr class="table-primary" id="font">
         <td align="center">รหัสนักศึกษา</td>
         <td align="center">ชื่อนักศึกษา</td>
@@ -111,28 +100,70 @@
         <td align="center">คะแนนอาจารย์เฉลี่ย(20)</td>
     </tr>
 
-<%-----------    BackUp --------------%>
-    <c:forEach var="list" items="${list_students}">
-            <c:set var="startdate" value="${list.startdate}" />
-            <c:set var="enddate" value="${list.enddate}"/>
-            <tr>
-                <td align="center"> ${list.student_id}</td>
-                <td align="center"> ${list.student_name} ${list.student_lastname}</td>
-                <td align="center">${list.workposition}</td>
-                <td align="center">
-                    <fmt:formatDate pattern="dd/MM/yyyy" value="${startdate}" /> -  <fmt:formatDate pattern="dd/MM/yyyy" value="${enddate}" />
-                </td>
-                <td align="center">${list.sumScoreMentor}</td>
-                <td align="center">${list.sumScoreTeacher}</td>
-            </tr>
+    <%-----------    BackUp --------------%>
+    <c:forEach var="list" items="${list_student}">
+        <c:set var="startdate" value="${list.startdate}"/>
+        <c:set var="enddate" value="${list.enddate}"/>
+        <tr>
+            <td align="center"> ${list.student_id}</td>
+            <td align="center"> ${list.student_name} ${list.student_lastname}</td>
+            <td align="center">${list.workposition}</td>
+            <td align="center">
+                <fmt:formatDate pattern="dd/MM/yyyy" value="${startdate}"/> - <fmt:formatDate pattern="dd/MM/yyyy"
+                                                                                              value="${enddate}"/>
+            </td>
+            <td align="center">
+
+                <c:choose>
+                    <c:when test="${list.sumScoreMentor == 0}">
+                        -
+                    </c:when>
+                    <c:otherwise>
+                        <fmt:formatNumber value="${list.sumScoreMentor}" type="number" pattern="#,##0.00"/>
+                    </c:otherwise>
+                </c:choose>
+
+            </td>
+            <td align="center">
+
+                <c:choose>
+                    <c:when test="${list.sumScoreTeacher == 0}">
+                        -
+                    </c:when>
+                    <c:otherwise>
+                        <fmt:formatNumber value="${list.sumScoreTeacher}" type="number" pattern="#,##0.00"/>
+                    </c:otherwise>
+                </c:choose>
+            </td>
+        </tr>
     </c:forEach>
-<%-----------    BackUp --------------%>
+    <%-----------    BackUp --------------%>
 </table>
 
 </body>
-<br><br><br><br>
+<script>
+    function exportSummary(){
+        const semesterSelect = document.getElementById('semesterSelect');
+        var termFormat = semesterSelect.value;
+        termFormat = termFormat.replace("/","_");
+        window.location.href=`${pageContext.request.contextPath}/teacher/`+termFormat+`/downloadExcel_summary`;
+    }
+
+    function exportTeacherAnswer(){
+        const semesterSelect = document.getElementById('semesterSelect');
+        var termFormat = semesterSelect.value;
+        termFormat = termFormat.replace("/","_");
+        window.location.href=`${pageContext.request.contextPath}/teacher/`+termFormat+`/downloadExcel_teacherAnswer`;
+    }
+
+    function exportMentorAnswer(){
+        const semesterSelect = document.getElementById('semesterSelect');
+        var termFormat = semesterSelect.value;
+        termFormat = termFormat.replace("/","_");
+        window.location.href=`${pageContext.request.contextPath}/teacher/`+termFormat+`/downloadExcel_mentorAnswer`;
+    }
+</script>
 
 
 </html>
 
-<%--<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>--%>

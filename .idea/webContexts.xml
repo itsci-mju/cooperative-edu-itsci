@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/coordinator/view_summary.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/coordinator" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/mentor/editprofile.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/mentor" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/teacher/evaluate.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/teacher" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/teacher/list_company.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/teacher" />
       </map>

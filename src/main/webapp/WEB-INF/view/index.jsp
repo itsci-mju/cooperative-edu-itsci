@@ -30,6 +30,14 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
+    <script>
+        var stt = '<%= request.getParameter("stt") %>';
+        console.log(stt);
+        if (stt === 'true') {
+            alert('บันทึกสำเร็จ');
+        }
+    </script>
+
 </head>
 <style>
     #main_header_hero {

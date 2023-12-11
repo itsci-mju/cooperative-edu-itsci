@@ -85,7 +85,7 @@ public class Student {
                     sum += teacherEvaluate.getScore();
                 }
             }
-            System.out.println("Total : " + sum);
+//            System.out.println("Total : " + sum);
 
         } catch (Exception e) {
             System.out.println("fail");

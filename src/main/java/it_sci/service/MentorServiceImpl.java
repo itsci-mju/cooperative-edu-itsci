@@ -23,8 +23,8 @@ public class MentorServiceImpl implements MentorService {
 
     @Override
     @Transactional
-    public List<Mentor> getMentorByIdAndStuId(int mentor_id) {
-        return mentorDao.getMentorByIdAndStuId(mentor_id);
+    public List<Mentor> getMentorByIdAndStuId(int mentor_id,String term) {
+        return mentorDao.getMentorByIdAndStuId(mentor_id,term);
     }
 
     @Override
@@ -35,8 +35,8 @@ public class MentorServiceImpl implements MentorService {
 
     @Override
     @Transactional
-    public List<Mentor> getManageLoginMentor() {
-        return mentorDao.getManageLoginMentor();
+    public List<Mentor> getManageLoginMentor(String semester) {
+        return mentorDao.getManageLoginMentor(semester);
     }
 
     @Override

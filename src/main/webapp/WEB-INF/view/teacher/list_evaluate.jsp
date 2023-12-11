@@ -1,3 +1,4 @@
+<%@ page import="it_sci.model.Teacher" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -8,37 +9,56 @@
     <jsp:include page="/WEB-INF/view/layout/nav_style.jsp"/>
 
     <script>
-        function submitForm () {
-            document.forms[0].submit();
+
+        var term = document.getElementById("semesterSelect").value = 0;
+
+        function checkScript(frm){
+            if (frm.semesterSelect.value === "กรุณาเลือกเทอม"){
+                alert("กรุณาเลือกภาคการศึกษา")
+                return false
+            }else {
+                term = 1
+            }
         }
     </script>
+
 </head>
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
-<body ><br><br>
+<body ><br><br><br><br>
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
+
+<%
+    Teacher teacher = (Teacher) session.getAttribute("teacher");
+%>
+
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
-        <p class="editpro_header1">ผลการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
-        <p class="editpro_header2">รายชื่อนักศึกษา</p>
+        <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
+        <p class="editpro_header2">ผลการประเมินการฝึกสหกิจศึกษา</p>
     </div>
-</div><br><br>
-
+</div><br>
 <div align="center">
-    <div align="center">
+    <form action="${pageContext.request.contextPath}/teacher/<%=teacher.getTeacher_id()%>/select_semester_list_teacher_evaluate" name="frm">
         <p style="display: inline-block">ภาคการศึกษา</p>
-        <form action="${pageContext.request.contextPath}/teacher/testgetlistevaluate/${teacher_id}">
-            <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
-                <option >กรุณาเลือกเทอม</option>
-                <c:forEach items="${list_semester}" var="listsemester">
+        <select id="semesterSelect" name="semesterSelect" onchange="submitForm()">
+            <c:forEach items="${list_semester}" var="listsemester">
+                <c:choose>
+                    <c:when test="${listsemester.equals(term)}">
+                        <option value="${listsemester}" selected>${listsemester}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <c:if test="${listsemester ne ''}">
+                            <option value="${listsemester}">${listsemester}</option>
+                        </c:if>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </select>
+        <input type="submit" value="ค้นหา" onclick="return checkScript(frm)"/>
+    </form>
+    <label id="selectedLabel"></label>
 
-                    <option value="${listsemester}">${listsemester}</option>
-                </c:forEach>
-            </select>
-        </form>
-
-        <label id="selectedLabel"></label>
-        </div>
 </div><br><br>
     <table class="table table-hover" >
         <tr class="table-primary" id="font">
@@ -51,7 +71,7 @@
 <%--        ${students}--%>
         <c:forEach var="teacherevaluates" items="${list_teacher_evaluate}">
             <c:set var="assessmentdate" value="${teacherevaluates.assessment_date}" />
-        <c:if test="${teacherevaluates.assessment_status == 'ประเมินแล้ว'}">
+        <c:if test="${teacherevaluates.assessment_status == 'ประเมินแล้ว' && teacher_id == teacherevaluates.teacher.teacher_id}">
             <tr>
                 <td  align="center"> ${teacherevaluates.student.student_id}</td>
                 <td  align="center"> ${teacherevaluates.student.student_name} ${teacherevaluates.student.student_lastname}</td>
@@ -65,9 +85,7 @@
         </c:forEach>
     </table>
 
-
-</body><br><br><br><br>
+</body>
 
 </html>
 
-<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>

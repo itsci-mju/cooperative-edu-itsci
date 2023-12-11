@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface MentorDao {
     Mentor getMentorById(int mentor_id);
-    List<Mentor> getMentorByIdAndStuId(int mentor_id);
+    List<Mentor> getMentorByIdAndStuId(int mentor_id,String term);
     List<Mentor> getListStudentByMenterId(int mentor_id);
     Mentor getMentorProfile(int id);
 
-    List<Mentor> getManageLoginMentor();
+    List<Mentor> getManageLoginMentor(String semester);
 
     List<Mentor> getMentorPasswordNotNull();
 

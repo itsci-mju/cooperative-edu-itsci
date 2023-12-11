@@ -90,4 +90,37 @@ public class TeacherDaoImpl implements TeacherDao{
 //        System.out.println("teacherId : " + teacher_id);
         return query.getResultList();
     }
+
+    @Override
+    public List<Company> getListCompanySupervision(String semester,int teacher_id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query<Company> query = session.createQuery(
+                "SELECT c " +
+                        "FROM  Company c " +
+                        "JOIN Student s ON c.company_id = s.company.company_id " +
+                        "JOIN TeacherEvaluate te ON s.student_id = te.student.student_id "+
+                        "WHERE te.student.semester =: sem and te.teacher.id = :teacherId " +
+                        "GROUP BY te.student.company.company_id", Company.class
+        );
+        query.setParameter("sem", semester);
+        query.setParameter("teacherId", teacher_id);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Company> getListCompanySupervision(int teacher_id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query<Company> query = session.createQuery(
+                "SELECT c " +
+                        "FROM  Company c " +
+                        "JOIN Student s ON c.company_id = s.company.company_id " +
+                        "JOIN TeacherEvaluate te ON s.student_id = te.student.student_id "+
+                        "WHERE te.teacher.id = :teacherId " +
+                        "GROUP BY te.student.company.company_id", Company.class
+        );
+        query.setParameter("teacherId", teacher_id);
+        return query.getResultList();
+    }
 }

@@ -22,16 +22,20 @@ public class TeacherEvaluate {
     private Date assessment_date;
     @Column(name = "assessmentstartdate",nullable = false)
     private Date assessment_startdate;
+
     @Column(name = "assessmentenddate",nullable = false)
     private Date assessment_enddate;
     @Column(name = "assessmentstatus",nullable = false)
     private String assessment_status;
+    @Temporal(TemporalType.DATE)
     @Column(name = "teachersupervisiondate",nullable = false)
     private Date teacher_super_vision_date;
     @Column(name = "teachersupervisiontime",nullable = false)
     private String teacher_super_vision_time;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    //@ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "teacherid")
     private Teacher teacher;
 
@@ -39,14 +43,12 @@ public class TeacherEvaluate {
     @JoinColumn(name = "student_studentid")
     private Student student;
 
-//    @OneToOne
-//    @JoinColumn(name = "company_id")
-//    private Company company;
 
-
-    public TeacherEvaluate(int score, String semester, Date assessment_startdate, Date assessment_enddate, String assessment_status, Date teacher_super_vision_date, String teacher_super_vision_time, Teacher teacher, Student student) {
+    public TeacherEvaluate(long assessment_id, int score, String semester, Date assessment_date, Date assessment_startdate, Date assessment_enddate, String assessment_status, Date teacher_super_vision_date, String teacher_super_vision_time, Teacher teacher, Student student) {
+        this.assessment_id = assessment_id;
         this.score = score;
         this.semester = semester;
+        this.assessment_date = assessment_date;
         this.assessment_startdate = assessment_startdate;
         this.assessment_enddate = assessment_enddate;
         this.assessment_status = assessment_status;
@@ -58,16 +60,6 @@ public class TeacherEvaluate {
 
     public TeacherEvaluate() {
 
-    }
-
-    public TeacherEvaluate(int score, Date assessment_date, Date assessment_startdate, Date assessment_enddate, String assessment_status,Student student, Teacher teacher) {
-        this.score = score;
-        this.assessment_date = assessment_date;
-        this.assessment_startdate = assessment_startdate;
-        this.assessment_enddate = assessment_enddate;
-        this.assessment_status = assessment_status;
-        this.student = student;
-        this.teacher = teacher;
     }
 
     public long getAssessment_id() {
@@ -157,4 +149,5 @@ public class TeacherEvaluate {
     public void setStudent(Student student) {
         this.student = student;
     }
+
 }

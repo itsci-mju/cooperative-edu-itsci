@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class MentorDaoImpl implements MentorDao {
@@ -27,31 +28,14 @@ public class MentorDaoImpl implements MentorDao {
 //        System.out.println(query.getSingleResult().getStudents().size());
         return query.getSingleResult();
     }
-//    @Override
-//    public List<Company> getCompanyToAssignByTeacher(int teacher_id) {
-//        Session session = sessionFactory.getCurrentSession();
-//
-//        Query<Company> query = session.createQuery(
-//                "SELECT c " +
-//                        "FROM  Company c " +
-//                        "JOIN Student s ON c.company_id = s.company.company_id " +
-//                        "JOIN TeacherEvaluate te ON s.student_id = te.student.student_id "+
-//                        "WHERE te.teacher.id = :teacherId " +
-//                        "GROUP BY te.student.company.company_id", Company.class
-//        );
-//        query.setParameter("teacherId", teacher_id);
-////        System.out.println("result : " + query.getResultList().size());
-////        System.out.println("teacherId : " + teacher_id);
-//        return query.getResultList();
-//    }
 
     @Override
-    public List<Mentor> getMentorByIdAndStuId(int mentor_id) {
+    public List<Mentor> getMentorByIdAndStuId(int mentor_id,String term) {
         Session session = sessionFactory.getCurrentSession();
         Query<Mentor> query = session.createQuery("SELECT m FROM Mentor m INNER JOIN m.students s "+
-                " inner join s.mentorEvaluateList "+
-                "WHERE m.mentor_id =: mId", Mentor.class);
+                    "WHERE m.mentor_id =: mId and s.semester =: term", Mentor.class);
         query.setParameter("mId", mentor_id);
+        query.setParameter("term", term);
 //        System.out.println(query.getSingleResult());
 //        System.out.println(mentor_id);
 //        System.out.println(query.getSingleResult().getStudents().size());
@@ -80,11 +64,40 @@ public class MentorDaoImpl implements MentorDao {
     }
 
     @Override
-    public List<Mentor> getManageLoginMentor() {
+    public List<Mentor> getManageLoginMentor(String semester) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Mentor> query = session.createQuery("FROM Mentor ", Mentor.class);
+
+        String hql = "SELECT DISTINCT m " +
+                "FROM Mentor m " +
+                "JOIN m.students s " +
+                "JOIN s.company c " +
+                "WHERE s.semester = :sem";
+
+        Query<Mentor> query = session.createQuery(hql, Mentor.class);
+        query.setParameter("sem", semester);
+
         return query.getResultList();
     }
+
+
+
+//        String hql = "SELECT DISTINCT m " +
+//                "FROM Mentor m " +
+//                "join MentorEvaluate me on m.mentor_id = me.mentor.mentor_id " +
+//                "join me.student s " +
+//                "join s.company c " +
+//                "where s.semester = :sem";
+
+        //        Query<Mentor> query = session.createQuery( "SELECT DISTINCT m " +
+//                        "FROM Mentor m " +
+//                        "JOIN " +
+//                        "JOIN mentor_student ms ON m.mentor_id = ms.mentor_mentorid " +
+//                        "JOIN Student s ON ms.student_studentid = s.student_id " +
+//                        "JOIN Company c ON s.company.company_id = c.company_id " +
+//                        " WHERE s.semester = :sem " +
+//         "AS filtered_mentors ON m.mentorid = filtered_mentors.mentorid",Mentor.class);
+
+
 
     @Override
     public List<Mentor> getMentorPasswordNotNull() {
@@ -99,16 +112,4 @@ public class MentorDaoImpl implements MentorDao {
         session.saveOrUpdate(mentor);
     }
 
-
-//    @Override
-//    public List<Student> getMentorDoesNotHaveStudent(int id) {
-//        Session session = sessionFactory.getCurrentSession();
-//        Query<Student> query = session.createQuery("select s.students from Mentor s where s.mentor_id=:id");
-//        query.setParameter("id",id);
-//        List<Student> stuList1 = query.getResultList();
-//        query = session.createQuery("from Student");
-//        List<Student> stuList2 = query.getResultList();
-//        stuList2.removeAll(stuList1);
-//        return stuList2;
-//    }
 }

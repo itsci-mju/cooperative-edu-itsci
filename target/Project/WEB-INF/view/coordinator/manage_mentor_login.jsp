@@ -24,7 +24,8 @@
 </style>
 <body><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/>
+<br><br><br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ระบบจัดการเข้าสู่ระบบพี่เลี้ยง (อาจารย์ผู้ประสานงาน)</p>
@@ -36,13 +37,14 @@
     <div id="boder" align="center">
         <div class="row">
             <div class="column">
-                <label for="email" style="padding: 0px 50px 30px 0px;">อีเมล</label>
+                <label for="email" style="padding: 0px 55px 30px 0px;">อีเมล</label>
                 <input type="email" id="email" name="email" value="${mentors.mentor_email}" disabled>
             </div>
             <div class="column">
-                <label for="password" style="padding: 0px 30px 30px 0px;">รหัสผ่าน</label>
+                <label for="password" style="padding: 0px 55px 30px 0px;">รหัสผ่าน</label>
                 <input type="password" id="password" name="password" ><br>
-                <input type="password" id="confirm" name="confirm" onkeyup="checkPasswordMatch()" style="margin-left: 91px;"><br>
+                <label for="password" style="padding: 0px 25px 0px 0px;">ยืนยันรหัสผ่าน</label>
+                <input type="password" id="confirm" name="confirm" onkeyup="checkPasswordMatch()" style="margin-left: -10px;"><br>
                 <label id="passwordMatch" style="margin: 20px 20px 10px 90px;">กรุณากรอกรหัสผ่านให้ตรงกัน</label>
             </div>
         </div><br>

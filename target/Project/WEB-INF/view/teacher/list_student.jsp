@@ -14,7 +14,7 @@
 <%
     Teacher teacher = (Teacher) session.getAttribute("teacher");
 %>
-<body><br><br>
+<body><br><br><br><br>
 
 <jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
 <div class="navbar2"><br>
@@ -35,7 +35,6 @@
 
 <%--        ${students}--%>
         <c:forEach var="teacherEvaluate" items="${ListStudents}">
-            <c:if test="${teacherEvaluate.assessment_status == 'ยังไม่ได้ประเมิน'}">
                 <c:set var="startdate" value="${teacherEvaluate.student.startdate}" />
                 <c:set var="enddate" value="${teacherEvaluate.student.enddate}"/>
         <tr>
@@ -51,14 +50,19 @@
                 </a>
             </td>
             <td align="center">
-                <a href="${pageContext.request.contextPath}/teacher/${teacherEvaluate.student.student_id}/evaluate/<%=teacher.getTeacher_id()%>/${teacherEvaluate.assessment_id}">
-                    <button type="submit" class="btn btn-success">ประเมินนักศึกษา</button>
-                </a>
-
-
+                <c:choose>
+                    <c:when test="${teacherEvaluate.assessment_status == 'ยังไม่ได้ประเมิน'}">
+                        <a href="${pageContext.request.contextPath}/teacher/${teacherEvaluate.student.student_id}/evaluate/<%=teacher.getTeacher_id()%>/${teacherEvaluate.assessment_id}">
+                            <button type="submit" class="btn btn-success">ประเมินนักศึกษา</button>
+                        </a>
+                    </c:when>
+                    <c:otherwise>
+                        <button type="submit" class="btn btn-secondary" disabled>ประเมินเสร็จแล้ว</button>
+                    </c:otherwise>
+                </c:choose>
             </td>
         </tr>
-            </c:if>
+
         </c:forEach>
     </table>
 
@@ -68,4 +72,3 @@
 
 </html>
 
-<jsp:include page="/WEB-INF/view/layout/footer.jsp"/>

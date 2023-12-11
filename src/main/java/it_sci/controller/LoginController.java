@@ -27,7 +27,6 @@ public class LoginController {
 
         if (mentor != null) {
             session.setAttribute("mentor", mentor);
-            session.setMaxInactiveInterval(60 * 5);
             return "redirect:/";
         }else {
             model.addAttribute("loginFailed", true);
@@ -50,7 +49,6 @@ public class LoginController {
 
         if (teacher != null) {
             session.setAttribute("teacher", teacher);
-            session.setMaxInactiveInterval(60 * 5);
             return "redirect:/";
         }else {
             model.addAttribute("loginFailed", true);

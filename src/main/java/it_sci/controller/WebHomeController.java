@@ -20,10 +20,7 @@ public class WebHomeController {
 
     @RequestMapping("/")
     public String gotoWebIndex (Model model) {
-        Teacher teacher = teacherService.getTeacherById(3);
-        Student student = studentService.getStudentById("5804106302");
-        model.addAttribute("companies", teacher);
-        model.addAttribute("students", student);
+        model.addAttribute("stt","false");
         return "index";
     }
 }

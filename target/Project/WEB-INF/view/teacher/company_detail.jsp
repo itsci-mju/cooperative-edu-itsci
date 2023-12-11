@@ -37,11 +37,11 @@
 <jsp:include page="/WEB-INF/view/layout/layout_nav.jsp"/>
 <body><br><br>
 
-<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br>
+<jsp:include page="/WEB-INF/view/check_nav.jsp"/><br><br><br><br>
 <div class="navbar2"><br>
     <div style="margin-left: 160px; margin-top: 0px;">
         <p class="editpro_header1">ระบบการประเมินการฝึกสหกิจศึกษา (อาจารย์นิเทศ)</p>
-        <p class="editpro_header2">รายชื่อนักศึกษา/ข้อมูลบริษัท</p>
+        <p class="editpro_header2">ข้อมูลบริษัท</p>
     </div>
 </div><br><br>
 

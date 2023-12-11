@@ -54,4 +54,16 @@ public class TeacherServiceImpl implements TeacherService{
     public List<Company> getCompanyToAssignByTeacher(int teacher_id) {
         return teacherDao.getCompanyToAssignByTeacher(teacher_id);
     }
+
+    @Override
+    @Transactional
+    public List<Company> getListCompanySupervision(String semester,int teacher_id) {
+        return teacherDao.getListCompanySupervision(semester,teacher_id);
+    }
+
+    @Override
+    @Transactional
+    public List<Company> getListCompanySupervision(int teacher_id) {
+        return teacherDao.getListCompanySupervision(teacher_id);
+    }
 }

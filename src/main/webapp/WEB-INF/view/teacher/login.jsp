@@ -8,7 +8,7 @@
     <style>
         body, html {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Prompt', sans-serif;
             background-color: #f4f4f4;
         }
 
@@ -21,9 +21,10 @@
 
         .login-box {
             background-color: #fff;
-            border-radius: 10px;
+            border-radius: 20px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
+            border: #c8c7c7 solid;
             width: 300px;
         }
 
@@ -52,31 +53,19 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #AC1C2E;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            font-family: 'Prompt', sans-serif;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #BF3446;
         }
 
-        .forgot-password {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .forgot-password a {
-            color: #888;
-            text-decoration: none;
-        }
-
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
 
     </style>
     <title>Login Page</title>
@@ -94,10 +83,12 @@
                 <label >Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
         </form:form>
     </div>
 </section>
+
+
 
 </body>
 </html>
