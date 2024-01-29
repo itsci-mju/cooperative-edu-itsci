@@ -109,9 +109,6 @@
                                         </a>
                                     </td>
                                 </tr>
-                                <%--                    </c:if>--%>
-                                <%--                </c:forEach>--%>
-                                <%--                </c:if>--%>
                             </c:when>
                             <c:otherwise>
 
