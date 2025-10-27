@@ -42,9 +42,6 @@ out/
 # NetBeans
 nb-configuration.xml
 
-# Visual Studio Code
-.vscode/
-
 # OS
 .DS_Store
 Thumbs.db
