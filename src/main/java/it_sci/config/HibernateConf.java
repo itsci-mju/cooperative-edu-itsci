@@ -35,7 +35,7 @@ public class HibernateConf {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[]{"it_sci.model"});
+        sessionFactory.setPackagesToScan(new String[] { "it_sci.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -43,7 +43,8 @@ public class HibernateConf {
     private final Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-        hibernateProperties.setProperty("hibernate.dialect.storage_engine", env.getProperty("hibernate.dialect.storage_engine"));
+        hibernateProperties.setProperty("hibernate.dialect.storage_engine",
+                env.getProperty("hibernate.dialect.storage_engine"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
         hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         return hibernateProperties;
@@ -51,13 +52,19 @@ public class HibernateConf {
 
     @Bean
     public DataSource dataSource() {
+        String url = env.getProperty("jdbc.url");
+        String dockerProfile = System.getProperty("spring.profiles.active");
+        if ("docker".equals(dockerProfile) && url != null) {
+            url = url.replaceAll("localhost", "mysql");
+        }
+
         ComboPooledDataSource securityDataSource = new ComboPooledDataSource();
         try {
             securityDataSource.setDriverClass(env.getProperty("jdbc.driver"));
         } catch (PropertyVetoException exc) {
             throw new RuntimeException(exc);
         }
-        securityDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
+        securityDataSource.setJdbcUrl(url);
         securityDataSource.setUser(env.getProperty("jdbc.user"));
         securityDataSource.setPassword(env.getProperty("jdbc.password"));
         securityDataSource.setInitialPoolSize(getIntProperty("connection.pool.initialPoolSize"));
